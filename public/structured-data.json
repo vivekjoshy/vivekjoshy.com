@@ -1,0 +1,36 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vivek Joshy",
+  "jobTitle": "Data Scientist & Computational Biologist",
+  "url": "https://vivekjoshy.com",
+  "sameAs": [
+    "https://github.com/vivekjoshy"
+  ],
+  "workLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Naples",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    }
+  },
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Mahatma Gandhi University",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Aluva",
+      "addressCountry": "India"
+    }
+  },
+  "knowsAbout": [
+    "Deep Learning",
+    "Computational Biology",
+    "Bioinformatics",
+    "Formal Systems",
+    "Mathematical Logic",
+    "Reinforcement Learning"
+  ]
+} 

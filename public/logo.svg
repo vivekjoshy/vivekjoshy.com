@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <style>
+    .thin { font-family: 'Inter', sans-serif; font-weight: 100; }
+    .bold { font-family: 'Inter', sans-serif; font-weight: 900; }
+    text { fill: currentColor; }
+  </style>
+  <text x="40" y="65" text-anchor="middle" class="thin" font-size="60">V</text>
+  <text x="70" y="65" text-anchor="middle" class="bold" font-size="60">J</text>
+</svg> 

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #212121;
+  font-weight: 400;
+  background-color: #ffffff;
+}
+
+@layer components {
+  .section-heading {
+    @apply text-accent uppercase font-bold text-lg;
+  }
+
+  .subsection-heading {
+    @apply text-primary font-semibold;
+  }
+
+  .subsubsection-heading {
+    @apply text-subheading font-medium;
+  }
+} 
