@@ -30,7 +30,6 @@ export default defineNuxtPlugin(() => {
     meta: [
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'description', content: siteDescription },
-      { name: 'color-scheme', content: 'light dark' }, 
       // Open Graph / Facebook
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: siteUrl },
@@ -43,10 +42,10 @@ export default defineNuxtPlugin(() => {
       { name: 'twitter:title', content: siteName },
       { name: 'twitter:description', content: siteDescription },
       { name: 'twitter:image', content: `${siteUrl}/logo.svg` },
+      // Favicon links are handled in app.head
     ],
     link: [
-      { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg', media: '(prefers-color-scheme: light)' },
-      { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg', media: '(prefers-color-scheme: dark)' },
+      { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
       { rel: 'canonical', href: siteUrl }
     ],
     script: [

@@ -13,9 +13,6 @@ node_modules
 logs
 *.log
 
-# VSCode
-.vscode
-
 # Misc
 .DS_Store
 .fleet
@@ -25,12 +22,3 @@ logs
 .env
 .env.*
 !.env.example
-
-# Lock files
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-bun.lockb
-
-# TypeScript cache
-*.tsbuildinfo
