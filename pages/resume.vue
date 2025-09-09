@@ -26,7 +26,7 @@
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">Vairified Corp</h3>
-          <span>January 2024 -- Present</span>
+          <span>January 2025 -- Present</span>
         </div>
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-3">
           <h4 class="subsubsection-heading text-lg">Data Scientist</h4>
