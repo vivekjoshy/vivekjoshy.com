@@ -9,14 +9,15 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "verify:openskill": "node scripts/verify-openskill.mjs",
-    "prebuild": "node scripts/verify-openskill.mjs && node scripts/verify-replica-loss.mjs && node scripts/verify-athena.mjs && node scripts/check-contrast.mjs && node scripts/build-provenance.mjs && cp app/data/provenance.json public/provenance.json && node scripts/fetch-evidence.mjs",
+    "prebuild": "node scripts/verify-openskill.mjs && node scripts/verify-replica-loss.mjs && node scripts/verify-athena.mjs && node scripts/verify-webmcp.mjs && node scripts/check-contrast.mjs && node scripts/build-provenance.mjs && cp app/data/provenance.json public/provenance.json && node scripts/fetch-evidence.mjs",
     "evidence": "node scripts/fetch-evidence.mjs",
     "check:contrast": "node scripts/check-contrast.mjs",
     "verify:replica": "node scripts/verify-replica-loss.mjs",
     "provenance": "node scripts/build-provenance.mjs && cp app/data/provenance.json public/provenance.json",
     "verify:athena": "node scripts/verify-athena.mjs",
     "check:links": "node scripts/check-links.mjs",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "verify:webmcp": "node scripts/verify-webmcp.mjs"
   },
   "dependencies": {
     "katex": "^0.18.4",

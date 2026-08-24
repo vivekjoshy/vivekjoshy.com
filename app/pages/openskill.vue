@@ -190,6 +190,9 @@ const fmt = (n?: number | null) => (typeof n === 'number' ? n.toLocaleString('en
 
 definePageMeta({ layout: 'default' })
 
+// Expose the rating models to an agent browsing this page.
+useWebMcp()
+
 useStructuredData([
   {
     '@type': 'SoftwareSourceCode',

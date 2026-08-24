@@ -45,6 +45,25 @@
       </div>
     </section>
 
+    <section class="mb-10">
+      <h2 class="rule-heading section-heading mb-4 text-base"><span>In the browser</span></h2>
+      <p class="mb-3 max-w-3xl">
+        The <NuxtLink to="/openskill" class="text-accent link-underline">playground</NuxtLink> also
+        registers these as <a href="https://github.com/webmachinelearning/webmcp" target="_blank" rel="noopener noreferrer" class="text-accent link-underline">WebMCP</a>
+        tools on <code class="provenance">document.modelContext</code>, so an agent already looking
+        at the page can call them without going over HTTP. Same three operations, same module —
+        <code class="provenance">openskill-rate-match</code>,
+        <code class="provenance">openskill-predict-win</code>,
+        <code class="provenance">openskill-compare-models</code>, all marked
+        <code class="provenance">readOnlyHint</code> since they are pure functions.
+      </p>
+      <p class="text-subheading text-sm">
+        WebMCP is a W3C proposal and sits behind a flag in Chrome, so this is additive: browsers
+        without it are unaffected. The descriptors are checked against the library on every build
+        alongside everything else.
+      </p>
+    </section>
+
     <section>
       <h2 class="rule-heading section-heading mb-4 text-base"><span>Try it</span></h2>
       <pre class="code-block"><code>curl -s https://vivekjoshy.com/api/mcp \
