@@ -40,6 +40,15 @@ for (const [s, want] of Object.entries(ref.distributions)) {
   })
 }
 
+// DenseOrdinalReplicaLoss distance matrices
+ref.dense_ordinal_distance.forEach((want, target) => {
+  const got = mod.denseOrdinalDistance(target, ref._constants.num_colors, ref._constants.num_replicas)
+  want.forEach((v, i) => {
+    checks++
+    if (got[i] !== v) failures.push(`denseOrdinalDistance target=${target} class=${i}: ${got[i]} vs ${v}`)
+  })
+})
+
 if (failures.length) {
   console.error(`\n✖ replica-loss port diverges (${failures.length}/${checks}):`)
   failures.slice(0, 10).forEach((f) => console.error('   ' + f))

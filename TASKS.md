@@ -18,6 +18,9 @@ Working list for the `repositioning-2026` branch. Ordered by value, not effort.
 - [x] Print stylesheet for `/resume`
 - [x] Command palette (⌘K), verified keyboard-operable
 - [x] LaTeX formatting: flush-left paragraphs, ragged-right, link row fits
+- [x] Dense Ordinal Replica Loss visualizer, incl. the circular-vs-dense comparison
+- [x] KaTeX for maths (SSR-rendered, MathML for screen readers)
+- [x] ARC architecture survey from real branches
 - [ ] **Prompt ensemble visualizer** — Vivek's own idea. Show N samples from one
       model (vLLM-style sampling) versus N distinct models, then entropy-weighted
       aggregation and logarithmic pooling collapsing them to one calibrated answer.
@@ -39,14 +42,18 @@ Working list for the `repositioning-2026` branch. Ordered by value, not effort.
       any branch records a solve rate. To an ARC-literate reader, silence on the
       score reads as the score being bad. Fine for a negative result — but only
       if stated.
-- [ ] **Ordinal replica loss — definition.** Wanted as a visualizer. Opinion's
-      current `loss.py` is an ELBO with a coupled minimax constraint; OpinionAI's
-      README says "Dense Ordinal + Geometric Coupling". Neither is this. Not
-      guessing at someone else's invention.
-- [ ] **Theoretical neuroscience server — name and member count.** Currently
-      written as "the largest theoretical neuroscience server on Discord", which
-      is exactly the unverifiable superlative the review flags elsewhere. A name
-      and a number turn it into evidence.
+
+      Git log gives *signals* of what each architecture fought, not why it was
+      abandoned: the transformer branch ends on "Fix gradient explosion in
+      ElasticConv1d" after replacing O(n²) attention with an O(n) adaptive CNN;
+      the LLM branch ends on EOS-fallback and repeated token-limit increases;
+      nca and traditional-transformer both flip between L1 and L2. Those are
+      hypotheses about failure modes, not statements of it, so they are not on
+      the page.
+- [x] ~~Ordinal replica loss — definition.~~ Found: `DenseOrdinalReplicaLoss` in
+      Opinion commit `3773f4e` (2025-10-26), with `CircularReplicaLoss` on
+      `Opinion@nca` as its predecessor. Both are now implemented and compared.
+- [x] ~~Theoretical neuroscience server.~~ discord.gg/neuroscience, 6,940+ members.
 - [ ] **`/uses` page — confirm what's publishable.** The local toolchain is
       readable from this machine, but publishing someone's setup is their call.
 

@@ -110,3 +110,39 @@ export function oneHot(target: number, numColors = NUM_COLORS, numReplicas = NUM
   for (let i = start; i < start + numReplicas; i++) row[i] = 1 / numReplicas
   return row
 }
+
+/* ------------------------------------------------------------------ */
+/* DenseOrdinalReplicaLoss — Opinion commit 3773f4e (2025-10-26)       */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Hybrid distance from each of the N*R classes to the target colour.
+ *
+ * Within the target colour's own block, distance is linear from that block's
+ * middle replica — a genuine ordinal continuum. Every other colour gets a flat
+ * Hamming penalty of R. This deliberately drops the circular-topology
+ * assumption: ARC colour indices are labels, not a scale, so treating colour 4
+ * as "nearer" colour 3 than colour 8 encodes a relationship that isn't there.
+ */
+export function denseOrdinalDistance(
+  targetColor: number,
+  numColors = NUM_COLORS,
+  numReplicas = NUM_REPLICAS
+): number[] {
+  const total = numColors * numReplicas
+  const middle = targetColor * numReplicas + Math.floor(numReplicas / 2)
+  return Array.from({ length: total }, (_, r) =>
+    Math.floor(r / numReplicas) === targetColor ? Math.abs(r - middle) : numReplicas
+  )
+}
+
+/**
+ * Expected distance under the predicted distribution: L = sum_i p_i * d_i.
+ * Note this is an expected-distance objective, not a KL against a soft target —
+ * a different shape of loss from CircularReplicaLoss.
+ */
+export function denseOrdinalLoss(logits: number[], targetColor: number): number {
+  const p = softmax(logits)
+  const d = denseOrdinalDistance(targetColor)
+  return p.reduce((acc, pi, i) => acc + pi * d[i]!, 0)
+}

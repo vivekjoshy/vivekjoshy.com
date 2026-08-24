@@ -10,8 +10,9 @@
         onto nearby colours instead of using a one-hot cliff.
       </p>
       <p class="text-subheading text-sm">
-        Ported from <code class="provenance">Opinion@nca opinion/loss.py</code> and
-        checked against a reference generated from that source on every build.
+        Ported from <code class="provenance">Opinion@nca</code> (CircularReplicaLoss)
+        and <code class="provenance">Opinion 3773f4e</code> (DenseOrdinalReplicaLoss),
+        checked against references generated from those sources on every build.
       </p>
     </div>
 
@@ -27,6 +28,78 @@
         Grid accuracy, swapping one-hot targets for the circular replica targets below.
         The figure is recorded in the loss module itself.
       </p>
+    </section>
+
+    <!-- The two losses side by side -->
+    <section class="mb-12">
+      <h2 class="rule-heading section-heading mb-5 text-base"><span>Circular, then dense ordinal</span></h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="surface-card rounded p-5">
+          <h3 class="subsection-heading mb-1">CircularReplicaLoss</h3>
+          <p class="text-subheading text-xs mb-3 tick">Opinion@nca &middot; earlier</p>
+          <p class="mb-3">
+            Treats the ten colours as a ring. Target mass leaks onto neighbouring
+            <em>colours</em>, weighted by inverse circular distance.
+          </p>
+          <div class="mb-3"><Katex display :expr="TEX.dist" /></div>
+          <p class="text-subheading text-sm">
+            Smooth between colours. But it asserts that colour 4 is nearer colour 3
+            than colour 8 &mdash; and in ARC, colour indices are arbitrary labels.
+          </p>
+        </div>
+
+        <div class="surface-card rounded p-5">
+          <h3 class="subsection-heading mb-1">DenseOrdinalReplicaLoss</h3>
+          <p class="text-subheading text-xs mb-3 tick">Opinion 3773f4e &middot; 2025-10-26</p>
+          <p class="mb-3">
+            Keeps the replicas, drops the ring. Distance is linear <em>within</em> a
+            colour's own replica block, and a flat Hamming penalty everywhere else.
+          </p>
+          <div class="mb-3"><Katex display :expr="TEX.dense" /></div>
+          <p class="text-subheading text-sm">
+            Smoothness lives where it is real &mdash; replica index is a genuine
+            continuum &mdash; and every wrong colour is equally wrong.
+          </p>
+        </div>
+      </div>
+
+      <div class="surface-card rounded p-5">
+        <h3 class="subsection-heading mb-3">Distance to every one of the {{ NUM_COLORS * NUM_REPLICAS }} classes</h3>
+        <p class="text-subheading text-sm mb-4">
+          Target colour {{ target }}. Each cell is one class; darker means further from the target.
+        </p>
+
+        <div class="mb-4">
+          <p class="text-subheading text-xs mb-1 tick">circular — mass spreads across colour blocks</p>
+          <div class="flex gap-px h-8 rounded overflow-hidden border hairline">
+            <div
+              v-for="(v, i) in row" :key="`c${i}`" class="flex-1"
+              :style="{ background: ARC_COLORS[Math.floor(i / NUM_REPLICAS)], opacity: 0.15 + 0.85 * Math.sqrt(v / maxV) }"
+              :title="`class ${i}: ${(v * 100).toFixed(4)}%`"
+            ></div>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-subheading text-xs mb-1 tick">dense ordinal — a V inside one block, flat elsewhere</p>
+          <div class="flex gap-px h-8 rounded overflow-hidden border hairline">
+            <div
+              v-for="(d, i) in denseDist" :key="`d${i}`" class="flex-1"
+              :style="{ background: ARC_COLORS[Math.floor(i / NUM_REPLICAS)], opacity: 1 - 0.85 * (d / NUM_REPLICAS) }"
+              :title="`class ${i}: distance ${d}`"
+            ></div>
+          </div>
+        </div>
+
+        <p class="text-subheading text-sm mt-4">
+          The dense version has structure in exactly one block &mdash; a V centred on
+          replica {{ Math.floor(NUM_REPLICAS / 2) }} of colour {{ target }} &mdash; and is
+          deliberately featureless across the other {{ NUM_COLORS - 1 }} colours. That
+          flatness is the claim: nothing is known about how colours relate, so nothing
+          is encoded.
+        </p>
+      </div>
     </section>
 
     <!-- Controls -->
@@ -251,7 +324,8 @@ import { definePageMeta, useHead } from '#imports'
 import { ref, computed } from 'vue'
 import {
   NUM_COLORS, NUM_REPLICAS, DEFAULTS, ARC_COLORS,
-  circularDistance, createTargetDistributions, massPerColor, replicaLoss, oneHot
+  circularDistance, createTargetDistributions, massPerColor, replicaLoss, oneHot,
+  denseOrdinalDistance
 } from '~/utils/replica-loss'
 
 definePageMeta({ layout: 'default' })
@@ -260,6 +334,7 @@ definePageMeta({ layout: 'default' })
 // backslash is literal, so "\\min" reaches KaTeX as a line break plus "min".
 const TEX = {
   dist: String.raw`d(a,b)=\min\bigl(|a-b|,\; N-|a-b|\bigr)`,
+  dense: String.raw`d(r, c^{\star}) = \begin{cases} |r - m^{\star}| & \lfloor r/R \rfloor = c^{\star} \\[0.5em] R & \text{otherwise} \end{cases}`,
   target: String.raw`p(r \mid c^{\star}) = \begin{cases}
     \dfrac{1-s}{R} & r \in [c^{\star}R,\; (c^{\star}+1)R) \\[1.1em]
     \dfrac{s\, \tilde{w}\bigl(d(c,c^{\star})\bigr)}{R} & r \in [cR,\; (c+1)R),\; c \neq c^{\star}
@@ -283,6 +358,7 @@ const spilloverNote = computed(() => {
   return spillover.value > DEFAULTS.spillover ? 'more mass on neighbours' : 'less mass on neighbours'
 })
 
+const denseDist = computed(() => denseOrdinalDistance(target.value))
 const row = computed(() => createTargetDistributions(NUM_COLORS, NUM_REPLICAS, spillover.value)[target.value]!)
 const mass = computed(() => massPerColor(row.value))
 const maxV = computed(() => Math.max(...row.value))

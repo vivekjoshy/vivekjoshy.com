@@ -46,6 +46,25 @@ def create_circular_target_distributions(
     return distributions
 
 
+def dense_ordinal_distance(target_color: int, num_colors: int, num_replicas: int) -> list[float]:
+    """
+    Hybrid distance from DenseOrdinalReplicaLoss (Opinion commit 3773f4e).
+
+    Linear distance from the target colour's middle replica inside that colour's
+    block; a constant Hamming penalty of R for every other colour. Deliberately
+    avoids the circular-topology assumption of CircularReplicaLoss.
+    """
+    total = num_colors * num_replicas
+    middle = target_color * num_replicas + (num_replicas // 2)
+    out = []
+    for r in range(total):
+        if r // num_replicas == target_color:
+            out.append(float(abs(r - middle)))
+        else:
+            out.append(float(num_replicas))
+    return out
+
+
 def main() -> None:
     out = {
         "_constants": {
@@ -65,6 +84,9 @@ def main() -> None:
         out["distributions"][str(s)] = create_circular_target_distributions(
             NUM_COLORS, NUM_REPLICAS, s
         )
+    out["dense_ordinal_distance"] = [
+        dense_ordinal_distance(c, NUM_COLORS, NUM_REPLICAS) for c in range(NUM_COLORS)
+    ]
     print(json.dumps(out))
 
 
