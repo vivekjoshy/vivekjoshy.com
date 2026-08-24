@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+
+% Document Setup and Fonts
+\usepackage[T1]{fontenc}
+\usepackage{inter}
+\renewcommand*\familydefault{\sfdefault}
+
+% Page Geometry Settings
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    top=1.8cm,
+    bottom=1.8cm,
+    left=2.2cm,
+    right=2.2cm
+}
+
+% Document Configuration
+\setcounter{secnumdepth}{0}
+\pdfgentounicode=1
+
+% List Formatting Settings
+\usepackage{enumitem}
+\setlist[itemize]{
+    noitemsep,
+    topsep=0.5ex,
+    leftmargin=1.25em
+}
+\setlist[description]{
+    itemsep=0.5ex,
+    leftmargin=0pt
+}
+
+% Color Definitions
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primary}{RGB}{70, 70, 70}
+\definecolor{accent}{RGB}{156, 0, 38}
+\definecolor{subheading}{RGB}{90, 90, 90}
+
+% Section Formatting
+\usepackage{titlesec}
+\titlespacing{\section}{0pt}{*2.5}{*1}
+\titlespacing{\subsection}{0pt}{*1}{*0.2}
+\titlespacing{\subsubsection}{0pt}{*0.3}{*0.1}
+
+\titleformat{\section}
+    {\color{accent}\large\fontseries{bold}\selectfont\uppercase}
+    {}{0em}
+    {\ruleafter}[\global\RemVStrue]
+
+\titleformat{\subsection}
+    {\color{primary}\normalsize\fontseries{semibold}\selectfont}
+    {}{0em}
+    {\rvs}
+
+\titleformat{\subsubsection}
+    {\color{subheading}\normalsize\fontseries{medium}\selectfont}
+    {}{0em}
+    {}
+
+% Horizontal Rule Settings
+\usepackage{xhfill}
+\newcommand\ruleafter[1]{#1~\xrfill[.4ex]{1pt}[accent]}
+
+% Vertical Space Control
+\newif\ifRemVS
+\newcommand{\rvs}{
+    \ifRemVS
+        \vspace{-0.8ex}
+    \fi
+    \global\RemVSfalse
+}
+
+% Icons and Hyperlinks
+\usepackage{fontawesome5}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=accent,
+    pdftitle={Vivek Joshy - Resume},
+}
+
+% Page Numbering and Headers
+\usepackage[page]{totalcount}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+
+\begin{document}
+
+% Header Section
+\begin{center}
+    {\fontsize{28}{32}\selectfont\interthin VIVEK\interheavy JOSHY}\\[0.3cm]
+    {\color{subheading}
+    \href{mailto:contact@vivekjoshy.com}{\faEnvelope[regular]~contact@vivekjoshy.com} ~\textbullet~
+    \href{https://www.github.com/vivekjoshy}{\faGithub~github.com/vivekjoshy}
+    }
+\end{center}
+
+\section{OpenSkill}
+\subsection{Bayesian Multiplayer Rating Library \hspace*{\fill} 2024}
+Open-source rating system for asymmetric multi-team, multiplayer matches. Published in the
+Journal of Open Source Software; preprint on arXiv since January 2024. In production use at
+OpenAI, Marvel Rivals, Hunt: Showdown, and BeyondAllReason --- and the rating engine behind
+the Vairified platform.\\
+\href{https://openskill.me}{openskill.me} ~\textbullet~
+\href{https://github.com/vivekjoshy/openskill.py}{github.com/vivekjoshy/openskill.py} ~\textbullet~
+\href{https://doi.org/10.21105/joss.05901}{DOI: 10.21105/joss.05901} ~\textbullet~
+\href{https://arxiv.org/abs/2401.05451}{arXiv:2401.05451}
+
+\section{Professional Experience}
+\subsection{Vairified Corp \hspace*{\fill} January 2025 -- Present}
+\subsubsection{Lead Scientist, Data \& ML \hspace*{\fill} Naples, Florida}
+\begin{itemize}
+    \item Sole data scientist; one of three in technical leadership at a 20-person company.
+    \item Own the backend ML platform --- a 140k+ LOC NestJS API, with the Partner API shipped to production behind OAuth and scoped API keys, plus official Python and TypeScript SDKs.
+    \item Built VAIR, the production rating engine: Thurstone--Mosteller via OpenSkill, score-margin weighting, adaptive uncertainty, and full test coverage.
+    \item Rebuilt Sentinel, which AST-extracts roughly 3,000 business rules across three repositories and presents them in plain English for stakeholder review.
+    \item Led the legacy PHP migration: 184 files and 39 screens mapped across a 119-action cutover.
+    \item Delivered multisport sport-filtering end to end, from schema through cross-sport search to per-sport rating buckets.
+\end{itemize}
+
+\subsection{Pickleball Players Network \hspace*{\fill} October 2023 -- December 2024}
+\subsubsection{Data Scientist \hspace*{\fill} Los Angeles, California}
+\begin{itemize}
+    \item Created matchmaking algorithms and skill assessment models.
+    \item Built prototype system using Python and PostgreSQL.
+\end{itemize}
+
+\subsection{Open Source Development \hspace*{\fill} 2016 -- Present}
+\begin{itemize}
+    \item Maintain OpenSkill, a peer-reviewed rating library with production deployments across games and sports.
+    \item Build and operate supporting infrastructure: CI/CD pipelines, packaging, and documentation sites.
+\end{itemize}
+
+\section{Research}
+\subsection{Boundary Kernel Theory \& Grammar Induction \hspace*{\fill} \textit{In progress}}
+Monograph in progress. Open quantities: $k^*$, the interaction order, and the renormalizability conjectures.
+
+\subsection{Glia --- Glass-Box Defeasible-Inheritance Reasoner \hspace*{\fill} \textit{In progress}}
+Settles inferences by graded biased competition rather than next-token prediction, emitting a
+derivation trace for every conclusion. Exercised against a five-topology stress battery and a
+254k-statement run over GenericsKB.
+
+\subsection{ARC-AGI \hspace*{\fill} \textit{Ongoing}}
+Two years across roughly twelve solver architectures. Finding: the binding constraint is
+object-level relational structure that is not recoverable from pixel context --- not compute.
+
+\section{Technical Projects}
+\subsection{BELKA Molecular Interaction Challenge \hspace*{\fill} 2024}
+\begin{itemize}
+    \item Won Kaggle silver medal in BELKA protein-molecule interaction challenge.
+    \item Implemented domain adversarial training with gradient reversal.
+    \item Designed a custom molecular data processing architecture.
+\end{itemize}
+
+\subsection{SAT/SMT Solver \hspace*{\fill} 2024}
+\begin{itemize}
+    \item Built CDCL-based reinforcement learning system for SAT/SMT problems.
+    \item Custom rewards created for efficient solution space exploration.
+\end{itemize}
+
+\subsection{Prompt Ensemble Framework \hspace*{\fill} 2024}
+\begin{itemize}
+    \item Built an entropy-based framework for token evidence aggregation.
+    \item Created logarithmic pooling for confidence scoring.
+\end{itemize}
+
+\section{Community}
+\subsection{Machine Learning Street Talk \hspace*{\fill} Present}
+Expert contributor on the MLST community server.
+
+\subsection{The Hitchhiker's Guide to Python \hspace*{\fill} 2017}
+Contributed to Common Gotchas chapter (\href{https://docs.python-guide.org/writing/gotchas/}{docs.python-guide.org})
+
+\section{Skills}
+\begin{description}
+    \item[Technologies:] PyTorch, Polars/Pandas, FastAPI, Ray/RLlib, TypeScript, NestJS
+    \item[DevOps \& Data:] Git, Docker, AWS, GCP, PostgreSQL, MongoDB, TypeDB, RDF/SPARQL
+    \item[Core:] Formal Methods, Grammar Induction, Neuro-Symbolic Computation, Interpretable AI, Bayesian Inference
+\end{description}
+
+\section{Education}
+\subsection{Mahatma Gandhi University \hspace*{\fill} 2024}
+{\normalfont\textit{Bachelor of Science in Bioinformatics}} \hfill Aluva, India
+
+\end{document}

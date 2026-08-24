@@ -8,36 +8,63 @@
         <a href="mailto:contact@vivekjoshy.com" class="flex items-center hover:text-accent">
           <i class="fa-regular fa-envelope mr-2"></i> contact@vivekjoshy.com
         </a>
-        <span class="hidden md:inline">•</span>
-        <a href="tel:+919207024069" class="flex items-center hover:text-accent">
-          <i class="fa-solid fa-mobile-alt mr-2"></i> +91-9207024069
-        </a>
-        <span class="hidden md:inline">•</span>
-        <a href="https://www.github.com/vivekjoshy" target="_blank" class="flex items-center hover:text-accent">
+        <span class="hidden md:inline">&bull;</span>
+        <a href="https://www.github.com/vivekjoshy" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-accent">
           <i class="fa-brands fa-github mr-2"></i> github.com/vivekjoshy
         </a>
       </div>
     </div>
 
+    <!-- OpenSkill Section -->
+    <section class="mb-10">
+      <h2 class="section-heading border-b border-accent pb-1 mb-6 text-xl">OpenSkill</h2>
+
+      <div class="mb-8">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+          <h3 class="subsection-heading text-lg">Bayesian Multiplayer Rating Library</h3>
+          <span>2024</span>
+        </div>
+        <p class="text-lg mb-2">
+          Open-source rating system for asymmetric multi-team, multiplayer matches.
+          Published in the Journal of Open Source Software; preprint on arXiv since
+          January 2024. In production use at OpenAI, Marvel Rivals, Hunt: Showdown,
+          and BeyondAllReason &mdash; and the rating engine behind the Vairified platform.
+        </p>
+        <p class="text-lg">
+          <a href="https://openskill.me" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">openskill.me</a>
+          &nbsp;&bull;&nbsp;
+          <a href="https://github.com/vivekjoshy/openskill.py" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">github.com/vivekjoshy/openskill.py</a>
+          &nbsp;&bull;&nbsp;
+          <a href="https://doi.org/10.21105/joss.05901" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">DOI: 10.21105/joss.05901</a>
+          &nbsp;&bull;&nbsp;
+          <a href="https://arxiv.org/abs/2401.05451" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">arXiv:2401.05451</a>
+        </p>
+      </div>
+    </section>
+
     <!-- Professional Experience Section -->
     <section class="mb-10">
       <h2 class="section-heading border-b border-accent pb-1 mb-6 text-xl">Professional Experience</h2>
-      
+
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">Vairified Corp</h3>
           <span>January 2025 -- Present</span>
         </div>
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-3">
-          <h4 class="subsubsection-heading text-lg">Data Scientist</h4>
+          <h4 class="subsubsection-heading text-lg">Lead Scientist, Data &amp; ML</h4>
           <span class="italic">Naples, Florida</span>
         </div>
         <ul class="list-disc pl-5 space-y-2 text-lg">
-          <li>Built VAIR rating system for competitive player assessment.</li>
-          <li>Created REST APIs and dashboards for real-time analysis.</li>
+          <li>Sole data scientist; one of three in technical leadership at a 20-person company.</li>
+          <li>Own the backend ML platform &mdash; a 140k+ LOC NestJS API, with the Partner API shipped to production behind OAuth and scoped API keys, plus official Python and TypeScript SDKs.</li>
+          <li>Built VAIR, the production rating engine: Thurstone&ndash;Mosteller via OpenSkill, score-margin weighting, adaptive uncertainty, and full test coverage.</li>
+          <li>Rebuilt Sentinel, which AST-extracts roughly 3,000 business rules across three repositories and presents them in plain English for stakeholder review.</li>
+          <li>Led the legacy PHP migration: 184 files and 39 screens mapped across a 119-action cutover.</li>
+          <li>Delivered multisport sport-filtering end to end, from schema through cross-sport search to per-sport rating buckets.</li>
         </ul>
       </div>
-      
+
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">Pickleball Players Network</h3>
@@ -52,23 +79,64 @@
           <li>Built prototype system using Python and PostgreSQL.</li>
         </ul>
       </div>
-      
+
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">Open Source Development</h3>
           <span>2016 -- Present</span>
         </div>
         <ul class="list-disc pl-5 space-y-2 text-lg">
-          <li>Built IRC servers and web apps on shared hosting platforms.</li>
-          <li>Created CI/CD pipelines and infrastructure solutions.</li>
+          <li>Maintain OpenSkill, a peer-reviewed rating library with production deployments across games and sports.</li>
+          <li>Build and operate supporting infrastructure: CI/CD pipelines, packaging, and documentation sites.</li>
         </ul>
       </div>
     </section>
-    
+
+    <!-- Research Section -->
+    <section id="research" class="mb-10 scroll-mt-24">
+      <h2 class="section-heading border-b border-accent pb-1 mb-6 text-xl">Research</h2>
+
+      <div class="mb-8">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+          <h3 class="subsection-heading text-lg">Boundary Kernel Theory &amp; Grammar Induction</h3>
+          <span class="italic">In progress</span>
+        </div>
+        <p class="text-lg">
+          Monograph in progress. Open quantities: k*, the interaction order, and
+          the renormalizability conjectures.
+        </p>
+      </div>
+
+      <div class="mb-8">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+          <h3 class="subsection-heading text-lg">Glia &mdash; Glass-Box Defeasible-Inheritance Reasoner</h3>
+          <span class="italic">In progress</span>
+        </div>
+        <p class="text-lg">
+          Settles inferences by graded biased competition rather than next-token
+          prediction, emitting a derivation trace for every conclusion. Exercised
+          against a five-topology stress battery and a 254k-statement run over
+          GenericsKB.
+        </p>
+      </div>
+
+      <div class="mb-8">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+          <h3 class="subsection-heading text-lg">ARC-AGI</h3>
+          <span class="italic">Ongoing</span>
+        </div>
+        <p class="text-lg">
+          Two years across roughly twelve solver architectures. Finding: the
+          binding constraint is object-level relational structure that is not
+          recoverable from pixel context &mdash; not compute.
+        </p>
+      </div>
+    </section>
+
     <!-- Technical Projects Section -->
     <section class="mb-10">
       <h2 class="section-heading border-b border-accent pb-1 mb-6 text-xl">Technical Projects</h2>
-      
+
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">BELKA Molecular Interaction Challenge</h3>
@@ -80,7 +148,7 @@
           <li>Designed a custom molecular data processing architecture.</li>
         </ul>
       </div>
-      
+
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">SAT/SMT Solver</h3>
@@ -91,7 +159,7 @@
           <li>Custom rewards created for efficient solution space exploration.</li>
         </ul>
       </div>
-      
+
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">Prompt Ensemble Framework</h3>
@@ -103,54 +171,54 @@
         </ul>
       </div>
     </section>
-    
-    <!-- Publications Section -->
+
+    <!-- Skills Section -->
     <section class="mb-10">
-      <h2 class="section-heading border-b border-accent pb-1 mb-6 text-xl">Publications</h2>
-      
+      <h2 class="section-heading border-b border-accent pb-1 mb-6 text-xl">Skills</h2>
+
+      <div class="space-y-4">
+        <div>
+          <h3 class="subsection-heading mb-1 text-lg inline-block">Technologies:</h3>
+          <p class="text-lg inline-block ml-2">PyTorch, Polars/Pandas, FastAPI, Ray/RLlib, TypeScript, NestJS</p>
+        </div>
+
+        <div>
+          <h3 class="subsection-heading mb-1 text-lg inline-block">DevOps &amp; Data:</h3>
+          <p class="text-lg inline-block ml-2">Git, Docker, AWS, GCP, PostgreSQL, MongoDB, TypeDB, RDF/SPARQL</p>
+        </div>
+
+        <div>
+          <h3 class="subsection-heading mb-1 text-lg inline-block">Core:</h3>
+          <p class="text-lg inline-block ml-2">Formal Methods, Grammar Induction, Neuro-Symbolic Computation, Interpretable AI, Bayesian Inference</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="mb-10">
+      <h2 class="section-heading border-b border-accent pb-1 mb-6 text-xl">Community</h2>
+
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
-          <h3 class="subsection-heading text-lg">OpenSkill: Multi-team Rating System</h3>
-          <span>2024</span>
+          <h3 class="subsection-heading text-lg">Machine Learning Street Talk</h3>
+          <span>Present</span>
         </div>
-        <p class="text-lg">Journal of Open Source Software (<a href="https://doi.org/10.21105/joss.05901" class="text-accent hover:underline" target="_blank">DOI: 10.21105/joss.05901</a>)</p>
+        <p class="text-lg">Expert contributor on the MLST community server.</p>
       </div>
-      
+
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">The Hitchhiker's Guide to Python</h3>
           <span>2017</span>
         </div>
-        <p class="text-lg">Contributed to Common Gotchas chapter (<a href="https://docs.python-guide.org/writing/gotchas/" class="text-accent hover:underline" target="_blank">docs.python-guide.org</a>)</p>
+        <p class="text-lg">Contributed to the Common Gotchas chapter (<a href="https://docs.python-guide.org/writing/gotchas/" class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">docs.python-guide.org</a>)</p>
       </div>
     </section>
-    
-    <!-- Skills Section -->
-    <section class="mb-10">
-      <h2 class="section-heading border-b border-accent pb-1 mb-6 text-xl">Skills</h2>
-      
-      <div class="space-y-4">
-        <div>
-          <h3 class="subsection-heading mb-1 text-lg inline-block">Technologies:</h3>
-          <p class="text-lg inline-block ml-2">PyTorch, TensorFlow, Pandas/Polars, BioPython, Ray/RLLIB, FastAPI</p>
-        </div>
-        
-        <div>
-          <h3 class="subsection-heading mb-1 text-lg inline-block">DevOps & Data:</h3>
-          <p class="text-lg inline-block ml-2">Git, Docker, AWS, GCP, PostgreSQL, MongoDB, TypeDB, RDF/SPARQL</p>
-        </div>
-        
-        <div>
-          <h3 class="subsection-heading mb-1 text-lg inline-block">Core:</h3>
-          <p class="text-lg inline-block ml-2">Deep Learning, Reinforcement Learning, Bioinformatics, Mathematical Logic</p>
-        </div>
-      </div>
-    </section>
-    
+
     <!-- Education Section -->
     <section class="mb-10">
       <h2 class="section-heading border-b border-accent pb-1 mb-6 text-xl">Education</h2>
-      
+
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">Mahatma Gandhi University</h3>
@@ -162,13 +230,9 @@
         </div>
       </div>
     </section>
-    
-    <div class="text-center text-subheading text-lg mt-10">
-      References available on request
-    </div>
 
     <div class="flex justify-center mt-10">
-      <button @click="downloadPDF" class="btn btn-accent text-white btn-lg">Download PDF Resume</button>
+      <a href="/assets/resume.pdf" download="Vivek_Joshy_Resume.pdf" class="btn btn-accent text-white btn-lg">Download PDF Resume</a>
     </div>
   </div>
 </template>
@@ -184,18 +248,7 @@ definePageMeta({
 useHead({
   title: 'Resume',
   meta: [
-    { name: 'description', content: 'Professional resume of Vivek Joshy - Data Scientist & Computational Biologist with expertise in formal systems, deep learning, and bioinformatics.' }
+    { name: 'description', content: 'Resume of Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Author of OpenSkill.' }
   ]
 });
-
-const downloadPDF = () => {
-  // Create a link to the PDF file and trigger a download
-  const link = document.createElement('a');
-  link.href = '/assets/resume.pdf';
-  link.setAttribute('download', 'Vivek_Joshy_Resume.pdf');
-  link.setAttribute('target', '_blank');
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
-</script> 
+</script>

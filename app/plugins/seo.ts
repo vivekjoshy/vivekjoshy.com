@@ -1,28 +1,37 @@
 export default defineNuxtPlugin(() => {
   const siteUrl = 'https://vivekjoshy.com';
   const siteName = 'Vivek Joshy';
-  const siteDescription = 'Data Scientist & Computational Biologist specializing in formal systems, deep learning, and bioinformatics.';
-  
+  const siteDescription = 'Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Author of OpenSkill.';
+  // Raster, not SVG: X, LinkedIn, Facebook, Slack and Discord all reject SVG for og:image.
+  const ogImage = `${siteUrl}/og-image.png`;
+
   // Base structured data
   const baseStructuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Vivek Joshy",
-    "jobTitle": "Data Scientist & Computational Biologist",
+    "jobTitle": "Lead Scientist, Data & ML",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Vairified Corp"
+    },
     "url": siteUrl,
+    "image": ogImage,
     "sameAs": [
-      "https://github.com/vivekjoshy"
+      "https://github.com/vivekjoshy",
+      "https://openskill.me",
+      "https://arxiv.org/abs/2401.05451"
     ],
     "knowsAbout": [
-      "Deep Learning",
-      "Computational Biology",
-      "Bioinformatics",
-      "Formal Systems",
-      "Mathematical Logic",
-      "Reinforcement Learning"
+      "Formal Methods",
+      "Grammar Induction",
+      "Neuro-Symbolic Computation",
+      "Interpretable AI",
+      "Bayesian Inference",
+      "Rating Systems"
     ]
   };
-  
+
   useHead({
     titleTemplate: (titleChunk) => {
       return titleChunk ? `${titleChunk} | ${siteName}` : siteName;
@@ -35,13 +44,16 @@ export default defineNuxtPlugin(() => {
       { property: 'og:url', content: siteUrl },
       { property: 'og:title', content: siteName },
       { property: 'og:description', content: siteDescription },
-      { property: 'og:image', content: `${siteUrl}/logo.svg` },
+      { property: 'og:image', content: ogImage },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { property: 'og:image:alt', content: 'Vivek Joshy — Lead Scientist, Data & ML at Vairified Corp' },
       // Twitter
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:url', content: siteUrl },
       { name: 'twitter:title', content: siteName },
       { name: 'twitter:description', content: siteDescription },
-      { name: 'twitter:image', content: `${siteUrl}/logo.svg` },
+      { name: 'twitter:image', content: ogImage },
       // Favicon links are handled in app.head
     ],
     link: [
@@ -55,4 +67,4 @@ export default defineNuxtPlugin(() => {
       }
     ]
   });
-}); 
+});
