@@ -264,7 +264,6 @@ definePageMeta({
 });
 
 useStructuredData([
-  personEntity(),
   {
     // Not a second ProfilePage: the homepage is the canonical one.
     '@type': 'WebPage',

@@ -81,15 +81,6 @@ import evidence from '~/data/evidence.json'
 definePageMeta({ layout: 'default' })
 
 useStructuredData([
-  personEntity(),
-  {
-    '@type': 'WebSite',
-    '@id': SITE_ID,
-    url: SITE,
-    name: NAME,
-    publisher: { '@id': PERSON_ID },
-    inLanguage: 'en'
-  },
   {
     // mainEntity is the only property Google requires; dateCreated and
     // dateModified are recommended. This is the single canonical profile —
