@@ -30,7 +30,16 @@ export function personEntity() {
     jobTitle: 'Lead Scientist, Data & ML',
     worksFor: { '@type': 'Organization', name: 'Vairified Corp' },
     url: SITE,
-    image: `${SITE}/og-image.png`,
+    // A portrait, not the wordmark card. Google's profile treatment expects a
+    // face; og:image stays the 1200x630 card, which is a different job — a
+    // square portrait crops badly in a link preview.
+    image: {
+      '@type': 'ImageObject',
+      url: `${SITE}/img/vivek-joshy-512.jpg`,
+      width: 512,
+      height: 512,
+      caption: NAME
+    },
     sameAs: [
       'https://github.com/vivekjoshy',
       'https://openskill.me',

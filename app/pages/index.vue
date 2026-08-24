@@ -10,11 +10,25 @@
           Formal methods, grammar induction, and neuro-symbolic computation
           &mdash; systems that show their reasoning instead of asserting it.
         </p>
-        <p class="text-subheading pretty max-w-[52ch] rise rise-2">
-          Lead Scientist, Data &amp; ML at Vairified Corp. I maintain
+        <div class="flex items-start gap-4 rise rise-2">
+          <picture class="shrink-0">
+            <source srcset="/img/vivek-joshy-256.webp" type="image/webp" />
+            <img
+              src="/img/vivek-joshy-512.jpg"
+              alt="Vivek Joshy"
+              width="64"
+              height="64"
+              loading="lazy"
+              decoding="async"
+              class="portrait"
+            />
+          </picture>
+          <p class="text-subheading pretty max-w-[52ch] m-0">
+            Lead Scientist, Data &amp; ML at Vairified Corp. I maintain
           <NuxtLink to="/openskill" class="text-accent link-underline">OpenSkill</NuxtLink>,
-          and it runs in production under the platform I build.
-        </p>
+            and it runs in production under the platform I build.
+          </p>
+        </div>
       </div>
 
       <div class="md:col-span-4 rise rise-3">

@@ -786,3 +786,13 @@ body {
 .swatch.is-selected {
   box-shadow: 0 0 0 2px var(--color-page), 0 0 0 5px var(--color-accent);
 }
+
+/* Portrait. Fixed intrinsic size in the markup so it reserves its box before
+   the image arrives and contributes nothing to layout shift. */
+.portrait {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-hairline);
+}
