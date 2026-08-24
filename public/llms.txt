@@ -13,6 +13,8 @@
 - [ARC-AGI](https://vivekjoshy.com/arc): Solver architectures tried over two years and where each one broke. The finding: the binding constraint is object-level relational structure not recoverable from pixel context, not compute.
 - [Resume](https://vivekjoshy.com/resume): Full professional and research history.
 
+- [Provenance](https://vivekjoshy.com/provenance): Content-addressed record of the work on this site — SHA-256 artifact hashes, commit-SHA commitments to private research repositories, and an OpenTimestamps-anchorable manifest root.
+
 ## OpenSkill
 
 - [Documentation](https://openskill.me): Library docs and API reference.

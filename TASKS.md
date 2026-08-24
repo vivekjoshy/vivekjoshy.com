@@ -30,6 +30,10 @@ Working list for the `repositioning-2026` branch. Ordered by value, not effort.
       `predict_win`, `compare_models`) so an agent can use the library without
       installing it. Reuses `app/utils/openskill.ts`, so it inherits the same
       build-time verification.
+- [x] Provenance manifest and `/provenance` page
+- [ ] **Anchor the manifest** — run `ots stamp app/data/provenance.json` and commit
+      the resulting `.ots`. Needs to be done by Vivek; re-run after any change to
+      a hashed artifact.
 - [ ] **OpenSkill ecosystem graph** — the library at the centre, ports and
       citations radiating out, rendered from `app/data/evidence.json`.
 
