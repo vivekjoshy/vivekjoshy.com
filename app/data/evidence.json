@@ -1,0 +1,56 @@
+{
+  "fetchedAt": "2026-08-24",
+  "pypi": {
+    "lastMonth": 112347,
+    "lastWeek": 27139,
+    "lastDay": 3235
+  },
+  "npm": {
+    "lastMonth": 35309
+  },
+  "github": {
+    "stars": 367,
+    "forks": 26
+  },
+  "paper": {
+    "citations": 11,
+    "influential": 1
+  },
+  "ports": [
+    {
+      "name": "openskill.js",
+      "lang": "TypeScript",
+      "url": "https://github.com/philihp/openskill.js"
+    },
+    {
+      "name": "openskill.lua",
+      "lang": "Luau",
+      "url": "https://github.com/bstummer/openskill.lua"
+    },
+    {
+      "name": "go-openskill",
+      "lang": "Go",
+      "url": "https://github.com/intinig/go-openskill"
+    },
+    {
+      "name": "openskill.kt",
+      "lang": "Kotlin",
+      "url": "https://github.com/brezinajn/openskill.kt"
+    },
+    {
+      "name": "openskill.ex",
+      "lang": "Elixir",
+      "url": "https://github.com/philihp/openskill.ex"
+    },
+    {
+      "name": "openskill-java",
+      "lang": "Java",
+      "url": "https://github.com/pocketcombats/openskill-java"
+    },
+    {
+      "name": "OpenSkillSharp",
+      "lang": "C#",
+      "url": "https://github.com/myssto/OpenSkillSharp"
+    }
+  ]
+}

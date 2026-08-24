@@ -16,6 +16,33 @@
       </p>
     </div>
 
+    <!-- Evidence -->
+    <section class="mb-10 border-y border-gray-100 py-5">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mb-4">
+        <div>
+          <div class="text-3xl font-black text-accent tabular-nums">{{ fmt(evidence.pypi?.lastMonth) }}</div>
+          <div class="text-subheading text-sm">PyPI downloads / month</div>
+        </div>
+        <div>
+          <div class="text-3xl font-black text-accent tabular-nums">{{ fmt(evidence.npm?.lastMonth) }}</div>
+          <div class="text-subheading text-sm">npm downloads / month <span class="opacity-60">(JS port)</span></div>
+        </div>
+        <div>
+          <div class="text-3xl font-black text-accent tabular-nums">{{ fmt(evidence.paper?.citations) }}</div>
+          <div class="text-subheading text-sm">academic citations</div>
+        </div>
+        <div>
+          <div class="text-3xl font-black text-accent tabular-nums">{{ fmt(evidence.github?.stars) }}</div>
+          <div class="text-subheading text-sm">GitHub stars</div>
+        </div>
+      </div>
+      <p class="text-subheading text-sm">
+        Ported independently to {{ evidence.ports.length }} languages:
+        <template v-for="(p, i) in evidence.ports" :key="p.name"><a :href="p.url" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">{{ p.lang }}</a><span v-if="i < evidence.ports.length - 1">, </span></template>.
+        Figures fetched at build time, {{ evidence.fetchedAt }}.
+      </p>
+    </section>
+
     <!-- Model selector -->
     <section class="mb-8">
       <h2 class="section-heading mb-3 text-base">Model</h2>
@@ -146,6 +173,9 @@
 import { definePageMeta, useHead } from '#imports'
 import { ref, computed, reactive } from 'vue'
 import { rate, predictWin, ordinal as osOrdinal, newRating, DEFAULTS, type ModelName, type Rating } from '~/utils/openskill'
+import evidence from '~/data/evidence.json'
+
+const fmt = (n?: number | null) => (typeof n === 'number' ? n.toLocaleString('en-US') : '—')
 
 definePageMeta({ layout: 'default' })
 

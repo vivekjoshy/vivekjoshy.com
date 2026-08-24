@@ -9,7 +9,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "verify:openskill": "node scripts/verify-openskill.mjs",
-    "prebuild": "node scripts/verify-openskill.mjs"
+    "prebuild": "node scripts/verify-openskill.mjs && node scripts/fetch-evidence.mjs",
+    "evidence": "node scripts/fetch-evidence.mjs"
   },
   "dependencies": {
     "nuxt": "^4.5.2",
