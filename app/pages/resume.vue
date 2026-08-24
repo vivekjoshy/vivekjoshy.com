@@ -266,11 +266,13 @@ definePageMeta({
 useStructuredData([
   personEntity(),
   {
-    '@type': 'ProfilePage',
+    // Not a second ProfilePage: the homepage is the canonical one.
+    '@type': 'WebPage',
     url: `${SITE}/resume`,
     name: `${NAME} — Resume`,
     isPartOf: { '@id': SITE_ID },
-    mainEntity: { '@id': PERSON_ID },
+    about: { '@id': PERSON_ID },
+    dateModified: '2026-08-25',
     inLanguage: 'en'
   },
   breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Resume', path: '/resume' }])

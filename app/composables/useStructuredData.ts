@@ -20,6 +20,13 @@ export function personEntity() {
     '@type': 'Person',
     '@id': PERSON_ID,
     name: NAME,
+    // Google recommends alternateName for a public handle. This is the one he
+    // is actually known by on Kaggle, X and formerly GitHub.
+    alternateName: 'daegontaven',
+    description:
+      'Lead Scientist, Data & ML at Vairified Corp. Works on formal methods, grammar ' +
+      'induction, neuro-symbolic computation and interpretable AI. Maintainer of OpenSkill, ' +
+      'a Bayesian multiplayer rating library published in the Journal of Open Source Software.',
     jobTitle: 'Lead Scientist, Data & ML',
     worksFor: { '@type': 'Organization', name: 'Vairified Corp' },
     url: SITE,

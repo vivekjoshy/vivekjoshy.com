@@ -58,16 +58,16 @@
       "path": "app/pages/ordinal-replica.vue",
       "sha256": "0c7ba62e11fa0c309024c1b4f01a70b1a68d404fd202ef7105424445c6282401",
       "bytes": 20043,
-      "commit": "cd8385eb4ea9cfa65987a8be1e2b8e2dbba421bd",
-      "committed": "2026-08-25T00:07:36+05:30"
+      "commit": "fe78d6d462778cbe5ad066b355e443592de2cdc3",
+      "committed": "2026-08-25T00:23:18+05:30"
     },
     {
       "label": "ARC-AGI — page",
       "path": "app/pages/arc.vue",
       "sha256": "e85248a91e42b385d754f8071d830e89d0142b2c75c3d463cb01c492a53c8c3e",
       "bytes": 4259,
-      "commit": "cd8385eb4ea9cfa65987a8be1e2b8e2dbba421bd",
-      "committed": "2026-08-25T00:07:36+05:30"
+      "commit": "fe78d6d462778cbe5ad066b355e443592de2cdc3",
+      "committed": "2026-08-25T00:23:18+05:30"
     }
   ],
   "privateCommits": [

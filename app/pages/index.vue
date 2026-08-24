@@ -91,12 +91,17 @@ useStructuredData([
     inLanguage: 'en'
   },
   {
+    // mainEntity is the only property Google requires; dateCreated and
+    // dateModified are recommended. This is the single canonical profile —
+    // /resume deliberately does not also claim ProfilePage, because two of them
+    // for one person is two competing profiles.
     '@type': 'ProfilePage',
     url: SITE,
     name: NAME,
     isPartOf: { '@id': SITE_ID },
     mainEntity: { '@id': PERSON_ID },
     primaryImageOfPage: `${SITE}/og-image.png`,
+    dateCreated: '2025-03-26',
     dateModified: '2026-08-25',
     inLanguage: 'en'
   }
