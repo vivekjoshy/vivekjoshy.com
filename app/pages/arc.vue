@@ -98,8 +98,8 @@ useStructuredData([
     author: { '@id': PERSON_ID },
     publisher: { '@id': PERSON_ID },
     image: `${SITE}/og-image.png`,
-    datePublished: '2026-08-24',
-    dateModified: '2026-08-25',
+    datePublished: '2026-08-24T19:19:43+05:30',
+    dateModified: '2026-08-25T00:23:18+05:30',
     isPartOf: { '@id': SITE_ID },
     inLanguage: 'en'
   },

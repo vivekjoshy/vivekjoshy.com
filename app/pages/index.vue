@@ -101,8 +101,8 @@ useStructuredData([
     isPartOf: { '@id': SITE_ID },
     mainEntity: { '@id': PERSON_ID },
     primaryImageOfPage: `${SITE}/og-image.png`,
-    dateCreated: '2025-03-26',
-    dateModified: '2026-08-25',
+    dateCreated: '2025-03-26T18:14:53+05:30',
+    dateModified: '2026-08-25T00:26:27+05:30',
     inLanguage: 'en'
   }
 ])

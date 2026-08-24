@@ -272,7 +272,7 @@ useStructuredData([
     name: `${NAME} — Resume`,
     isPartOf: { '@id': SITE_ID },
     about: { '@id': PERSON_ID },
-    dateModified: '2026-08-25',
+    dateModified: '2026-08-25T00:26:27+05:30',
     inLanguage: 'en'
   },
   breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Resume', path: '/resume' }])
