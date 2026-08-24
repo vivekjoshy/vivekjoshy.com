@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://vivekjoshy.com/sitemap.xml
-
-# Curated context for language models: https://llmstxt.org
-# See https://vivekjoshy.com/llms.txt
