@@ -1,37 +1,205 @@
 {
   "finding": "The binding constraint is object-level relational structure that is not recoverable from pixel context \u2014 not compute.",
-  "span": "Two years, roughly twelve solver architectures.",
-  "note": "Seeded from the repositories that carry a description. Entries marked private are not publicly viewable. The failure column is the substance of this page and is filled in per architecture as each is written up.",
+  "span": "Two years, 18 solver architectures across 9 families.",
+  "note": "Each entry is a real branch in the Opinion, OpinionAI or TyleDSL repositories, with its own commit history. Those repositories are private, so the branch names are given as provenance rather than as links. The failure column is written up per architecture; benchmark scores are not recorded in the repositories and are being reconstructed.",
   "architectures": [
     {
-      "name": "OpinionAI",
-      "year": "2024",
+      "name": "Latent-process CNN",
+      "repo": "OpinionAI",
+      "branch": "main",
       "family": "End-to-end neural",
-      "repo": null,
-      "sourced": "repo",
-      "approach": "19M-parameter encoder over pixel-level embeddings with zero information loss, selecting from 64 primitive operations, flash cross-attention between demonstrations and test input, and coupled shape/content heads trained on a dense ordinal plus geometric-coupling loss.",
-      "failure": null,
-      "visibility": "private"
+      "span": "2024-08 \u2013 2024-10",
+      "commits": 77,
+      "approach": "Pixel-level embeddings with no downsampling, primitive selection over 64 operations, cross-attention between demonstrations and test input, and coupled shape/content heads.",
+      "public": null,
+      "failure": null
     },
     {
-      "name": "Opinion",
-      "year": "2025",
+      "name": "Meta-learning",
+      "repo": "OpinionAI",
+      "branch": "meta-learning",
+      "family": "Meta-learning",
+      "span": "2024-08 \u2013 2024-10",
+      "commits": 88,
+      "approach": "Treat each task as an episode and learn an initialisation that adapts from the demonstration pairs alone.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Reinforcement learning",
+      "repo": "OpinionAI",
+      "branch": "rl",
+      "family": "RL",
+      "span": "2024-08 \u2013 2024-10",
+      "commits": 141,
+      "approach": "Grid construction as a sequential decision problem, with reward shaping tuned to give usable gradients rather than sparse terminal signal.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Active inference",
+      "repo": "OpinionAI",
+      "branch": "active-inference",
+      "family": "Bayesian",
+      "span": "2024-08 \u2013 2024-11",
+      "commits": 90,
+      "approach": "Free-energy formulation: pick the action that minimises expected surprise over the predicted grid.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Hypergraph GNN + meta-learning",
+      "repo": "OpinionAI",
+      "branch": "gnn-meta",
+      "family": "Relational",
+      "span": "2024-08 \u2013 2025-06",
+      "commits": 130,
+      "approach": "Grids as hypergraphs over cells and regions, message passing with HypergraphConv, wrapped in a meta-learning outer loop.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "SAT / hypergraph",
+      "repo": "OpinionAI",
+      "branch": "sat",
+      "family": "Program synthesis",
+      "span": "2024-08 \u2013 2025-06",
+      "commits": 122,
+      "approach": "Constraint framing over a hypergraph encoding of the grid, searching for an assignment consistent with every demonstration.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "CNN-only baseline",
+      "repo": "OpinionAI",
+      "branch": "cnn-only",
       "family": "End-to-end neural",
-      "repo": null,
-      "sourced": "repo",
-      "approach": "ARC Prize 2025 entry. Successor to OpinionAI, retaining the pixel-embedding and primitive-selection pipeline under PyTorch Lightning.",
-      "failure": null,
-      "visibility": "private"
+      "span": "2024-08 \u2013 2025-09",
+      "commits": 141,
+      "approach": "Deliberately stripped convolutional baseline, to establish what pixel-context alone can reach.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Combinator grammar (SKI)",
+      "repo": "Opinion",
+      "branch": "grammar",
+      "family": "Program synthesis",
+      "span": "2025-09 \u2013 2025-10",
+      "commits": 75,
+      "approach": "Grammar-constrained combinator learning: select and compose formal operations from the demonstration pairs, replacing the prototype-based architecture.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Traditional transformer",
+      "repo": "Opinion",
+      "branch": "traditional-transformer",
+      "family": "Transformer",
+      "span": "2025-09 \u2013 2025-10",
+      "commits": 208,
+      "approach": "Standard encoder-decoder over serialised grids with a dense per-cell loss.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Vision encoder",
+      "repo": "Opinion",
+      "branch": "vision",
+      "family": "End-to-end neural",
+      "span": "2025-09 \u2013 2025-10",
+      "commits": 223,
+      "approach": "Treat the grid as an image and lean on vision-style feature extraction.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Neural cellular automaton",
+      "repo": "Opinion",
+      "branch": "nca",
+      "family": "Cellular automata",
+      "span": "2025-09 \u2013 2025-11",
+      "commits": 230,
+      "approach": "Output shape learned implicitly through CA dynamics rather than predicted: seed the test input at the centre of a 30\u00d730 canvas, evolve, and let the automaton learn where to stop.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "LLM + LoRA",
+      "repo": "Opinion",
+      "branch": "llm",
+      "family": "LLM",
+      "span": "2025-09 \u2013 2025-10",
+      "commits": 271,
+      "approach": "Low-rank adaptation of a pretrained language model over serialised grids.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Reptile meta-learning",
+      "repo": "Opinion",
+      "branch": "meta-learning",
+      "family": "Meta-learning",
+      "span": "2025-09 \u2013 2025-10",
+      "commits": 78,
+      "approach": "Reptile-style first-order meta-learning across tasks.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Elastic transformer",
+      "repo": "Opinion",
+      "branch": "transformer",
+      "family": "Transformer",
+      "span": "2025-09 \u2013 2026-01",
+      "commits": 341,
+      "approach": "Transformer over an ElasticConv1d front end sized to variable grid dimensions.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Variational solver",
+      "repo": "Opinion",
+      "branch": "main",
+      "family": "Bayesian",
+      "span": "2025-09 \u2013 2026-03",
+      "commits": 285,
+      "approach": "A variational encoder distils the transformation rule from the demonstration pairs into a latent z; a FiLM-conditioned delta decoder applies z. Trained on an ELBO with a coupled constraint forcing demo reconstruction and test prediction to improve together.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Relational model",
+      "repo": "Opinion",
+      "branch": "relational",
+      "family": "Relational",
+      "span": "2025-09 \u2013 2026-04",
+      "commits": 286,
+      "approach": "Explicit relational structure over grid objects, with the coupled loss and D4 symmetry augmentation. Migrated back from OpinionAI.",
+      "public": null,
+      "failure": null
+    },
+    {
+      "name": "Statistical inversion",
+      "repo": "Opinion",
+      "branch": "claude/arc-agi-bayesian-approach",
+      "family": "Bayesian",
+      "span": "2025-09 \u2013 2026-05",
+      "commits": 286,
+      "approach": "Experiment harness treating the task as inverting a statistical generating process.",
+      "public": null,
+      "failure": null
     },
     {
       "name": "TyleDSL",
-      "year": "2025",
-      "family": "Program synthesis over a DSL",
-      "repo": "https://github.com/vivekjoshy/TyleDSL",
-      "sourced": "repo",
-      "approach": "A typed reformulation of Michael Hodel's ARC-DSL, using the type system to prune the search space of candidate programs.",
-      "failure": null,
-      "visibility": "public"
+      "repo": "TyleDSL",
+      "branch": "main",
+      "family": "Program synthesis",
+      "span": "2025-06",
+      "commits": null,
+      "approach": "A typed reformulation of Michael Hodel's ARC-DSL, using the type system to prune the space of candidate programs.",
+      "public": "https://github.com/vivekjoshy/TyleDSL",
+      "failure": null
     }
   ]
 }

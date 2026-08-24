@@ -123,7 +123,7 @@
           <span class="italic">Ongoing</span>
         </div>
         <p class="text-lg">
-          Two years across roughly twelve solver architectures. Finding: the
+          Two years across eighteen solver architectures in nine families. Finding: the
           binding constraint is object-level relational structure that is not
           recoverable from pixel context &mdash; not compute.
         </p>

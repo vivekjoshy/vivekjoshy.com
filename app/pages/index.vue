@@ -97,7 +97,7 @@ const artifacts = [
   {
     title: 'ARC-AGI',
     body:
-      'Two years across roughly twelve solver architectures, converging on one negative result about where the ' +
+      'Two years across eighteen solver architectures in nine families, converging on one negative result about where the ' +
       'difficulty in ARC actually lives.',
     links: [{ label: 'The finding', to: '/arc', primary: true }]
   },

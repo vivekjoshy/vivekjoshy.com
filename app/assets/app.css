@@ -522,3 +522,12 @@ body {
 h1, h2, h3 {
   text-wrap: balance;
 }
+
+.provenance {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8em;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  background: var(--color-surface);
+  color: var(--color-subheading);
+}

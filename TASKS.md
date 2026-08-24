@@ -32,11 +32,13 @@ Working list for the `repositioning-2026` branch. Ordered by value, not effort.
 
 ## Blocked — needs Vivek
 
-- [ ] **ARC failure entries + a benchmark score.** The page currently states a
-      thesis and shows "Write-up pending" three times, with no score anywhere.
-      The review's strongest point: to an ARC-literate reader, silence on the
+- [ ] **ARC failure entries + a benchmark score.** The architecture survey is
+      done — 18 architectures across 9 families, sourced from real branches in
+      Opinion / OpinionAI / TyleDSL, 3,072 commits between them. What is still
+      missing is *where each one broke*, and any benchmark number: nothing in
+      any branch records a solve rate. To an ARC-literate reader, silence on the
       score reads as the score being bad. Fine for a negative result — but only
-      if stated. Needs at least three real `failure` fields and one honest number.
+      if stated.
 - [ ] **Ordinal replica loss — definition.** Wanted as a visualizer. Opinion's
       current `loss.py` is an ELBO with a coupled minimax constraint; OpinionAI's
       README says "Dense Ordinal + Geometric Coupling". Neither is this. Not
