@@ -53,7 +53,7 @@
               a single negative result about where the difficulty actually lives.
             </p>
             <div class="mt-3">
-              <NuxtLink to="/resume#research" class="text-accent hover:underline">Research notes</NuxtLink>
+              <NuxtLink to="/arc" class="text-accent hover:underline font-semibold">The finding</NuxtLink>
             </div>
           </div>
         </div>
