@@ -36,13 +36,6 @@ export default defineNuxtConfig({
   // `functions` pattern like "api/mcp" matches nothing and fails the build.
   // Duration is set through the preset instead.
   nitro: {
-    // Vercel's dependency tracing dropped `unhead` from the lambda, so SSR
-    // died with ERR_MODULE_NOT_FOUND on every route while the build itself
-    // reported success. Inlining puts it in the bundle rather than relying on
-    // the tracer finding a transitive dependency.
-    externals: {
-      inline: ['unhead', '@unhead/vue']
-    },
     vercel: {
       functions: {
         maxDuration: 15
