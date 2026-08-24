@@ -25,10 +25,11 @@
           <span>2024</span>
         </div>
         <p class="text-lg mb-2">
-          Open-source rating system for asymmetric multi-team, multiplayer matches.
-          Published in the Journal of Open Source Software; preprint on arXiv since
-          January 2024. In production use at OpenAI, Marvel Rivals, Hunt: Showdown,
-          and BeyondAllReason &mdash; and the rating engine behind the Vairified platform.
+          Open-source Bayesian rating library for asymmetric multi-team, multiplayer
+          matches, implementing the Weng&ndash;Lin models with extensions. Published in
+          the Journal of Open Source Software; preprint on arXiv since January 2024.
+          In production use at OpenAI, MultiVersus, Hunt: Showdown, and BeyondAllReason
+          &mdash; and the rating engine behind the Vairified platform.
         </p>
         <p class="text-lg">
           <a href="https://openskill.me" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">openskill.me</a>
@@ -56,7 +57,7 @@
           <span class="italic">Naples, Florida</span>
         </div>
         <ul class="list-disc pl-5 space-y-2 text-lg">
-          <li>Sole data scientist; one of three in technical leadership at a 20-person company.</li>
+          <li>Sole data scientist; one of three in technical leadership.</li>
           <li>Own the backend ML platform &mdash; a 140k+ LOC NestJS API, with the Partner API shipped to production behind OAuth and scoped API keys, plus official Python and TypeScript SDKs.</li>
           <li>Built VAIR, the production rating engine: Thurstone&ndash;Mosteller via OpenSkill, score-margin weighting, adaptive uncertainty, and full test coverage.</li>
           <li>Rebuilt Sentinel, which AST-extracts roughly 3,000 business rules across three repositories and presents them in plain English for stakeholder review.</li>
@@ -248,7 +249,7 @@ definePageMeta({
 useHead({
   title: 'Resume',
   meta: [
-    { name: 'description', content: 'Resume of Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Author of OpenSkill.' }
+    { name: 'description', content: 'Resume of Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Maintainer of OpenSkill.' }
   ]
 });
 </script>

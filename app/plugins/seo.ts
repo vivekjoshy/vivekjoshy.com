@@ -1,7 +1,7 @@
 export default defineNuxtPlugin(() => {
   const siteUrl = 'https://vivekjoshy.com';
   const siteName = 'Vivek Joshy';
-  const siteDescription = 'Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Author of OpenSkill.';
+  const siteDescription = 'Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Maintainer of OpenSkill.';
   // Raster, not SVG: X, LinkedIn, Facebook, Slack and Discord all reject SVG for og:image.
   const ogImage = `${siteUrl}/og-image.png`;
 

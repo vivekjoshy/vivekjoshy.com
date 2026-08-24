@@ -28,10 +28,10 @@
           <div class="card-body">
             <h3 class="card-title subsection-heading">OpenSkill</h3>
             <p>
-              Bayesian rating system for asymmetric multi-team, multiplayer
-              matches. Published in the Journal of Open Source Software. In
-              production use at OpenAI, Marvel Rivals, Hunt: Showdown, and
-              BeyondAllReason.
+              Bayesian rating library for asymmetric multi-team, multiplayer
+              matches, implementing the Weng&ndash;Lin models. Published in the
+              Journal of Open Source Software. In production use at OpenAI,
+              MultiVersus, Hunt: Showdown, and BeyondAllReason.
             </p>
             <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1">
               <a href="https://openskill.me" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Docs</a>
@@ -85,7 +85,7 @@ definePageMeta({
 useHead({
   title: 'Home',
   meta: [
-    { name: 'description', content: 'Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Author of OpenSkill.' }
+    { name: 'description', content: 'Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Maintainer of OpenSkill.' }
   ]
 });
 </script>
