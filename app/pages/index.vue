@@ -29,9 +29,11 @@
             <h3 class="card-title subsection-heading">OpenSkill</h3>
             <p>
               Bayesian rating library for asymmetric multi-team, multiplayer
-              matches, implementing the Weng&ndash;Lin models. Published in the
-              Journal of Open Source Software. In production use at OpenAI,
-              MultiVersus, Hunt: Showdown, and BeyondAllReason.
+              matches, implementing the Weng&ndash;Lin models. Roughly 112,000
+              downloads a month, independently ported to eight languages, and
+              cited in IEEE Transactions on Games and COLING. Pinned as a
+              dependency in Ray/RLlib and the rating layer in Neural MMO; in
+              production at OpenAI, MultiVersus, Hunt: Showdown, and BeyondAllReason.
             </p>
             <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1">
               <a href="https://openskill.me" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Docs</a>

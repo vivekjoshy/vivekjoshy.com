@@ -28,8 +28,17 @@
           Open-source Bayesian rating library for asymmetric multi-team, multiplayer
           matches, implementing the Weng&ndash;Lin models with extensions. Published in
           the Journal of Open Source Software; preprint on arXiv since January 2024.
-          In production use at OpenAI, MultiVersus, Hunt: Showdown, and BeyondAllReason
-          &mdash; and the rating engine behind the Vairified platform.
+        </p>
+        <p class="text-lg mb-2">
+          Roughly 112,000 downloads a month. Independently ported to eight languages,
+          including TypeScript, Go, Kotlin, Elixir, Java and C#. Cited 11 times,
+          including in IEEE Transactions on Games, COLING, and the Journal of the
+          Royal Statistical Society.
+        </p>
+        <p class="text-lg mb-2">
+          Pinned as a dependency in Ray/RLlib and used as the rating layer in
+          Neural MMO. In production use at OpenAI, MultiVersus, Hunt: Showdown, and
+          BeyondAllReason &mdash; and the rating engine behind the Vairified platform.
         </p>
         <p class="text-lg">
           <a href="https://openskill.me" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">openskill.me</a>
@@ -103,8 +112,9 @@
           <span class="italic">In progress</span>
         </div>
         <p class="text-lg">
-          Monograph in progress. Open quantities: k*, the interaction order, and
-          the renormalizability conjectures.
+          Monograph in progress; the line of work runs back to OpenGrammar (2022).
+          Open quantities: k*, the interaction order, and the renormalizability
+          conjectures.
         </p>
       </div>
 
@@ -140,11 +150,11 @@
 
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
-          <h3 class="subsection-heading text-lg">BELKA Molecular Interaction Challenge</h3>
+          <h3 class="subsection-heading text-lg">NeurIPS 2024 &mdash; Predict New Medicines with BELKA</h3>
           <span>2024</span>
         </div>
         <ul class="list-disc pl-5 space-y-2 text-lg">
-          <li>Won Kaggle silver medal in BELKA protein-molecule interaction challenge.</li>
+          <li>Silver medal: 61st of 1,950 teams.</li>
           <li>Implemented domain adversarial training with gradient reversal.</li>
           <li>Designed a custom molecular data processing architecture.</li>
         </ul>

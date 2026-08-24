@@ -10,7 +10,6 @@
         <div class="flex-none">
           <ul class="menu menu-horizontal px-1">
             <li><NuxtLink to="/" class="hover:text-accent">Home</NuxtLink></li>
-            <li><NuxtLink to="/writing" class="hover:text-accent">Writing</NuxtLink></li>
             <li><NuxtLink to="/resume" class="hover:text-accent">Resume</NuxtLink></li>
           </ul>
         </div>

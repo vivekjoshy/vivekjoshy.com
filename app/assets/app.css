@@ -51,31 +51,3 @@ body {
   }
 }
 
-/* Rendered markdown (writing posts) */
-.prose-resume h2 {
-  @apply text-primary font-semibold text-2xl mt-8 mb-3;
-}
-.prose-resume h3 {
-  @apply text-subheading font-medium text-xl mt-6 mb-2;
-}
-.prose-resume p {
-  @apply text-lg mb-4 leading-relaxed;
-}
-.prose-resume ul {
-  @apply list-disc pl-5 space-y-2 text-lg mb-4;
-}
-.prose-resume ol {
-  @apply list-decimal pl-5 space-y-2 text-lg mb-4;
-}
-.prose-resume a {
-  @apply text-accent hover:underline;
-}
-.prose-resume code {
-  @apply bg-base-200 px-1.5 py-0.5 rounded text-base;
-}
-.prose-resume pre {
-  @apply bg-base-200 p-4 rounded overflow-x-auto mb-4;
-}
-.prose-resume blockquote {
-  @apply border-l-4 border-accent pl-4 italic text-subheading mb-4;
-}
