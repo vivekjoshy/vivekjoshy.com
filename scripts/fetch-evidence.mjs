@@ -37,7 +37,7 @@ async function settle(label, fn) {
   }
 }
 
-const [pypi, npm, repo, paper] = await Promise.all([
+const [pypi, npm, repo, paper, citing] = await Promise.all([
   settle('pypi', async () => {
     const d = await getJson('https://pypistats.org/api/packages/openskill/recent')
     return { lastMonth: d.data.last_month, lastWeek: d.data.last_week, lastDay: d.data.last_day }
@@ -55,6 +55,23 @@ const [pypi, npm, repo, paper] = await Promise.all([
       'https://api.semanticscholar.org/graph/v1/paper/DOI:10.21105/joss.05901?fields=citationCount,influentialCitationCount'
     )
     return { citations: d.citationCount, influential: d.influentialCitationCount }
+  }),
+  settle('citations', async () => {
+    const d = await getJson(
+      'https://api.semanticscholar.org/graph/v1/paper/DOI:10.21105/joss.05901/citations' +
+        '?fields=title,year,venue,externalIds&limit=40'
+    )
+    return (d.data ?? [])
+      .map((c) => c.citingPaper)
+      .filter((p) => p?.title)
+      .map((p) => ({
+        title: p.title,
+        year: p.year ?? null,
+        venue: p.venue || null,
+        arxiv: p.externalIds?.ArXiv ?? null,
+        doi: p.externalIds?.DOI ?? null
+      }))
+      .sort((a, b) => (b.year ?? 0) - (a.year ?? 0))
   })
 ])
 
@@ -81,11 +98,12 @@ const evidence = {
   npm: pick(npm.value, 'npm'),
   github: pick(repo.value, 'github'),
   paper: pick(paper.value, 'paper'),
+  citing: pick(citing.value, 'citing') ?? [],
   ports: PORTS
 }
 
-const failed = [pypi, npm, repo, paper].filter((r) => !r.value).map((r) => r.label)
-if (failed.length === 4 && !Object.keys(previous).length) {
+const failed = [pypi, npm, repo, paper, citing].filter((r) => !r.value).map((r) => r.label)
+if (failed.length === 5 && !Object.keys(previous).length) {
   console.error('✖ every evidence source failed and there is no cached copy')
   process.exit(1)
 }
@@ -96,6 +114,6 @@ writeFileSync(OUT, JSON.stringify(evidence, null, 2) + '\n')
 console.log(
   `✔ evidence written: ${evidence.pypi?.lastMonth?.toLocaleString() ?? '?'} PyPI/mo, ` +
     `${evidence.github?.stars ?? '?'}★, ${evidence.paper?.citations ?? '?'} citations, ` +
-    `${PORTS.length} ports` +
+    `${PORTS.length} ports, ${evidence.citing.length} citing papers` +
     (failed.length ? ` (kept cached: ${failed.join(', ')})` : '')
 )

@@ -47,6 +47,11 @@
       </p>
     </section>
 
+    <section class="mb-12">
+      <h2 class="rule-heading section-heading mb-5 text-base"><span>What grew around it</span></h2>
+      <EcosystemGraph />
+    </section>
+
     <!-- Model selector -->
     <section class="mb-8">
       <h2 class="section-heading mb-3 text-base">Model</h2>
