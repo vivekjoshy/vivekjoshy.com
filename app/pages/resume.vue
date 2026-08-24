@@ -120,19 +120,6 @@
 
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
-          <h3 class="subsection-heading text-lg">Glia &mdash; Glass-Box Defeasible-Inheritance Reasoner</h3>
-          <span class="italic">In progress</span>
-        </div>
-        <p class="text-lg">
-          Settles inferences by graded biased competition rather than next-token
-          prediction, emitting a derivation trace for every conclusion. Exercised
-          against a five-topology stress battery and a 254k-statement run over
-          GenericsKB.
-        </p>
-      </div>
-
-      <div class="mb-8">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">ARC-AGI</h3>
           <span class="italic">Ongoing</span>
         </div>

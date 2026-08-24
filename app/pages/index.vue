@@ -22,7 +22,7 @@
 
     <div class="container mx-auto mt-16">
       <h2 class="section-heading mb-8 text-center">Things I've Built</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
         <div class="card bg-white border border-gray-100 shadow-md">
           <div class="card-body">
@@ -36,24 +36,11 @@
               production at OpenAI, MultiVersus, Hunt: Showdown, and BeyondAllReason.
             </p>
             <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+              <NuxtLink to="/openskill" class="text-accent hover:underline font-semibold">Playground</NuxtLink>
               <a href="https://openskill.me" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Docs</a>
               <a href="https://github.com/vivekjoshy/openskill.py" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Source</a>
               <a href="https://doi.org/10.21105/joss.05901" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Paper</a>
               <a href="https://arxiv.org/abs/2401.05451" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">arXiv</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card bg-white border border-gray-100 shadow-md">
-          <div class="card-body">
-            <h3 class="card-title subsection-heading">Glia</h3>
-            <p>
-              Glass-box defeasible-inheritance reasoner. Settles inferences by
-              graded biased competition rather than next-token prediction, and
-              emits a derivation trace for every conclusion.
-            </p>
-            <div class="mt-3">
-              <NuxtLink to="/resume#research" class="text-accent hover:underline">Research notes</NuxtLink>
             </div>
           </div>
         </div>
