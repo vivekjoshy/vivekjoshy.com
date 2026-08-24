@@ -326,3 +326,187 @@ body {
   font-variant-numeric: tabular-nums;
   font-feature-settings: 'tnum';
 }
+
+/* ------------------------------------------------------------------ */
+/* Print — the resume page should print as a real document, so the PDF */
+/* is a convenience rather than the only good artifact.                */
+/* ------------------------------------------------------------------ */
+@media print {
+  /* Always print on white with black text, whatever theme is active. */
+  :root,
+  html[data-theme='dark'],
+  html:not([data-theme='light']) {
+    --color-primary: #000000;
+    --color-accent: #7a001e;
+    --color-subheading: #333333;
+    --color-page: #ffffff;
+    --color-surface: #ffffff;
+    --color-hairline: #cccccc;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10.5pt;
+    line-height: 1.35;
+  }
+
+  .site-header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  /* Keep a heading with the block it introduces. */
+  h1, h2, h3, h4 {
+    break-after: avoid-page;
+    page-break-after: avoid;
+  }
+  section, article, li {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000 !important;
+  }
+
+  /* Print the destination of real links, since a reader cannot click paper. */
+  main a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 8.5pt;
+    color: #555;
+    word-break: break-all;
+  }
+  main a[href^='mailto']::after,
+  main a[href^='#']::after,
+  main a[href^='/']::after {
+    content: '';
+  }
+
+  @page {
+    margin: 1.6cm;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Command palette                                                     */
+/* ------------------------------------------------------------------ */
+.palette-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--color-hairline);
+  border-radius: 5px;
+  color: var(--color-subheading);
+  font-size: 0.85rem;
+  background: transparent;
+}
+.palette-trigger:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.palette-kbd {
+  font-family: inherit;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.35rem;
+  border: 1px solid var(--color-hairline);
+  border-radius: 3px;
+  color: var(--color-subheading);
+}
+
+.palette-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh 1rem 1rem;
+  background: rgb(0 0 0 / 0.45);
+}
+
+.palette-panel {
+  width: 100%;
+  max-width: 34rem;
+  background: var(--color-page);
+  border: 1px solid var(--color-hairline);
+  border-radius: 8px;
+  box-shadow: 0 18px 50px rgb(0 0 0 / 0.28);
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .palette-panel {
+    animation: rise 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+.palette-input {
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border: 0;
+  border-bottom: 1px solid var(--color-hairline);
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 1.05rem;
+  outline: none;
+}
+.palette-input::placeholder {
+  color: var(--color-subheading);
+}
+
+.palette-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem;
+  max-height: 22rem;
+  overflow-y: auto;
+}
+
+.palette-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.palette-item.is-active {
+  background: var(--color-accent);
+  color: var(--color-page);
+}
+.palette-item.is-active .palette-item-group {
+  color: var(--color-page);
+  opacity: 0.85;
+}
+.palette-item-group {
+  font-size: 0.75rem;
+  color: var(--color-subheading);
+  white-space: nowrap;
+}
+.palette-empty {
+  padding: 1rem 0.75rem;
+  color: var(--color-subheading);
+}
+
+.palette-foot {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0.6rem 0.9rem;
+  border-top: 1px solid var(--color-hairline);
+  font-size: 0.75rem;
+  color: var(--color-subheading);
+}

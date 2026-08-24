@@ -67,7 +67,6 @@
           <span class="italic">Naples, Florida</span>
         </div>
         <ul class="list-disc pl-5 space-y-2 text-lg">
-          <li>Sole data scientist.</li>
           <li>Own the backend ML platform: shipped the Partner API to production behind OAuth and scoped API keys, with maintained Python and TypeScript SDKs.</li>
           <li>Built VAIR, the production rating engine: Thurstone&ndash;Mosteller via OpenSkill, with score-margin weighting and adaptive uncertainty.</li>
           <li>Built Sentinel: extracts implicit business logic from three codebases by AST analysis and renders it in natural language for non-engineer review &mdash; the interpretability problem in miniature, on a real system.</li>

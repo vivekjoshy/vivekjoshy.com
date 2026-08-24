@@ -17,6 +17,7 @@
           </ul>
         </nav>
 
+        <CommandPalette />
         <ThemeToggle />
       </div>
     </header>
