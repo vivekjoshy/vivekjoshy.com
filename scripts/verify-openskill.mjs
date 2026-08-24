@@ -43,13 +43,35 @@ for (const [key, modelName] of Object.entries(MODELS)) {
       })
     })
   }
-  // predict_win
+  // predict_win, two teams
   const want = ref[`${key}_predict_win`]
   const got = mod.predictWin([[{ mu: 25.0, sigma: 8.333 }], [{ mu: 30.0, sigma: 4.0 }]])
   want.forEach((p, i) => {
     checks++
     if (Math.abs(got[i] - p) > TOL) failures.push(`${key}/predict_win[${i}]: got ${got[i]} want ${p}`)
   })
+
+  // predict_win, four teams — a different branch, and an MCP tool.
+  const wantMulti = ref[`${key}_predict_win_multi`]
+  const gotMulti = mod.predictWin([
+    [{ mu: 25.0, sigma: 8.333 }],
+    [{ mu: 30.0, sigma: 4.0 }, { mu: 20.0, sigma: 6.0 }],
+    [{ mu: 27.0, sigma: 5.0 }],
+    [{ mu: 22.0, sigma: 7.5 }]
+  ])
+  wantMulti.forEach((p, i) => {
+    checks++
+    if (Math.abs(gotMulti[i] - p) > TOL)
+      failures.push(`${key}/predict_win_multi[${i}]: got ${gotMulti[i]} want ${p}`)
+  })
+}
+
+// ordinal is exposed as an MCP tool and had no vector of its own.
+for (const o of ref.ordinal) {
+  checks++
+  const got = mod.ordinal({ mu: o.mu, sigma: o.sigma }, o.z)
+  if (Math.abs(got - o.value) > TOL)
+    failures.push(`ordinal(mu=${o.mu}, sigma=${o.sigma}, z=${o.z}): got ${got} want ${o.value}`)
 }
 
 if (failures.length) {

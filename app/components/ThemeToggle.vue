@@ -2,12 +2,11 @@
   <button
     type="button"
     class="btn btn-ghost btn-sm"
-    :aria-label="`Switch to ${next} theme`"
+    :aria-label="`Theme: ${label}. Activate to switch to ${next}.`"
     :title="`Switch to ${next} theme`"
     @click="cycle"
   >
     <i class="fa-solid" :class="icon" aria-hidden="true"></i>
-    <span class="sr-only-text">Current theme: {{ label }}</span>
   </button>
 </template>
 

@@ -17,7 +17,7 @@ export interface Rating {
 
 export type ModelName = 'plackett_luce' | 'thurstone_mosteller' | 'bradley_terry'
 
-export const DEFAULTS = {
+export const OPENSKILL_DEFAULTS = {
   mu: 25.0,
   sigma: 25.0 / 3.0,
   beta: 25.0 / 6.0,
@@ -143,7 +143,7 @@ function applyUpdate(tr: TeamRating, omega: number, delta: number, kappa: number
 /* ------------------------------------------------------------------ */
 
 function ratePlackettLuce(teams: Rating[][], ranks: number[]): Rating[][] {
-  const { beta, kappa } = DEFAULTS
+  const { beta, kappa } = OPENSKILL_DEFAULTS
   const teamRatings = calculateTeamRatings(teams, ranks)
 
   let collective = 0
@@ -188,7 +188,7 @@ function ratePlackettLuce(teams: Rating[][], ranks: number[]): Rating[][] {
 /* ------------------------------------------------------------------ */
 
 function rateThurstoneMosteller(teams: Rating[][], ranks: number[]): Rating[][] {
-  const { beta, kappa, epsilon } = DEFAULTS
+  const { beta, kappa, epsilon } = OPENSKILL_DEFAULTS
   const teamRatings = calculateTeamRatings(teams, ranks)
 
   return teamRatings.map((teamI, i) => {
@@ -224,7 +224,7 @@ function rateThurstoneMosteller(teams: Rating[][], ranks: number[]): Rating[][] 
 /* ------------------------------------------------------------------ */
 
 function rateBradleyTerry(teams: Rating[][], ranks: number[]): Rating[][] {
-  const { beta, kappa } = DEFAULTS
+  const { beta, kappa } = OPENSKILL_DEFAULTS
   const teamRatings = calculateTeamRatings(teams, ranks)
 
   return teamRatings.map((teamI, i) => {
@@ -259,7 +259,7 @@ function rateBradleyTerry(teams: Rating[][], ranks: number[]): Rating[][] {
  * `[1, 2]` means the first team won. Equal values are a draw.
  */
 export function rate(teams: Rating[][], ranks: number[], model: ModelName = 'plackett_luce'): Rating[][] {
-  const withTau = applyTau(teams, DEFAULTS.tau)
+  const withTau = applyTau(teams, OPENSKILL_DEFAULTS.tau)
   if (model === 'thurstone_mosteller') return rateThurstoneMosteller(withTau, ranks)
   if (model === 'bradley_terry') return rateBradleyTerry(withTau, ranks)
   return ratePlackettLuce(withTau, ranks)
@@ -267,7 +267,7 @@ export function rate(teams: Rating[][], ranks: number[], model: ModelName = 'pla
 
 /** Win probability per team. Two-team case is exact; n-team is the pairwise generalization. */
 export function predictWin(teams: Rating[][]): number[] {
-  const { beta } = DEFAULTS
+  const { beta } = OPENSKILL_DEFAULTS
   const agg = teams.map((team) => {
     let mu = 0
     let sigmaSquared = 0
@@ -310,6 +310,6 @@ export function ordinal(r: Rating, z = 3.0): number {
   return r.mu - z * r.sigma
 }
 
-export function newRating(mu = DEFAULTS.mu, sigma = DEFAULTS.sigma): Rating {
+export function newRating(mu = OPENSKILL_DEFAULTS.mu, sigma = OPENSKILL_DEFAULTS.sigma): Rating {
   return { mu, sigma }
 }

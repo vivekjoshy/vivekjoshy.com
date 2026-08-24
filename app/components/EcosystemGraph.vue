@@ -2,8 +2,8 @@
   <div>
     <!-- Decorative: the same data follows as a list, which is what a screen
          reader reads. -->
-    <div class="ecosystem-wrap" aria-hidden="true">
-      <svg :viewBox="`0 0 ${W} ${H}`" class="w-full" role="presentation">
+    <div class="ecosystem-wrap" tabindex="0" role="group" aria-label="Ecosystem diagram; the same data follows as text">
+      <svg :viewBox="`0 0 ${W} ${H}`" class="w-full" role="presentation" aria-hidden="true">
         <g v-for="n in nodes" :key="`e${n.id}`">
           <path
             :d="edge(n)"

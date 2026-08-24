@@ -65,6 +65,29 @@ def main() -> None:
         t2 = [model.rating(mu=30.0, sigma=4.0)]
         out[f"{name}_predict_win"] = [round(x, 10) for x in model.predict_win([t1, t2])]
 
+        # The n>=3 branch is a different code path and is exposed as an MCP
+        # tool; the 2-team case never exercises it.
+        multi = [
+            [model.rating(mu=25.0, sigma=8.333)],
+            [model.rating(mu=30.0, sigma=4.0), model.rating(mu=20.0, sigma=6.0)],
+            [model.rating(mu=27.0, sigma=5.0)],
+            [model.rating(mu=22.0, sigma=7.5)],
+        ]
+        out[f"{name}_predict_win_multi"] = [round(x, 10) for x in model.predict_win(multi)]
+
+    # ordinal() is an MCP tool with no vector of its own.
+    pl = PlackettLuce()
+    out["ordinal"] = [
+        {"mu": mu, "sigma": sigma, "z": z,
+         "value": round(pl.rating(mu=mu, sigma=sigma).ordinal(z=z), 10)}
+        for (mu, sigma, z) in [
+            (25.0, 8.333333333333334, 3.0),
+            (27.635389493140497, 8.06590141354368, 3.0),
+            (30.0, 1.0, 1.0),
+            (10.0, 4.0, 0.0),
+        ]
+    ]
+
     reference = PlackettLuce()
     out["_constants"] = {
         "mu": reference.mu,

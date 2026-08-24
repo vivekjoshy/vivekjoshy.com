@@ -61,13 +61,16 @@ ots verify  public/stamps/&lt;date&gt;-&lt;root&gt;.txt.ots</code></pre>
 
       <div class="mt-5">
         <h3 class="section-heading text-sm mb-3">Stamps</h3>
-        <div v-for="st in STAMPS" :key="st.file" class="mb-3">
+        <div v-for="st in data.stamps" :key="st.file" class="mb-3">
           <p class="hash-block mb-1">{{ st.file }}</p>
           <p class="text-subheading text-sm m-0">
-            covers root <code class="provenance">{{ st.root }}</code> &mdash;
-            <span :class="st.anchored ? 'text-accent' : ''">{{ st.status }}</span>
+            covers <code class="provenance">{{ (st.covers || 'unknown').slice(0, 16) }}</code>
+            <span v-if="st.coversCurrentRoot" class="text-accent"> &mdash; the current root</span>
+            <span v-else> &mdash; a superseded root</span>
+            &middot; {{ st.status }}
           </p>
         </div>
+        <p v-if="!data.stamps.length" class="text-subheading text-sm">No stamps yet.</p>
       </div>
     </section>
 
@@ -128,16 +131,6 @@ ots verify  public/stamps/&lt;date&gt;-&lt;root&gt;.txt.ots</code></pre>
 import { definePageMeta, useHead } from '#imports'
 import data from '~/data/provenance.json'
 
-// Stated per stamp rather than as a blanket claim: a proof only stops relying
-// on the calendar servers once it has been upgraded with its Bitcoin block.
-const STAMPS = [
-  {
-    file: 'stamps/2026-08-24-manifest-132723ca7777.json.ots',
-    root: '132723ca7777',
-    anchored: false,
-    status: 'submitted to calendars, awaiting its Bitcoin block'
-  }
-]
 
 definePageMeta({ layout: 'default' })
 

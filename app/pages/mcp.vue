@@ -27,8 +27,10 @@
   }
 }</code></pre>
       <p class="text-subheading text-sm">
-        JSON-RPC over HTTP POST, MCP protocol {{ PROTOCOL }}. No authentication, no state, no rate
-        limit &mdash; every call is a pure function of its arguments.
+        JSON-RPC over HTTP POST, MCP protocol {{ PROTOCOL }}. No authentication and no state
+        &mdash; every call is a pure function of its arguments. Bounded at 64 teams, 512
+        players and 16 messages per batch, because the rating maths is quadratic in team
+        count and the endpoint is public.
       </p>
     </section>
 

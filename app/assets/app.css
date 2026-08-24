@@ -713,3 +713,43 @@ body {
   font-weight: 400;
   opacity: 0.85;
 }
+
+/* Secondary chart series. Was --color-hairline at 1.20:1, which is a border
+   colour, not a data colour — the series was effectively invisible. Carries a
+   hatch as well as a hue so the two series differ by more than colour. */
+.series-secondary {
+  background-color: var(--color-subheading);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0 3px,
+    color-mix(in srgb, var(--color-page) 45%, transparent) 3px 6px
+  );
+}
+
+/* The nav scrolls on mobile with its scrollbar hidden; without an edge fade
+   nothing signals that more items exist off-screen. */
+.nav-fade {
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent 100%);
+  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent 100%);
+}
+@media (min-width: 900px) {
+  .nav-fade {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+/* Scroll containers must be reachable without a mouse. */
+.ecosystem-wrap:focus-visible,
+.katex-display:focus-visible,
+.code-block:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* The selection ring vanished against dark red swatches; a page-coloured inner
+   ring keeps it visible against any fill. */
+.swatch.is-selected {
+  box-shadow: 0 0 0 2px var(--color-page), 0 0 0 5px var(--color-accent);
+}

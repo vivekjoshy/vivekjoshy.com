@@ -116,7 +116,7 @@
           :aria-label="`Target colour ${c - 1}`"
           @click="target = c - 1"
         >
-          <span class="swatch-index">{{ c - 1 }}</span>
+          <span class="swatch-index" :style="{ color: isDark(ARC_COLORS[c - 1]) ? '#fff' : '#000' }">{{ c - 1 }}</span>
         </button>
       </div>
 
@@ -262,8 +262,8 @@
           <div v-for="w in wrongColors" :key="w.color" class="flex-1 flex flex-col items-center gap-1">
             <div class="w-full h-40 flex items-end gap-1">
               <div
-                class="flex-1 rounded-t transition-all duration-300"
-                :style="{ height: barH(w.hard, 'hard'), background: 'var(--color-hairline)' }"
+                class="flex-1 rounded-t transition-all duration-300 series-secondary"
+                :style="{ height: barH(w.hard, 'hard') }"
                 :title="`one-hot: ${w.hard.toFixed(4)}`"
               ></div>
               <div
@@ -272,14 +272,16 @@
                 :title="`replica: ${w.soft.toFixed(4)}`"
               ></div>
             </div>
-            <span class="w-4 h-4 rounded-sm border hairline" :style="{ background: ARC_COLORS[w.color] }"></span>
+            <span class="w-4 h-4 rounded-sm border hairline grid place-items-center text-[9px] font-bold"
+                  :style="{ background: ARC_COLORS[w.color], color: isDark(ARC_COLORS[w.color]) ? '#fff' : '#000' }"
+            >{{ w.color }}</span>
             <span class="text-subheading text-xs tick">d{{ w.dist }}</span>
           </div>
         </div>
 
         <div class="flex flex-wrap gap-5 mt-4 text-sm items-center">
           <span class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-sm" style="background: var(--color-hairline)"></span>
+            <span class="w-3 h-3 rounded-sm series-secondary"></span>
             <span class="text-subheading">one-hot</span>
           </span>
           <span class="flex items-center gap-2">
@@ -297,7 +299,7 @@
         Under one-hot every wrong colour costs <em>exactly</em> the same &mdash; the grey bars are
         flat, so the gradient carries no information about which colours are close. Under the
         replica target the cost rises with circular distance, giving a V centred on the answer.
-        At the default s = {{ DEFAULTS.spillover }} the effect is deliberately small; raise the
+        At the default s = {{ REPLICA_DEFAULTS.spillover }} the effect is deliberately small; raise the
         spillover slider above and the V deepens.
       </p>
     </section>
@@ -323,7 +325,7 @@
 import { definePageMeta, useHead } from '#imports'
 import { ref, computed } from 'vue'
 import {
-  NUM_COLORS, NUM_REPLICAS, DEFAULTS, ARC_COLORS,
+  NUM_COLORS, NUM_REPLICAS, REPLICA_DEFAULTS, ARC_COLORS,
   circularDistance, createTargetDistributions, massPerColor, replicaLoss, oneHot,
   denseOrdinalDistance
 } from '~/utils/replica-loss'
@@ -351,11 +353,11 @@ const TEX = {
 
 
 const target = ref(0)
-const spillover = ref(DEFAULTS.spillover)
+const spillover = ref(REPLICA_DEFAULTS.spillover)
 const spilloverNote = computed(() => {
   if (spillover.value === 0) return 'one-hot — no colour structure at all'
-  if (spillover.value === DEFAULTS.spillover) return 'the default used in training'
-  return spillover.value > DEFAULTS.spillover ? 'more mass on neighbours' : 'less mass on neighbours'
+  if (spillover.value === REPLICA_DEFAULTS.spillover) return 'the default used in training'
+  return spillover.value > REPLICA_DEFAULTS.spillover ? 'more mass on neighbours' : 'less mass on neighbours'
 })
 
 const denseDist = computed(() => denseOrdinalDistance(target.value))

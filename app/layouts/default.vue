@@ -9,7 +9,7 @@
           <span class="font-thin">V</span><span class="font-black">J</span>
         </NuxtLink>
 
-        <nav class="flex-1 min-w-0" aria-label="Main">
+        <nav class="flex-1 min-w-0 nav-fade" aria-label="Main">
           <ul class="flex items-center gap-0.5 md:gap-2 list-none m-0 p-0 text-sm md:text-base nav-scroll">
             <li v-for="item in NAV" :key="item.to">
               <NuxtLink :to="item.to" class="nav-link">{{ item.label }}</NuxtLink>
@@ -22,9 +22,11 @@
       </div>
     </header>
 
-    <main id="main" class="flex-grow container mx-auto px-4 py-4">
+    <main id="main" tabindex="-1" class="flex-grow container mx-auto px-4 py-4 scroll-mt-20 outline-none">
       <slot />
     </main>
+
+    <p class="sr-only-text" role="status" aria-live="polite">{{ announcement }}</p>
 
     <footer class="mt-16 border-t hairline" style="background-color: var(--color-surface)">
       <div class="container mx-auto px-4 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -67,6 +69,20 @@
 </template>
 
 <script setup lang="ts">
+import { ref, nextTick } from 'vue'
+// @ts-ignore - Nuxt auto-imports
+import { useRouter } from '#imports'
+
+// Client-side navigation announces nothing and leaves focus on the link that
+// was followed.
+const announcement = ref('')
+const router = useRouter()
+router.afterEach(async () => {
+  await nextTick()
+  announcement.value = document.title
+  document.getElementById('main')?.focus()
+})
+
 const NAV = [
   { to: '/', label: 'Home' },
   { to: '/openskill', label: 'Playground' },

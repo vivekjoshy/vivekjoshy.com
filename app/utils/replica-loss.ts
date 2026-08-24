@@ -14,7 +14,7 @@
 export const NUM_COLORS = 10
 export const NUM_REPLICAS = 10
 
-export const DEFAULTS = {
+export const REPLICA_DEFAULTS = {
   spillover: 0.03,
   entropyWeight: 0.01,
   focalGamma: 2.0
@@ -45,7 +45,7 @@ export function circularDistance(a: number, b: number, numColors = NUM_COLORS): 
 export function createTargetDistributions(
   numColors = NUM_COLORS,
   numReplicas = NUM_REPLICAS,
-  spillover = DEFAULTS.spillover
+  spillover = REPLICA_DEFAULTS.spillover
 ): number[][] {
   const total = numColors * numReplicas
   const out: number[][] = []
@@ -94,7 +94,7 @@ export function softmax(logits: number[]): number[] {
 export function replicaLoss(
   logits: number[],
   softTarget: number[],
-  entropyWeight = DEFAULTS.entropyWeight
+  entropyWeight = REPLICA_DEFAULTS.entropyWeight
 ): { total: number; kl: number; entropy: number } {
   const logProbs = logSoftmax(logits)
   const probs = logProbs.map(Math.exp)
@@ -141,8 +141,18 @@ export function denseOrdinalDistance(
  * Note this is an expected-distance objective, not a KL against a soft target —
  * a different shape of loss from CircularReplicaLoss.
  */
-export function denseOrdinalLoss(logits: number[], targetColor: number): number {
+export function denseOrdinalLoss(
+  logits: number[],
+  targetColor: number,
+  numColors = NUM_COLORS,
+  numReplicas = NUM_REPLICAS
+): number {
+  if (logits.length !== numColors * numReplicas) {
+    throw new Error(
+      `logits must have ${numColors * numReplicas} entries, got ${logits.length}`
+    )
+  }
   const p = softmax(logits)
-  const d = denseOrdinalDistance(targetColor)
+  const d = denseOrdinalDistance(targetColor, numColors, numReplicas)
   return p.reduce((acc, pi, i) => acc + pi * d[i]!, 0)
 }

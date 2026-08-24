@@ -19,7 +19,7 @@ export const EVIDENCE_WEIGHTS = {
   criticalTokenConfidence: 0.4
 } as const
 
-export const DEFAULTS = { beta: 0.15, priorStrength: 1.5 }
+export const ATHENA_DEFAULTS = { beta: 0.15, priorStrength: 1.5 }
 
 export interface ConfidenceMetrics {
   meanConfidence: number
@@ -132,8 +132,8 @@ export interface EnsembleResult {
  */
 export function ensemble(
   solutions: Solution[],
-  beta = DEFAULTS.beta,
-  priorStrength = DEFAULTS.priorStrength
+  beta = ATHENA_DEFAULTS.beta,
+  priorStrength = ATHENA_DEFAULTS.priorStrength
 ): EnsembleResult {
   const evidenceByAnswer = new Map<number, number[]>()
   for (const s of solutions) {
@@ -166,7 +166,7 @@ export function ensemble(
 }
 
 /** Maximum a posteriori answer. */
-export function mapAnswer(solutions: Solution[], beta = DEFAULTS.beta): number | null {
+export function mapAnswer(solutions: Solution[], beta = ATHENA_DEFAULTS.beta): number | null {
   const { posteriors } = ensemble(solutions, beta)
   if (!posteriors.size) return null
   return [...posteriors.entries()].reduce((best, e) => (e[1] > best[1] ? e : best))[0]

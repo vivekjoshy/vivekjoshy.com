@@ -60,7 +60,8 @@
           v-for="m in MODELS"
           :key="m.id"
           class="btn btn-sm"
-          :class="model === m.id ? 'btn-accent text-white' : 'btn-outline'"
+          :class="model === m.id ? 'btn-accent' : 'btn-outline'"
+          :aria-pressed="model === m.id"
           @click="model = m.id"
         >
           {{ m.label }}
@@ -74,8 +75,8 @@
       <div class="flex items-baseline justify-between mb-3">
         <h2 class="section-heading text-base">Match</h2>
         <div class="flex gap-2">
-          <button class="btn btn-xs btn-outline" :disabled="teams.length >= 4" @click="addTeam">+ team</button>
-          <button class="btn btn-xs btn-outline" :disabled="teams.length <= 2" @click="teams.pop()">&minus; team</button>
+          <button class="btn btn-xs btn-outline" :aria-disabled="teams.length >= 4" @click="addTeam">+ team</button>
+          <button class="btn btn-xs btn-outline" :aria-disabled="teams.length <= 2" @click="removeTeam">&minus; team</button>
         </div>
       </div>
 
@@ -96,6 +97,7 @@
                 min="1"
                 :max="teams.length"
                 class="input input-bordered input-xs w-16"
+                :aria-label="`Team ${ti + 1} finishing place`"
               />
             </label>
           </div>
@@ -110,11 +112,11 @@
             <div class="flex gap-3">
               <label class="flex items-center gap-1 text-sm">
                 <span class="text-subheading">&mu;</span>
-                <input v-model.number="p.mu" type="number" step="0.1" class="input input-bordered input-xs w-20" />
+                <input v-model.number="p.mu" type="number" step="0.1" class="input input-bordered input-xs w-20" :aria-label="`${p.name} mu`" />
               </label>
               <label class="flex items-center gap-1 text-sm">
                 <span class="text-subheading">&sigma;</span>
-                <input v-model.number="p.sigma" type="number" step="0.1" min="0.01" class="input input-bordered input-xs w-20" />
+                <input :value="round3(p.sigma)" type="number" step="0.1" min="0.01" class="input input-bordered input-xs w-20" :aria-label="`${p.name} sigma`" @input="p.sigma = Number(($event.target as HTMLInputElement).value)" />
               </label>
               <span v-if="lastDelta[ti]?.[pi]" class="text-sm self-center" :class="lastDelta[ti][pi].mu >= 0 ? 'text-accent' : 'text-subheading'">
                 {{ lastDelta[ti][pi].mu >= 0 ? '+' : '' }}{{ lastDelta[ti][pi].mu.toFixed(2) }}&mu;
@@ -124,8 +126,8 @@
           </div>
 
           <div class="flex gap-2 mt-3">
-            <button class="btn btn-xs btn-outline" :disabled="team.players.length >= 3" @click="addPlayer(ti)">+ player</button>
-            <button class="btn btn-xs btn-outline" :disabled="team.players.length <= 1" @click="team.players.pop()">&minus; player</button>
+            <button class="btn btn-xs btn-outline" :aria-disabled="team.players.length >= 3" @click="addPlayer(ti)">+ player</button>
+            <button class="btn btn-xs btn-outline" :aria-disabled="team.players.length <= 1" @click="removePlayer(ti)">&minus; player</button>
           </div>
         </div>
       </div>
@@ -146,7 +148,7 @@
     </section>
 
     <div class="flex flex-wrap gap-3 mb-10">
-      <button class="btn btn-accent text-white" @click="applyResult">Rate this result</button>
+      <button class="btn btn-accent" @click="applyResult">Rate this result</button>
       <button class="btn btn-outline" @click="reset">Reset</button>
       <span v-if="rounds" class="self-center text-subheading">{{ rounds }} match{{ rounds === 1 ? '' : 'es' }} rated</span>
     </div>
@@ -181,7 +183,7 @@
 // @ts-ignore - Nuxt auto-imports
 import { definePageMeta, useHead } from '#imports'
 import { ref, computed, reactive } from 'vue'
-import { rate, predictWin, ordinal as osOrdinal, newRating, DEFAULTS, type ModelName, type Rating } from '~/utils/openskill'
+import { rate, predictWin, ordinal as osOrdinal, newRating, OPENSKILL_DEFAULTS, type ModelName, type Rating } from '~/utils/openskill'
 import evidence from '~/data/evidence.json'
 
 const fmt = (n?: number | null) => (typeof n === 'number' ? n.toLocaleString('en-US') : '—')
@@ -243,12 +245,30 @@ function ordinal(p: Player) {
   return osOrdinal({ mu: p.mu, sigma: p.sigma })
 }
 
+const round3 = (n: number) => Math.round(n * 1000) / 1000
+
+// Disabling a focused button drops focus to <body>. These no-op at the limit
+// instead, so a keyboard user keeps their place.
 function addTeam() {
+  if (teams.length >= 4) return
   teams.push({ players: [{ name: nextName(), ...newRating() }], rank: teams.length + 1 })
 }
 
+function removeTeam() {
+  if (teams.length <= 2) return
+  teams.pop()
+}
+
+function removePlayer(ti: number) {
+  const t = teams[ti]
+  if (!t || t.players.length <= 1) return
+  t.players.pop()
+}
+
 function addPlayer(ti: number) {
-  teams[ti]?.players.push({ name: nextName(), ...newRating() })
+  const t = teams[ti]
+  if (!t || t.players.length >= 3) return
+  t.players.push({ name: nextName(), ...newRating() })
 }
 
 function applyResult() {
@@ -290,6 +310,6 @@ function reset() {
 
 usePageSeo({
   title: 'OpenSkill Playground',
-  description: `Interactive Weng-Lin rating playground: Plackett-Luce, Thurstone-Mosteller and Bradley-Terry, running the same maths as openskill.py. Default mu ${DEFAULTS.mu}, sigma 25/3.`
+  description: `Interactive Weng-Lin rating playground: Plackett-Luce, Thurstone-Mosteller and Bradley-Terry, running the same maths as openskill.py. Default mu ${OPENSKILL_DEFAULTS.mu}, sigma 25/3.`
 })
 </script>

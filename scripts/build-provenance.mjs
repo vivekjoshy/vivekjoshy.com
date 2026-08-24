@@ -22,7 +22,7 @@
  *     ots verify app/data/provenance.json.ots
  */
 import { createHash } from 'node:crypto'
-import { readFileSync, writeFileSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs'
 import { execSync } from 'node:child_process'
 
 const sha256 = (buf) => createHash('sha256').update(buf).digest('hex')
@@ -59,15 +59,33 @@ const PRIVATE_COMMITS = [
     claim: 'Hypergraph GNN with meta-learning outer loop' }
 ]
 
+// Vercel clones at --depth=10, so `git log -1 -- <path>` resolves to the graft
+// boundary rather than the commit that actually touched the file. Emitting a
+// wrong SHA is worse than emitting none on a page about provenance.
+let shallow = false
+try {
+  shallow = execSync('git rev-parse --is-shallow-repository', { encoding: 'utf8' }).trim() === 'true'
+} catch {
+  /* not a git checkout */
+}
+
 const artifacts = PUBLIC_ARTIFACTS.filter(([, p]) => existsSync(p)).map(([label, path]) => {
   const bytes = readFileSync(path)
-  let lastCommit = null
-  try {
-    lastCommit = execSync(`git log -1 --format=%H:%cI -- ${path}`, { encoding: 'utf8' }).trim() || null
-  } catch {
-    /* not committed yet */
+  let commit = null
+  let committed = null
+  if (!shallow) {
+    try {
+      const line = execSync(`git log -1 --format=%H:%cI -- ${path}`, { encoding: 'utf8' }).trim()
+      if (line) {
+        // %cI contains colons, so split on the first one only.
+        const i = line.indexOf(':')
+        commit = line.slice(0, i)
+        committed = line.slice(i + 1)
+      }
+    } catch {
+      /* not committed yet */
+    }
   }
-  const [commit, committed] = lastCommit ? lastCommit.split(':') : [null, null]
   return { label, path, sha256: sha256(bytes), bytes: bytes.length, commit, committed }
 })
 
@@ -78,6 +96,35 @@ const leaves = [
 ].sort()
 const root = sha256(leaves.join('\n'))
 
+// Read the stamps off disk so the page can never claim an anchor it lacks.
+const stamps = existsSync('public/stamps')
+  ? readdirSync('public/stamps')
+      .filter((f) => f.endsWith('.txt') || f.endsWith('.json'))
+      .sort()
+      .map((file) => {
+        const body = readFileSync(`public/stamps/${file}`, 'utf8')
+        const covered = file.endsWith('.txt')
+          ? body.trim()
+          : (() => {
+              try {
+                return JSON.parse(body).root
+              } catch {
+                return null
+              }
+            })()
+        const anchored = existsSync(`public/stamps/${file}.ots`)
+        return {
+          file: `stamps/${file}`,
+          covers: covered,
+          coversCurrentRoot: covered === root,
+          anchored,
+          status: anchored
+            ? 'stamped; verify with ots, and upgrade once its Bitcoin block is mined'
+            : 'snapshot only, not yet stamped'
+        }
+      })
+  : []
+
 const manifest = {
   $schema: 'https://vivekjoshy.com/provenance.schema.json',
   generated: new Date().toISOString().slice(0, 10),
@@ -86,6 +133,7 @@ const manifest = {
   rootPreimage: 'sha256 over newline-joined, lexicographically sorted "path:sha256" and "repo@commit" entries',
   artifacts,
   privateCommits: PRIVATE_COMMITS,
+  stamps,
   verify: {
     artifact: 'shasum -a 256 <path>  # compare with the sha256 field',
     root: 'node scripts/build-provenance.mjs  # recomputes; root must match',
@@ -101,5 +149,12 @@ writeFileSync('app/data/provenance.json', JSON.stringify(manifest, null, 2) + '\
 // changed — a stamp against it would go stale for no substantive reason. The
 // root is a pure function of content, so it only moves when the work moves.
 writeFileSync('public/provenance-root.txt', root + '\n')
-console.log(`✔ provenance: ${artifacts.length} artifacts, ${PRIVATE_COMMITS.length} private commits`)
+const anchoredCurrent = stamps.some((s) => s.coversCurrentRoot && s.anchored)
+console.log(
+  `✔ provenance: ${artifacts.length} artifacts, ${PRIVATE_COMMITS.length} private commits, ` +
+    `${stamps.length} stamp(s)`
+)
+if (!anchoredCurrent) {
+  console.log('  ! the current root has no anchored stamp — run scripts/stamp-provenance.mjs')
+}
 console.log(`  root ${root}`)

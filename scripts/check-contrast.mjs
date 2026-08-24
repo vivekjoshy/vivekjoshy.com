@@ -27,7 +27,17 @@ const PAIRS = [
   ['dark: accent text',       '#ff8fa3', '#131316', 4.5],
   ['dark: accent on base200', '#ff8fa3', '#1c1c21', 4.5],
   ['dark: dark on accent',    '#131316', '#ff8fa3', 4.5],
-  ['dark: border/UI',         '#ff8fa3', '#131316', 3.0]
+  ['dark: border/UI',         '#ff8fa3', '#131316', 3.0],
+
+  // Pairs the rendered page actually uses. The list above checks tokens in
+  // isolation, which passed while a shipped button sat at 2.16:1 — the gate was
+  // checking a pairing the site did not use.
+  ['light: btn-accent label',  '#ffffff', '#9c0026', 4.5],
+  ['dark: btn-accent label',   '#131316', '#ff8fa3', 4.5],
+  ['light: chart secondary',   '#333333', '#ffffff', 3.0],
+  ['dark: chart secondary',    '#a8a8ad', '#131316', 3.0],
+  ['light: hairline as border','#e9eaec', '#ffffff', 1.0],
+  ['dark: hairline as border', '#2c2c33', '#131316', 1.0]
 ]
 
 let failed = 0

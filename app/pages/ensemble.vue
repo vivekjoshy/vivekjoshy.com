@@ -44,7 +44,8 @@
       <div class="flex flex-wrap gap-2 mb-5">
         <button
           v-for="t in TOKEN_CASES" :key="t.id"
-          class="btn btn-sm" :class="tokenCase === t.id ? 'btn-accent text-white' : 'btn-outline'"
+          class="btn btn-sm" :class="tokenCase === t.id ? 'btn-accent' : 'btn-outline'"
+          :aria-pressed="tokenCase === t.id"
           @click="tokenCase = t.id"
         >{{ t.label }}</button>
       </div>
@@ -56,11 +57,8 @@
           <div
             v-for="(c, i) in activeToken.confidences" :key="i"
             class="flex-1 rounded-t transition-all duration-300"
-            :class="i >= criticalStart ? 'bg-accent' : ''"
-            :style="{
-              height: `${8 + 92 * c}%`,
-              background: i >= criticalStart ? undefined : 'var(--color-hairline)'
-            }"
+            :class="i >= criticalStart ? 'bg-accent' : 'series-secondary'"
+            :style="{ height: `${8 + 92 * c}%` }"
             :title="`token ${i}: confidence ${c.toFixed(2)}, surprise ${activeToken.surprises[i].toFixed(2)}`"
           ></div>
         </div>
@@ -94,23 +92,24 @@
       <div class="flex flex-wrap gap-2 mb-5">
         <button
           v-for="s in SOLUTION_SETS" :key="s.id"
-          class="btn btn-sm" :class="solutionSet === s.id ? 'btn-accent text-white' : 'btn-outline'"
+          class="btn btn-sm" :class="solutionSet === s.id ? 'btn-accent' : 'btn-outline'"
+          :aria-pressed="solutionSet === s.id"
           @click="solutionSet = s.id"
         >{{ s.label }}</button>
       </div>
       <p class="text-subheading mb-5">{{ activeSet.blurb }}</p>
 
-      <label class="block max-w-md mb-6">
+      <div class="max-w-md mb-6">
         <div class="flex items-baseline justify-between mb-1">
-          <span class="text-subheading text-sm">Sharpness</span>
+          <label for="beta" class="text-subheading text-sm">Sharpness</label>
           <code class="provenance">β = {{ beta.toFixed(3) }}</code>
         </div>
-        <input v-model.number="beta" type="range" min="0.05" max="1" step="0.01"
-               class="range range-accent range-sm w-full" />
-        <p class="text-subheading text-xs mt-1 h-4 leading-4">
-          {{ Math.abs(beta - DEFAULTS.beta) < 0.005 ? 'the notebook default — very sharp' : beta < DEFAULTS.beta ? 'sharper than the default' : 'flatter: evidence differences matter less' }}
+        <input id="beta" v-model.number="beta" type="range" min="0.05" max="1" step="0.01"
+               class="range range-accent range-sm w-full" aria-describedby="beta-note" />
+        <p id="beta-note" class="text-subheading text-xs mt-1 h-4 leading-4">
+          {{ Math.abs(beta - ATHENA_DEFAULTS.beta) < 0.005 ? 'the notebook default — very sharp' : beta < ATHENA_DEFAULTS.beta ? 'sharper than the default' : 'flatter: evidence differences matter less' }}
         </p>
-      </label>
+      </div>
 
       <div class="overflow-x-auto">
         <table class="table table-sm w-full min-w-[520px]">
@@ -172,7 +171,7 @@
 
     <p class="text-subheading text-sm">
       Qwen 3 30B A3B Instruct via vLLM, top-5 logprobs, temperatures 0.7 and 0.3,
-      β = {{ DEFAULTS.beta }}. Ported from <code class="provenance">athena.ipynb</code>.
+      β = {{ ATHENA_DEFAULTS.beta }}. Ported from <code class="provenance">athena.ipynb</code>.
     </p>
   </div>
 </template>
@@ -182,7 +181,7 @@
 import { definePageMeta, useHead } from '#imports'
 import { ref, computed } from 'vue'
 import {
-  confidenceMetrics, evidenceStrength, ensemble, DEFAULTS, type Solution
+  confidenceMetrics, evidenceStrength, ensemble, ATHENA_DEFAULTS, type Solution
 } from '~/utils/athena'
 
 definePageMeta({ layout: 'default' })
@@ -237,7 +236,7 @@ const SOLUTION_SETS = [
 
 const tokenCase = ref('confident')
 const solutionSet = ref('consensus')
-const beta = ref(DEFAULTS.beta)
+const beta = ref(ATHENA_DEFAULTS.beta)
 
 const activeToken = computed(() => TOKEN_CASES.find((t) => t.id === tokenCase.value)!)
 const criticalStart = computed(() => {

@@ -34,7 +34,7 @@
             autocomplete="off"
             role="combobox"
             aria-controls="palette-list"
-            aria-expanded="true"
+            :aria-expanded="results.length > 0"
             :aria-activedescendant="activeId"
           />
 
@@ -53,7 +53,7 @@
               <span class="palette-item-label">{{ item.label }}</span>
               <span class="palette-item-group">{{ item.group }}</span>
             </li>
-            <li v-if="!results.length" class="palette-empty">No matches.</li>
+            <li v-if="!results.length" role="option" aria-disabled="true" aria-selected="false" class="palette-empty">No matches.</li>
           </ul>
 
           <p class="palette-foot">
@@ -123,6 +123,7 @@ watch(results, () => {
 
 async function show() {
   lastFocused = document.activeElement as HTMLElement
+  document.body.style.overflow = 'hidden'
   open.value = true
   query.value = ''
   cursor.value = 0
@@ -132,6 +133,7 @@ async function show() {
 
 function hide() {
   open.value = false
+  document.body.style.overflow = ''
   // Return focus where it came from, per WCAG 2.4.3.
   lastFocused?.focus()
 }

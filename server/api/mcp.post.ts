@@ -10,18 +10,32 @@
  * JSON-RPC 2.0. Handles initialize, tools/list and tools/call.
  */
 import {
-  rate, predictWin, ordinal, DEFAULTS,
+  rate, predictWin, ordinal, OPENSKILL_DEFAULTS,
   type Rating, type ModelName
 } from '../../app/utils/openskill'
 
 const PROTOCOL_VERSION = '2025-06-18'
+
+/**
+ * Hard limits. The rating maths is quadratic in team count, so an unbounded
+ * public endpoint is a denial-of-service vector: measured 0.17s at 3,000 teams,
+ * 0.64s at 6,000, and multi-minute CPU at six figures — enough to occupy and
+ * bill a serverless function indefinitely. These caps sit far above any real
+ * match and well below where the cost becomes interesting to an attacker.
+ */
+const LIMITS = {
+  teams: 64,
+  playersPerTeam: 64,
+  totalPlayers: 512,
+  batch: 16
+}
 const MODELS: ModelName[] = ['plackett_luce', 'thurstone_mosteller', 'bradley_terry']
 
 const TEAM_SCHEMA = {
   type: 'array',
   description:
     'Teams in the match. Each team is an array of players; each player is {mu, sigma}. ' +
-    `Defaults are mu=${DEFAULTS.mu}, sigma=25/3.`,
+    `Defaults are mu=${OPENSKILL_DEFAULTS.mu}, sigma=25/3.`,
   items: {
     type: 'array',
     items: {
@@ -116,8 +130,19 @@ function assertTeams(teams: unknown): Rating[][] {
   if (!Array.isArray(teams) || teams.length < 2) {
     throw new Error('teams must be an array of at least two teams')
   }
+  if (teams.length > LIMITS.teams) {
+    throw new Error(`too many teams: ${teams.length} (limit ${LIMITS.teams})`)
+  }
+  let total = 0
   return teams.map((team, i) => {
     if (!Array.isArray(team) || !team.length) throw new Error(`team ${i} must be a non-empty array`)
+    if (team.length > LIMITS.playersPerTeam) {
+      throw new Error(`team ${i} has too many players: ${team.length} (limit ${LIMITS.playersPerTeam})`)
+    }
+    total += team.length
+    if (total > LIMITS.totalPlayers) {
+      throw new Error(`too many players in total (limit ${LIMITS.totalPlayers})`)
+    }
     return team.map((p, j) => {
       const mu = Number((p as Rating)?.mu)
       const sigma = Number((p as Rating)?.sigma)
@@ -125,6 +150,11 @@ function assertTeams(teams: unknown): Rating[][] {
         throw new Error(`team ${i} player ${j} needs finite mu and sigma`)
       }
       if (sigma <= 0) throw new Error(`team ${i} player ${j}: sigma must be positive`)
+      // sigma is squared internally; 1e308 overflows to Infinity and the tool
+      // would return nulls with no error flag.
+      if (Math.abs(mu) > 1e6 || sigma > 1e6) {
+        throw new Error(`team ${i} player ${j}: mu and sigma must be within +/-1e6`)
+      }
       return { mu, sigma }
     })
   })
@@ -183,6 +213,10 @@ function callTool(name: string, args: Record<string, unknown>) {
       const sigma = Number(args.sigma)
       if (!Number.isFinite(mu) || !Number.isFinite(sigma)) throw new Error('mu and sigma required')
       const z = args.z === undefined ? 3 : Number(args.z)
+      if (!Number.isFinite(z)) throw new Error('z must be a finite number')
+      if (Math.abs(mu) > 1e6 || sigma <= 0 || sigma > 1e6) {
+        throw new Error('mu and sigma must be finite, with sigma positive and within 1e6')
+      }
       return text({ ordinal: ordinal({ mu, sigma }, z), z })
     }
     default:
@@ -199,10 +233,22 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody(event)
   const messages = Array.isArray(body) ? body : [body]
+
+  if (messages.length > LIMITS.batch) {
+    setResponseStatus(event, 400)
+    return err(null, -32600, `batch too large: ${messages.length} (limit ${LIMITS.batch})`)
+  }
+
   const responses: unknown[] = []
 
   for (const msg of messages) {
-    const { id, method, params } = msg ?? {}
+    // A non-object body destructures to undefined and would otherwise be
+    // silently treated as a notification and 202'd.
+    if (typeof msg !== 'object' || msg === null) {
+      responses.push(err(null, -32600, 'invalid request: expected a JSON-RPC object'))
+      continue
+    }
+    const { id, method, params } = msg
     // Notifications carry no id and expect no response.
     const isNotification = id === undefined || id === null
 

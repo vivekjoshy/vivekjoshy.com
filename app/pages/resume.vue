@@ -5,12 +5,12 @@
         <span class="font-thin">VIVEK</span><span class="font-black">JOSHY</span>
       </h1>
       <div class="flex flex-wrap justify-center gap-4 text-subheading text-lg">
-        <a href="mailto:contact@vivekjoshy.com" class="flex items-center hover:text-accent">
-          <i class="fa-regular fa-envelope mr-2"></i> contact@vivekjoshy.com
+        <a href="mailto:contact@vivekjoshy.com" class="flex items-center text-accent link-underline">
+          <i class="fa-regular fa-envelope mr-2" aria-hidden="true"></i> contact@vivekjoshy.com
         </a>
         <span class="hidden md:inline">&bull;</span>
-        <a href="https://github.com/vivekjoshy" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-accent">
-          <i class="fa-brands fa-github mr-2"></i> github.com/vivekjoshy
+        <a href="https://github.com/vivekjoshy" target="_blank" rel="noopener noreferrer" class="flex items-center text-accent link-underline">
+          <i class="fa-brands fa-github mr-2" aria-hidden="true"></i> github.com/vivekjoshy
         </a>
       </div>
     </div>
@@ -176,17 +176,17 @@
 
       <div class="space-y-4">
         <div>
-          <h3 class="subsection-heading mb-1 text-lg inline-block">Technologies:</h3>
+          <span class="subsection-heading mb-1 text-lg inline-block">Technologies:</span>
           <p class="text-lg inline-block ml-2">PyTorch, Polars/Pandas, FastAPI, Ray/RLlib, TypeScript, NestJS</p>
         </div>
 
         <div>
-          <h3 class="subsection-heading mb-1 text-lg inline-block">DevOps &amp; Data:</h3>
+          <span class="subsection-heading mb-1 text-lg inline-block">DevOps &amp; Data:</span>
           <p class="text-lg inline-block ml-2">Git, Docker, AWS, GCP, PostgreSQL, MongoDB, TypeDB, RDF/SPARQL</p>
         </div>
 
         <div>
-          <h3 class="subsection-heading mb-1 text-lg inline-block">Core:</h3>
+          <span class="subsection-heading mb-1 text-lg inline-block">Core:</span>
           <p class="text-lg inline-block ml-2">Formal Methods, Grammar Induction, Neuro-Symbolic Computation, Interpretable AI, Bayesian Inference</p>
         </div>
       </div>
@@ -238,7 +238,7 @@
     </section>
 
     <div class="flex justify-center mt-10">
-      <a href="/assets/resume.pdf" download="Vivek_Joshy_Resume.pdf" class="btn btn-accent text-white btn-lg">Download PDF Resume</a>
+      <a href="/assets/resume.pdf" download="Vivek_Joshy_Resume.pdf" class="btn btn-accent btn-lg">Download PDF Resume</a>
     </div>
   </div>
 </template>

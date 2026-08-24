@@ -5,7 +5,7 @@
       <p class="text-7xl sm:text-8xl font-black text-accent tick mb-2">{{ status }}</p>
       <h1 class="text-2xl font-semibold mb-4">{{ heading }}</h1>
       <p class="mb-8 text-subheading">{{ detail }}</p>
-      <NuxtLink to="/" class="btn btn-accent text-white" @click="clear">Return home</NuxtLink>
+      <NuxtLink to="/" class="btn btn-accent" @click="clear">Return home</NuxtLink>
     </div>
   </div>
 </template>
