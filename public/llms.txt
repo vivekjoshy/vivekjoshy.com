@@ -9,6 +9,7 @@
 
 - [Home](https://vivekjoshy.com/): Positioning, live adoption figures, and links to each artifact.
 - [OpenSkill playground](https://vivekjoshy.com/openskill): Interactive implementation of the Weng-Lin rating models (Plackett-Luce, Thurstone-Mosteller, Bradley-Terry), running the same maths as openskill.py and verified against it on every build.
+- [Dense Ordinal Replica Loss](https://vivekjoshy.com/ordinal-replica): Interactive walkthrough of a loss that treats ARC's ten colours as a circle, spreading target mass onto neighbours by inverse circular distance. Recorded effect on grid accuracy: 1.36% to 64.66%.
 - [ARC-AGI](https://vivekjoshy.com/arc): Solver architectures tried over two years and where each one broke. The finding: the binding constraint is object-level relational structure not recoverable from pixel context, not compute.
 - [Resume](https://vivekjoshy.com/resume): Full professional and research history.
 

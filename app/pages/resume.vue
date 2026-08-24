@@ -200,7 +200,7 @@
           <h3 class="subsection-heading text-lg">Theoretical Neuroscience Community</h3>
           <span>Present</span>
         </div>
-        <p class="text-lg">Owner and administrator of the largest theoretical neuroscience server on Discord.</p>
+        <p class="text-lg">Owner and administrator of <a href="https://discord.gg/neuroscience" target="_blank" rel="noopener noreferrer" class="text-accent link-underline">discord.gg/neuroscience</a>, the largest theoretical neuroscience community on Discord, with over 6,940 members.</p>
       </div>
 
       <div class="mb-8">

@@ -531,3 +531,50 @@ h1, h2, h3 {
   background: var(--color-surface);
   color: var(--color-subheading);
 }
+
+/* Colour swatches for the replica-loss page */
+.swatch {
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 5px;
+  border: 2px solid var(--color-hairline);
+}
+.swatch-sm {
+  width: 2.15rem;
+  height: 2.15rem;
+}
+.swatch.is-selected {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+.swatch-index {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 3px rgb(0 0 0 / 0.9);
+}
+
+/* KaTeX: inherit theme colour, and let exactly one element own the scroll.
+   katex.min.css already puts overflow-x: auto on .katex-display, so wrapping
+   it in another scroll container produced a permanent scrollbar. */
+.katex {
+  color: var(--color-primary);
+  font-size: 1.05em;
+}
+.katex-block {
+  padding: 0.2rem 0;
+}
+.katex-block .katex-display {
+  margin: 0.4rem 0;
+  /* Room for the scrollbar only when the formula genuinely overflows. */
+  padding-bottom: 0.15rem;
+  scrollbar-width: thin;
+}
+.katex-inline {
+  white-space: nowrap;
+}

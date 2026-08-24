@@ -71,6 +71,7 @@ const NAV = [
   { to: '/', label: 'Home' },
   { to: '/openskill', label: 'Playground' },
   { to: '/arc', label: 'ARC' },
+  { to: '/ordinal-replica', label: 'Replica Loss' },
   { to: '/resume', label: 'Resume' }
 ]
 </script>
