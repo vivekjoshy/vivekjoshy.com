@@ -15,10 +15,9 @@ Working list for the `repositioning-2026` branch. Ordered by value, not effort.
 
 ## In flight
 
-- [ ] **Print stylesheet for `/resume`** — make the web page print correctly so the
-      PDF is a convenience, not the only good artifact.
-- [ ] **Command palette (⌘K)** — keyboard navigation across pages and artifacts.
-      Must be fully operable by keyboard and screen reader, not just mouse.
+- [x] Print stylesheet for `/resume`
+- [x] Command palette (⌘K), verified keyboard-operable
+- [x] LaTeX formatting: flush-left paragraphs, ragged-right, link row fits
 - [ ] **Prompt ensemble visualizer** — Vivek's own idea. Show N samples from one
       model (vLLM-style sampling) versus N distinct models, then entropy-weighted
       aggregation and logarithmic pooling collapsing them to one calibrated answer.

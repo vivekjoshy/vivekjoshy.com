@@ -510,3 +510,15 @@ body {
   font-size: 0.75rem;
   color: var(--color-subheading);
 }
+
+/* Line-breaking: keep headings balanced and stop paragraphs orphaning a
+   final short word. Progressive enhancement — ignored where unsupported. */
+.balance {
+  text-wrap: balance;
+}
+.pretty {
+  text-wrap: pretty;
+}
+h1, h2, h3 {
+  text-wrap: balance;
+}

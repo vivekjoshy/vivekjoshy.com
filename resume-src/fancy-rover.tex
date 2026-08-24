@@ -87,6 +87,19 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyhf{}
 
+% Flush-left paragraphs: first-line indents clash with the flush-left bullets.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35ex}
+
+% Ragged right. Justification on a narrow measure with this much inline
+% punctuation opens visible rivers between words.
+\usepackage{ragged2e}
+\RaggedRight
+% Let TeX hyphenate. Suppressing it under RaggedRight pushes long tokens
+% (URLs, "Thurstone--Mosteller") past the right margin instead of breaking them.
+\hyphenpenalty=50
+\emergencystretch=3em
+
 \begin{document}
 
 % Header Section
@@ -108,10 +121,12 @@ Journal of the Royal Statistical Society. Pinned as a dependency in Ray/RLlib an
 layer in Neural MMO, both checkable in those projects' dependency manifests; also in
 production use at OpenAI, MultiVersus, Hunt: Showdown, and BeyondAllReason, and the rating
 engine behind the Vairified platform.\\
+{\small\sloppy
 \href{https://openskill.me}{openskill.me} ~\textbullet~
 \href{https://github.com/vivekjoshy/openskill.py}{github.com/vivekjoshy/openskill.py} ~\textbullet~
 \href{https://doi.org/10.21105/joss.05901}{DOI: 10.21105/joss.05901} ~\textbullet~
 \href{https://arxiv.org/abs/2401.05451}{arXiv:2401.05451}
+}
 
 \section{Professional Experience}
 \subsection{Vairified Corp \hspace*{\fill} January 2025 -- Present}
@@ -134,6 +149,7 @@ engine behind the Vairified platform.\\
 \subsection{Open Source Development \hspace*{\fill} 2016 -- Present}
 \begin{itemize}
     \item Maintain OpenSkill, a peer-reviewed Bayesian rating library with production deployments across games and sports.
+    \item Contributed role icon support to \href{https://github.com/hikari-py/hikari/pull/838}{hikari}, a Python Discord API library (merged, 2021).
 \end{itemize}
 
 \section{Research}

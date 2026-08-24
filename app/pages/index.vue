@@ -3,14 +3,14 @@
     <!-- Hero: asymmetric, left-anchored, oversized -->
     <section class="py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
       <div class="md:col-span-8">
-        <h1 class="display font-bold mb-6 rise">
-          <span class="font-thin">VIVEK</span><br class="hidden sm:block" /><span class="font-black">JOSHY</span>
+        <h1 class="display font-bold mb-7 rise">
+          <span class="font-thin">VIVEK</span><span class="font-black">JOSHY</span>
         </h1>
-        <p class="lede mb-4 rise rise-1">
+        <p class="lede balance mb-5 rise rise-1">
           Formal methods, grammar induction, and neuro-symbolic computation
           &mdash; systems that show their reasoning instead of asserting it.
         </p>
-        <p class="text-subheading rise rise-2">
+        <p class="text-subheading pretty max-w-[52ch] rise rise-2">
           Lead Scientist, Data &amp; ML at Vairified Corp. I maintain
           <NuxtLink to="/openskill" class="text-accent link-underline">OpenSkill</NuxtLink>,
           and it runs in production under the platform I build.
