@@ -8,8 +8,8 @@
       @click="show"
     >
       <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-      <span class="hidden md:inline">Search</span>
-      <kbd class="hidden md:inline palette-kbd">{{ hintKey }}K</kbd>
+      <span class="hidden lg:inline">Search</span>
+      <kbd class="hidden lg:inline palette-kbd">{{ hintKey }}K</kbd>
       <span class="sr-only-text">Open command palette</span>
     </button>
 
@@ -83,7 +83,10 @@ const ITEMS: Item[] = [
   { label: 'Home', group: 'Pages', to: '/' },
   { label: 'OpenSkill playground', group: 'Pages', to: '/openskill' },
   { label: 'ARC-AGI', group: 'Pages', to: '/arc' },
+  { label: 'Dense Ordinal Replica Loss', group: 'Pages', to: '/ordinal-replica' },
+  { label: 'ATHENA-TIR prompt ensembles', group: 'Pages', to: '/ensemble' },
   { label: 'Resume', group: 'Pages', to: '/resume' },
+  { label: 'Provenance', group: 'Pages', to: '/provenance' },
   { label: 'OpenSkill documentation', group: 'OpenSkill', href: 'https://openskill.me' },
   { label: 'openskill.py source', group: 'OpenSkill', href: 'https://github.com/vivekjoshy/openskill.py' },
   { label: 'JOSS paper (DOI 10.21105/joss.05901)', group: 'Publications', href: 'https://doi.org/10.21105/joss.05901' },

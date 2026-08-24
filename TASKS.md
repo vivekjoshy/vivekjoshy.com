@@ -21,11 +21,12 @@ Working list for the `repositioning-2026` branch. Ordered by value, not effort.
 - [x] Dense Ordinal Replica Loss visualizer, incl. the circular-vs-dense comparison
 - [x] KaTeX for maths (SSR-rendered, MathML for screen readers)
 - [x] ARC architecture survey from real branches
-- [ ] **Prompt ensemble visualizer** — Vivek's own idea. Show N samples from one
-      model (vLLM-style sampling) versus N distinct models, then entropy-weighted
-      aggregation and logarithmic pooling collapsing them to one calibrated answer.
-      The interesting question to surface: when does ensembling add signal, and
-      when does it average the signal away?
+- [x] Prompt ensemble visualizer — built as ATHENA-TIR from `athena.ipynb`, the
+      real system. Two findings surfaced from the source: the uniform prior is
+      mathematically inert, and critical-token weighting can outrank geometric
+      confidence.
+- [x] Mobile responsiveness — verified no horizontal page overflow at 375px
+      across all seven routes.
 - [ ] **MCP server** — expose OpenSkill as agent-callable tools (`rate_match`,
       `predict_win`, `compare_models`) so an agent can use the library without
       installing it. Reuses `app/utils/openskill.ts`, so it inherits the same

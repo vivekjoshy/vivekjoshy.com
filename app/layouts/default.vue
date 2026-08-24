@@ -3,14 +3,14 @@
     <a href="#main" class="skip-link">Skip to content</a>
 
     <header class="site-header">
-      <div class="container mx-auto px-4 flex items-center gap-6 h-16">
+      <div class="container mx-auto px-3 sm:px-4 flex items-center gap-2 sm:gap-4 h-14 sm:h-16">
         <!-- Monogram, not the full wordmark: the pages carry their own titles. -->
         <NuxtLink to="/" class="monogram" aria-label="Vivek Joshy, home">
           <span class="font-thin">V</span><span class="font-black">J</span>
         </NuxtLink>
 
-        <nav class="flex-1" aria-label="Main">
-          <ul class="flex items-center gap-1 md:gap-2 list-none m-0 p-0 text-sm md:text-base">
+        <nav class="flex-1 min-w-0" aria-label="Main">
+          <ul class="flex items-center gap-0.5 md:gap-2 list-none m-0 p-0 text-sm md:text-base nav-scroll">
             <li v-for="item in NAV" :key="item.to">
               <NuxtLink :to="item.to" class="nav-link">{{ item.label }}</NuxtLink>
             </li>
@@ -72,6 +72,7 @@ const NAV = [
   { to: '/openskill', label: 'Playground' },
   { to: '/arc', label: 'ARC' },
   { to: '/ordinal-replica', label: 'Replica Loss' },
+  { to: '/ensemble', label: 'ATHENA' },
   { to: '/resume', label: 'Resume' },
   { to: '/provenance', label: 'Provenance' }
 ]

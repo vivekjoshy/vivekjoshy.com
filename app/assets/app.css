@@ -601,3 +601,89 @@ h1, h2, h3 {
   overflow-x: auto;
   color: var(--color-primary);
 }
+
+.verdict-alarm {
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Mobile                                                              */
+/* ------------------------------------------------------------------ */
+
+/* Six nav items do not fit 375px. Scroll horizontally rather than wrap
+   into a second row that pushes the page down. */
+.nav-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+.nav-scroll > li {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 640px) {
+  .nav-link {
+    padding: 0.35rem 0.45rem;
+  }
+  .nav-link::after {
+    left: 0.45rem;
+    right: 0.45rem;
+  }
+  .monogram {
+    font-size: 1.25rem;
+  }
+
+  /* Display type has to fit the narrowest phone without clipping. */
+  .display {
+    font-size: clamp(2.25rem, 13vw, 3.25rem);
+    letter-spacing: -0.03em;
+  }
+  .lede {
+    font-size: 1.05rem;
+  }
+
+  /* Long formulas scroll rather than widening the page. */
+  .katex-display {
+    font-size: 0.85em;
+  }
+
+  .palette-backdrop {
+    padding: 6vh 0.75rem 0.75rem;
+  }
+  .palette-item {
+    padding: 0.7rem 0.6rem;
+  }
+
+  .hash-block,
+  .code-block {
+    font-size: 0.7rem;
+  }
+}
+
+/* Nothing may push the page sideways. */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Tables are the usual culprit; give them their own scroll container. */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Touch targets: WCAG 2.2 SC 2.5.8 asks for 24px minimum. */
+@media (pointer: coarse) {
+  .nav-link,
+  .palette-trigger,
+  .btn,
+  .swatch {
+    min-height: 2.25rem;
+  }
+}
