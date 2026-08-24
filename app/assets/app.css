@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: false;
+}
+
+/* Brand tokens — generates text-accent, bg-accent, border-accent, etc. */
+@theme {
+  --color-primary: #212121;
+  --color-accent: #9c0026;
+  --color-subheading: #333333;
+  --font-sans: 'Inter', sans-serif;
+}
+
+/* daisyUI component theme (btn-accent, badge-accent, base-*) */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  color-scheme: light;
+
+  --color-primary: #212121;
+  --color-primary-content: #ffffff;
+  --color-accent: #9c0026;
+  --color-accent-content: #ffffff;
+  --color-base-100: #ffffff;
+  --color-base-200: #f8f9fa;
+  --color-base-300: #f0f1f2;
+  --color-base-content: #212121;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #212121;
+  font-weight: 400;
+  background-color: #ffffff;
+}
+
+@layer components {
+  .section-heading {
+    @apply text-accent uppercase font-bold text-lg;
+  }
+
+  .subsection-heading {
+    @apply text-primary font-semibold;
+  }
+
+  .subsubsection-heading {
+    @apply text-subheading font-medium;
+  }
+}
