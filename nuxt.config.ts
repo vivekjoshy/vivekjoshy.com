@@ -12,6 +12,15 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Vite inlines assets under 4KB as data: URIs. KaTeX_Size3-Regular.woff2
+      // is 3,624 bytes, so exactly one font of twenty was inlined — and the CSP
+      // font-src 'self' then blocked it, logging an error on every page with
+      // maths. Never inline fonts: they stay separately cacheable, the CSS stays
+      // smaller, and the policy stays tight.
+      assetsInlineLimit: (filePath: string) =>
+        /\.(woff2?|ttf|otf|eot)$/i.test(filePath) ? false : undefined
+    }
   },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
