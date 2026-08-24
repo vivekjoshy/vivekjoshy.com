@@ -1,0 +1,139 @@
+{
+  "$schema": "https://vivekjoshy.com/provenance.schema.json",
+  "generated": "2026-08-24",
+  "root": "230d510f4c2aeb9936f9ae40e378d8e3188b70294d1ce0cd663b6a19cbb714e8",
+  "algorithm": "sha256",
+  "rootPreimage": "sha256 over newline-joined, lexicographically sorted \"path:sha256\" and \"repo@commit\" entries",
+  "artifacts": [
+    {
+      "label": "Replica losses (circular and dense ordinal) — browser implementation",
+      "path": "app/utils/replica-loss.ts",
+      "sha256": "1d4af8272534a3903000c087271440737b559839bedd07756aa7ff56947c2750",
+      "bytes": 5765,
+      "commit": "9d52923fea00b47549b2686b507708f5d511837e",
+      "committed": "2026-08-24T21:11:19+05:30"
+    },
+    {
+      "label": "Weng-Lin models — browser implementation",
+      "path": "app/utils/openskill.ts",
+      "sha256": "ca56d9fd9513257f23c9a89e8ee3347ac0b2cb4a7b68f9f3842611ac5d21194d",
+      "bytes": 10617,
+      "commit": "9d52923fea00b47549b2686b507708f5d511837e",
+      "committed": "2026-08-24T21:11:19+05:30"
+    },
+    {
+      "label": "ARC solver architecture survey",
+      "path": "app/data/arc-architectures.json",
+      "sha256": "827f9a2891f73ebf3bf8464a0df75178d72e189dbe9ebd9713e1d9fc19ac22ab",
+      "bytes": 11336,
+      "commit": "df14adb5d68e3eb2b822f04a9abd7154a3aac491",
+      "committed": "2026-08-24T21:02:42+05:30"
+    },
+    {
+      "label": "Replica loss reference vectors",
+      "path": "scripts/replica-reference.json",
+      "sha256": "ea52b2e497fef3135dc2e9473e194ec0021ff5dc0f1ccc7bb6b612eefe6c7ab3",
+      "bytes": 74708,
+      "commit": "3137ad6318514ffcd50f60114a5e498a5e183a9e",
+      "committed": "2026-08-24T20:07:40+05:30"
+    },
+    {
+      "label": "OpenSkill reference vectors",
+      "path": "scripts/openskill-reference.json",
+      "sha256": "2b6cf67772266e9dba11df648112eb65980424b8ea7d0c256051f2a2c938a584",
+      "bytes": 6354,
+      "commit": "9d52923fea00b47549b2686b507708f5d511837e",
+      "committed": "2026-08-24T21:11:19+05:30"
+    },
+    {
+      "label": "Replica loss reference generator",
+      "path": "scripts/gen-replica-reference.py",
+      "sha256": "62a5fb7dbe499a25d324d98981cc0f2a0c9be3d748fd48a7cebf20ef05ce3470",
+      "bytes": 3096,
+      "commit": "3137ad6318514ffcd50f60114a5e498a5e183a9e",
+      "committed": "2026-08-24T20:07:40+05:30"
+    },
+    {
+      "label": "Dense Ordinal Replica Loss — page",
+      "path": "app/pages/ordinal-replica.vue",
+      "sha256": "4b71a76b3e04b2462895cd8f35f076470c1d2dfa593073f6bfea14a2adfe873f",
+      "bytes": 19410,
+      "commit": "9d52923fea00b47549b2686b507708f5d511837e",
+      "committed": "2026-08-24T21:11:19+05:30"
+    },
+    {
+      "label": "ARC-AGI — page",
+      "path": "app/pages/arc.vue",
+      "sha256": "770550352627dc31601dea35c6261b43548c3762999d439bbd9a536c77a87d2b",
+      "bytes": 3661,
+      "commit": "df14adb5d68e3eb2b822f04a9abd7154a3aac491",
+      "committed": "2026-08-24T21:02:42+05:30"
+    }
+  ],
+  "privateCommits": [
+    {
+      "repo": "Opinion",
+      "ref": "3773f4e81ac3054b698982e1e69c408ce83fa834",
+      "date": "2025-10-26",
+      "claim": "DenseOrdinalReplicaLoss — hybrid ordinal/Hamming distance over replica classes"
+    },
+    {
+      "repo": "Opinion",
+      "ref": "6b31ec29e072a7ba6f0518593451ce86b12bb8ec",
+      "date": "2025-11-14",
+      "claim": "CircularReplicaLoss — circular colour topology with inverse-distance spillover"
+    },
+    {
+      "repo": "Opinion",
+      "ref": "5ece35a70c1a8620ded626e67c5917d2034e1e31",
+      "date": "2025-10-06",
+      "claim": "Combinator/SKI grammar-constrained solver"
+    },
+    {
+      "repo": "Opinion",
+      "ref": "70d13987238f4a9720c5a160235f19e38ba5384e",
+      "date": "2026-04-24",
+      "claim": "Relational architecture with coupled loss and D4 augmentation"
+    },
+    {
+      "repo": "Opinion",
+      "ref": "555f4fb9575c8253e7f2e0510630d7a85217f75b",
+      "date": "2026-03-23",
+      "claim": "Variational ARC solver, FiLM-conditioned delta decoder, coupled ELBO"
+    },
+    {
+      "repo": "OpinionAI",
+      "ref": "edc373edc8b52687ce1106c510bb125cbc46bc5a",
+      "date": "2025-06-06",
+      "claim": "SAT/hypergraph constraint formulation"
+    },
+    {
+      "repo": "OpinionAI",
+      "ref": "919b0b0a7af41b0cf3df0e5c5487fc7cf07359d3",
+      "date": "2025-06-10",
+      "claim": "Hypergraph GNN with meta-learning outer loop"
+    }
+  ],
+  "stamps": [
+    {
+      "file": "stamps/2026-08-24-230d510f4c2a.txt",
+      "covers": "230d510f4c2aeb9936f9ae40e378d8e3188b70294d1ce0cd663b6a19cbb714e8",
+      "coversCurrentRoot": true,
+      "anchored": true,
+      "status": "stamped; verify with ots, and upgrade once its Bitcoin block is mined"
+    },
+    {
+      "file": "stamps/2026-08-24-manifest-132723ca7777.json",
+      "covers": "132723ca7777b8b24cd1de2c193d2ed5ff7d9c9a8123872d81b3ac54d224e318",
+      "coversCurrentRoot": false,
+      "anchored": true,
+      "status": "stamped; verify with ots, and upgrade once its Bitcoin block is mined"
+    }
+  ],
+  "verify": {
+    "artifact": "shasum -a 256 <path>  # compare with the sha256 field",
+    "root": "node scripts/build-provenance.mjs  # recomputes; root must match",
+    "timestamp": "ots verify public/stamps/<date>-<root>.txt.ots  # a Bitcoin anchor once upgraded",
+    "privateCommit": "git cat-file -t <ref> inside the repository once it is public"
+  }
+}

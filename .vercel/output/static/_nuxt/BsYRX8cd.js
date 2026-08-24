@@ -1,0 +1,1 @@
+import{n as e}from"#entry";function t(t){let n=`${t.title} | Vivek Joshy`;e({title:t.title,meta:[{name:`description`,content:t.description},{property:`og:title`,content:n},{property:`og:description`,content:t.description},{name:`twitter:title`,content:n},{name:`twitter:description`,content:t.description}]})}var n=e=>{};export{t as n,n as t};

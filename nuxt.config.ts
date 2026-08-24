@@ -32,6 +32,16 @@ export default defineNuxtConfig({
       ]
     }
   },
+  // Nitro bundles the whole app into one function, so a vercel.json
+  // `functions` pattern like "api/mcp" matches nothing and fails the build.
+  // Duration is set through the preset instead.
+  nitro: {
+    vercel: {
+      functions: {
+        maxDuration: 15
+      }
+    }
+  },
   compatibilityDate: "2025-03-26",
   site: {
     url: 'https://vivekjoshy.com'

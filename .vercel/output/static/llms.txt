@@ -1,0 +1,31 @@
+# Vivek Joshy
+
+> Lead Scientist, Data & ML at Vairified Corp. Work centres on formal methods,
+> grammar induction, neuro-symbolic computation, and interpretable AI.
+> Maintainer of OpenSkill, a Bayesian multiplayer rating library implementing
+> the Weng-Lin models, published in the Journal of Open Source Software.
+
+## Pages
+
+- [Home](https://vivekjoshy.com/): Positioning, live adoption figures, and links to each artifact.
+- [OpenSkill playground](https://vivekjoshy.com/openskill): Interactive implementation of the Weng-Lin rating models (Plackett-Luce, Thurstone-Mosteller, Bradley-Terry), running the same maths as openskill.py and verified against it on every build.
+- [Dense Ordinal Replica Loss](https://vivekjoshy.com/ordinal-replica): Two losses compared: CircularReplicaLoss, which treats ARC's ten colours as a ring, and DenseOrdinalReplicaLoss, which drops that assumption and puts the ordinal structure inside each colour's replica block instead.
+- [ATHENA-TIR](https://vivekjoshy.com/ensemble): Prompt ensembling with tool-integrated reasoning for AIMO-3. Eight mathematical prompt styles x two sampling strategies x four samples, every generation executed as Python, pooled into a Bayesian posterior weighted by token-level confidence.
+- [ARC-AGI](https://vivekjoshy.com/arc): Solver architectures tried over two years and what each one fought, summarised from commit history. Failure modes and solve rates are not yet written up. The finding: the binding constraint is object-level relational structure not recoverable from pixel context, not compute.
+- [Resume](https://vivekjoshy.com/resume): Full professional and research history.
+
+- [Provenance](https://vivekjoshy.com/provenance): Content-addressed record of the work on this site — SHA-256 artifact hashes, commit-SHA commitments to private research repositories, and an OpenTimestamps-anchorable manifest root.
+
+- [OpenSkill MCP](https://vivekjoshy.com/mcp): The Weng-Lin rating models as agent-callable MCP tools over Streamable HTTP at https://vivekjoshy.com/api/mcp — rate_match, predict_win, compare_models, ordinal. No install required.
+
+## OpenSkill
+
+- [Documentation](https://openskill.me): Library docs and API reference.
+- [Source](https://github.com/vivekjoshy/openskill.py): Python implementation, MIT licensed.
+- [Paper (JOSS)](https://doi.org/10.21105/joss.05901): OpenSkill: A faster asymmetric multi-team, multiplayer rating system. Journal of Open Source Software, 9(93), 5901, 2024.
+- [Preprint (arXiv)](https://arxiv.org/abs/2401.05451): arXiv:2401.05451, January 2024.
+
+## Optional
+
+- [Resume PDF](https://vivekjoshy.com/assets/resume.pdf): Two-page PDF, generated from LaTeX.
+- [GitHub](https://github.com/vivekjoshy): Public repositories. Formerly the username daegontaven.

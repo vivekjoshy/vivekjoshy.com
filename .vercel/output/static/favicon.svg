@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Vivek Joshy">
+<style>:root{color:#212121}@media (prefers-color-scheme:dark){:root{color:#ffffff}}</style>
+<g transform="translate(8.000 25.905) scale(0.65584)" fill="currentColor">
+<defs>
+<g>
+<g id="glyph-0-0">
+<path d="M 28.984375 0 L 39.5625 0 L 65.734375 -71.96875 L 55.984375 -71.96875 L 41.15625 -29.265625 C 39.609375 -24.828125 37.34375 -17.96875 34.296875 -7.4375 C 31.296875 -17.734375 28.984375 -24.828125 27.390625 -29.265625 L 12.171875 -71.96875 L 2.515625 -71.96875 Z M 28.984375 0 "/>
+</g>
+<g id="glyph-1-0">
+<path d="M 28.3125 0.96875 C 44.96875 0.96875 54.296875 -7.484375 54.296875 -22.609375 L 54.296875 -71.96875 L 35.0625 -71.96875 L 35.0625 -22.21875 C 35.0625 -16.8125 32.65625 -14.203125 28.3125 -14.203125 C 23.90625 -14.203125 21.453125 -16.8125 21.453125 -22.125 L 21.453125 -27 L 1.9375 -27 L 1.9375 -22.515625 C 1.9375 -7.4375 11.40625 0.96875 28.3125 0.96875 Z M 28.3125 0.96875 "/>
+</g>
+</g>
+<clipPath id="clip-0">
+<path clip-rule="nonzero" d="M 2 0.00390625 L 66 0.00390625 L 66 72 L 2 72 Z M 2 0.00390625 "/>
+</clipPath>
+<clipPath id="clip-1">
+<path clip-rule="nonzero" d="M 70 0.00390625 L 123 0.00390625 L 123 72.957031 L 70 72.957031 Z M 70 0.00390625 "/>
+</clipPath>
+</defs>
+<g clip-path="url(#clip-0)">
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-0" x="0.000000000000001055" y="71.969443"/>
+</g>
+</g>
+<g clip-path="url(#clip-1)">
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-0" x="68.241818" y="71.969443"/>
+</g>
+</g>
+</g>
+</svg>
