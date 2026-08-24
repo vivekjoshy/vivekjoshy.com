@@ -340,6 +340,10 @@ useStructuredData([
       'Two losses for ARC colour prediction compared: a circular colour topology, and the dense ordinal replica loss that replaced it.',
     url: `${SITE}/ordinal-replica`,
     author: { '@id': PERSON_ID },
+    publisher: { '@id': PERSON_ID },
+    image: `${SITE}/og-image.png`,
+    datePublished: '2026-08-24',
+    dateModified: '2026-08-25',
     isPartOf: { '@id': SITE_ID },
     inLanguage: 'en'
   },

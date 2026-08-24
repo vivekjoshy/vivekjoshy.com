@@ -91,12 +91,14 @@ useStructuredData([
     inLanguage: 'en'
   },
   {
-    '@type': 'WebPage',
+    '@type': 'ProfilePage',
     url: SITE,
     name: NAME,
     isPartOf: { '@id': SITE_ID },
-    about: { '@id': PERSON_ID },
-    primaryImageOfPage: `${SITE}/og-image.png`
+    mainEntity: { '@id': PERSON_ID },
+    primaryImageOfPage: `${SITE}/og-image.png`,
+    dateModified: '2026-08-25',
+    inLanguage: 'en'
   }
 ])
 

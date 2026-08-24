@@ -96,6 +96,10 @@ useStructuredData([
       'Solver architectures tried against ARC-AGI over two years, what each one fought, and the negative result they converged on.',
     url: `${SITE}/arc`,
     author: { '@id': PERSON_ID },
+    publisher: { '@id': PERSON_ID },
+    image: `${SITE}/og-image.png`,
+    datePublished: '2026-08-24',
+    dateModified: '2026-08-25',
     isPartOf: { '@id': SITE_ID },
     inLanguage: 'en'
   },

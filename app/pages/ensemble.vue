@@ -194,6 +194,10 @@ useStructuredData([
       'Eight mathematical prompt styles, executed Python, and a Bayesian posterior over answers weighted by token-level confidence.',
     url: `${SITE}/ensemble`,
     author: { '@id': PERSON_ID },
+    publisher: { '@id': PERSON_ID },
+    image: `${SITE}/og-image.png`,
+    datePublished: '2026-08-24',
+    dateModified: '2026-08-25',
     isPartOf: { '@id': SITE_ID },
     inLanguage: 'en'
   },
