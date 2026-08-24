@@ -1,7 +1,7 @@
 {
   "$schema": "https://vivekjoshy.com/provenance.schema.json",
   "generated": "2026-08-24",
-  "root": "132723ca7777b8b24cd1de2c193d2ed5ff7d9c9a8123872d81b3ac54d224e318",
+  "root": "c306e4433af1fd1857edaff89ef6a288b55cb9bd4f53b8fa0e6bfef02f369d7c",
   "algorithm": "sha256",
   "rootPreimage": "sha256 over newline-joined, lexicographically sorted \"path:sha256\" and \"repo@commit\" entries",
   "artifacts": [
@@ -24,8 +24,8 @@
     {
       "label": "ARC solver architecture survey",
       "path": "app/data/arc-architectures.json",
-      "sha256": "6e4db679b3eff56f9b89aa9586d259b9ff4b4017b08cef9e196dceb82fc2de97",
-      "bytes": 7481,
+      "sha256": "a04a6e4578f2d0c477d3a8b4e6191239caf4d80f6b0e17491fe6dced2ae29509",
+      "bytes": 11328,
       "commit": "8cd372b51053d6836e0364024dfed191acf86311",
       "committed": "2026-08-24T19"
     },
@@ -64,8 +64,8 @@
     {
       "label": "ARC-AGI — page",
       "path": "app/pages/arc.vue",
-      "sha256": "8a4381fb267f4676b78042b24bdafb7b661922290a7d646dab8a356637790888",
-      "bytes": 3493,
+      "sha256": "0c663be576773d6fba19b8ed24fe4f676fe43e1ec17b419f44f808c35c6a6b40",
+      "bytes": 3695,
       "commit": "8cd372b51053d6836e0364024dfed191acf86311",
       "committed": "2026-08-24T19"
     }

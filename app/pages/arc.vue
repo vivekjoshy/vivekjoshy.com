@@ -25,9 +25,11 @@
       </div>
       <div>
         <div class="text-3xl font-black text-accent tick">{{ totalCommits.toLocaleString('en-US') }}</div>
-        <div class="text-subheading text-sm">commits across those branches</div>
+        <div class="text-subheading text-sm">commits unique to those lines</div>
       </div>
     </section>
+
+    <p class="text-subheading text-sm mb-10 -mt-6">{{ data.effortNote }}</p>
 
     <section v-for="family in families" :key="family" class="mb-10">
       <h2 class="rule-heading section-heading mb-5 text-base">
@@ -52,7 +54,7 @@
             <span v-else>{{ a.name }}</span>
           </h3>
           <span class="text-subheading text-sm tick">
-            {{ a.span }}<template v-if="a.commits"> &middot; {{ a.commits }} commits</template>
+            {{ a.span }}<template v-if="a.uniqueCommits"> &middot; {{ a.uniqueCommits }} commits</template>
           </span>
         </div>
 
@@ -62,11 +64,15 @@
 
         <p class="text-lg mb-3">{{ a.approach }}</p>
 
+        <div v-if="a.fought" class="mb-3">
+          <span class="section-heading text-sm">What it fought</span>
+          <p class="text-lg m-0">{{ a.fought }}</p>
+        </div>
+
         <div v-if="a.failure">
           <span class="section-heading text-sm">Where it broke</span>
-          <p class="text-lg">{{ a.failure }}</p>
+          <p class="text-lg m-0">{{ a.failure }}</p>
         </div>
-        <p v-else class="text-subheading italic text-sm">Write-up pending.</p>
       </div>
     </section>
 
@@ -86,7 +92,7 @@ definePageMeta({ layout: 'default' })
 // chronologically.
 const families = computed(() => [...new Set(data.architectures.map((a) => a.family))])
 const byFamily = (f: string) => data.architectures.filter((a) => a.family === f)
-const totalCommits = computed(() => data.architectures.reduce((sum, a) => sum + (a.commits ?? 0), 0))
+const totalCommits = computed(() => data.architectures.reduce((sum, a) => sum + (a.uniqueCommits ?? 0), 0))
 
 useHead({
   title: 'ARC-AGI',
