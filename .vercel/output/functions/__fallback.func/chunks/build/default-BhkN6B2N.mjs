@@ -12,13 +12,9 @@ import 'node:fs';
 import 'node:path';
 import 'node:crypto';
 import '../routes/renderer.mjs';
-import 'unhead/server';
-import 'unhead/legacy';
-import 'unhead/plugins';
 import 'vue-bundle-renderer/runtime';
 import 'devalue';
 import 'vue-router';
-import 'unhead/utils';
 
 //#region app/components/CommandPalette.vue?vue&type=script&setup=true&lang.ts
 var CommandPalette_vue_vue_type_script_setup_true_lang_default = /*@__PURE__*/ defineComponent({

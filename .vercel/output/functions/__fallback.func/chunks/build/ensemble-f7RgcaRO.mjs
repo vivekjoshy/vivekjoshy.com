@@ -14,13 +14,9 @@ import 'node:fs';
 import 'node:path';
 import 'node:crypto';
 import '../routes/renderer.mjs';
-import 'unhead/server';
-import 'unhead/legacy';
-import 'unhead/plugins';
 import 'vue-bundle-renderer/runtime';
 import 'devalue';
 import 'vue-router';
-import 'unhead/utils';
 import 'katex';
 
 //#region app/utils/athena.ts

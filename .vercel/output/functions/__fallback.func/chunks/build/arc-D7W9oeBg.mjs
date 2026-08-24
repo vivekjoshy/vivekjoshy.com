@@ -13,13 +13,9 @@ import 'node:fs';
 import 'node:path';
 import 'node:crypto';
 import '../routes/renderer.mjs';
-import 'unhead/server';
-import 'unhead/legacy';
-import 'unhead/plugins';
 import 'vue-bundle-renderer/runtime';
 import 'devalue';
 import 'vue-router';
-import 'unhead/utils';
 
 var arc_architectures_default = {
 	finding: "The binding constraint is object-level relational structure that is not recoverable from pixel context — not compute.",

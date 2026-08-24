@@ -2,10 +2,9 @@ import process from 'node:process';globalThis._importMeta_=globalThis._importMet
 import { ansiFormatter } from 'nostics/formatters/ansi';
 import { getCurrentScope, ref, watchEffect, getCurrentInstance, onBeforeUnmount, onDeactivated, onActivated, createApp, provide, onErrorCaptured, onServerPrefetch, unref, createVNode, resolveDynamicComponent, shallowReactive, reactive, effectScope, hasInjectionContext, inject, defineComponent, computed, mergeProps, withCtx, createTextVNode, toRef, shallowRef, h, resolveComponent, defineAsyncComponent, isVNode, createCommentVNode, isReadonly, Suspense, nextTick, Fragment, useSSRContext, isRef, isShallow, isReactive, toRaw } from 'vue';
 import { c as createError, n as defu, o as hasProtocol, i as joinURL, p as parseQuery, q as parseURL, e as encodePath, t as decodePath, v as isScriptProtocol, w as withQuery, x as withTrailingSlash, y as withoutTrailingSlash, z as sanitizeStatusCode, $ as $fetch } from '../nitro/nitro.mjs';
-import { i as injectHead$1, V as VueResolver, b as baseURL, h as headSymbol } from '../routes/renderer.mjs';
+import { i as injectHead$1, w as walkResolver, V as VueResolver, b as baseURL, h as headSymbol } from '../routes/renderer.mjs';
 import { useRoute, RouterView, START_LOCATION, createMemoryHistory, createRouter } from 'vue-router';
 import { ssrRenderSuspense, ssrRenderComponent, ssrRenderVNode, ssrRenderAttrs, ssrInterpolate } from 'vue/server-renderer';
-import { walkResolver } from 'unhead/utils';
 
 function useHead(input, options = {}) {
   const head = options.head || injectHead$1();

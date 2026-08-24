@@ -25,3 +25,5 @@ logs
 
 # Internal working notes, not for publication
 TASKS.md
+.vercel
+.env*
