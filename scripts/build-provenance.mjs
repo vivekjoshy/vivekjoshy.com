@@ -95,5 +95,11 @@ const manifest = {
 }
 
 writeFileSync('app/data/provenance.json', JSON.stringify(manifest, null, 2) + '\n')
+
+// The root is stamped, not the manifest. The manifest embeds per-artifact
+// commit metadata, so its bytes move on every commit even when no artifact
+// changed — a stamp against it would go stale for no substantive reason. The
+// root is a pure function of content, so it only moves when the work moves.
+writeFileSync('public/provenance-root.txt', root + '\n')
 console.log(`✔ provenance: ${artifacts.length} artifacts, ${PRIVATE_COMMITS.length} private commits`)
 console.log(`  root ${root}`)

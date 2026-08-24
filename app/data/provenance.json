@@ -26,8 +26,8 @@
       "path": "app/data/arc-architectures.json",
       "sha256": "a04a6e4578f2d0c477d3a8b4e6191239caf4d80f6b0e17491fe6dced2ae29509",
       "bytes": 11328,
-      "commit": "8cd372b51053d6836e0364024dfed191acf86311",
-      "committed": "2026-08-24T19"
+      "commit": "9741140931bfdaf24bc47b735e83204950309678",
+      "committed": "2026-08-24T20"
     },
     {
       "label": "Replica loss reference vectors",
@@ -66,8 +66,8 @@
       "path": "app/pages/arc.vue",
       "sha256": "0c663be576773d6fba19b8ed24fe4f676fe43e1ec17b419f44f808c35c6a6b40",
       "bytes": 3695,
-      "commit": "8cd372b51053d6836e0364024dfed191acf86311",
-      "committed": "2026-08-24T19"
+      "commit": "9741140931bfdaf24bc47b735e83204950309678",
+      "committed": "2026-08-24T20"
     }
   ],
   "privateCommits": [

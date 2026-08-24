@@ -33,13 +33,27 @@
       <h2 class="rule-heading section-heading mb-4 text-base"><span>Manifest root</span></h2>
       <p class="hash-block mb-3">{{ data.root }}</p>
       <p class="text-subheading text-sm mb-4">{{ data.rootPreimage }}</p>
+      <p class="mb-4">
+        The root is a pure function of content, so it moves only when the work moves.
+        The manifest itself is <em>not</em> what gets stamped: it embeds per-artifact
+        commit metadata, which changes on every commit even when no artifact changed.
+        Stamping that would go stale for no substantive reason. The root is served
+        on its own at
+        <a href="/provenance-root.txt" class="text-accent link-underline">/provenance-root.txt</a>.
+      </p>
       <p class="mb-2">
         Anchor it with <a href="https://opentimestamps.org" target="_blank" rel="noopener noreferrer" class="text-accent link-underline">OpenTimestamps</a>,
         which writes the hash into the Bitcoin blockchain. Verification needs no trust in
         this site, its host, or GitHub &mdash; only the blockchain.
       </p>
-      <pre class="code-block"><code>ots stamp app/data/provenance.json
-ots verify app/data/provenance.json.ots</code></pre>
+      <pre class="code-block"><code>node scripts/build-provenance.mjs
+node scripts/stamp-provenance.mjs
+ots stamp public/stamps/&lt;date&gt;-&lt;root&gt;.txt</code></pre>
+      <p class="text-subheading text-sm mt-3">
+        Stamps accumulate rather than replace. A later change does not invalidate an
+        earlier stamp &mdash; it covers an earlier state, which is the whole point of a
+        timestamp.
+      </p>
     </section>
 
     <!-- Public artifacts -->

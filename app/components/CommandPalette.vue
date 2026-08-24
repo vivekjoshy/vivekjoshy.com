@@ -86,6 +86,7 @@ const ITEMS: Item[] = [
   { label: 'Dense Ordinal Replica Loss', group: 'Pages', to: '/ordinal-replica' },
   { label: 'ATHENA-TIR prompt ensembles', group: 'Pages', to: '/ensemble' },
   { label: 'Resume', group: 'Pages', to: '/resume' },
+  { label: 'OpenSkill MCP server', group: 'Pages', to: '/mcp' },
   { label: 'Provenance', group: 'Pages', to: '/provenance' },
   { label: 'OpenSkill documentation', group: 'OpenSkill', href: 'https://openskill.me' },
   { label: 'openskill.py source', group: 'OpenSkill', href: 'https://github.com/vivekjoshy/openskill.py' },

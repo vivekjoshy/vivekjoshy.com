@@ -9,7 +9,7 @@
  * shipping, and after any change that adds links.
  */
 const BASE = process.env.BASE_URL ?? 'http://localhost:3000'
-const ROUTES = ['/', '/openskill', '/arc', '/ordinal-replica', '/ensemble', '/resume', '/provenance']
+const ROUTES = ['/', '/openskill', '/arc', '/ordinal-replica', '/ensemble', '/mcp', '/resume', '/provenance']
 const SKIP_EXTERNAL = process.argv.includes('--internal-only')
 
 const internal = new Map()

@@ -74,6 +74,7 @@ const NAV = [
   { to: '/ordinal-replica', label: 'Replica Loss' },
   { to: '/ensemble', label: 'ATHENA' },
   { to: '/resume', label: 'Resume' },
+  { to: '/mcp', label: 'MCP' },
   { to: '/provenance', label: 'Provenance' }
 ]
 </script>

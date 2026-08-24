@@ -16,6 +16,8 @@
 
 - [Provenance](https://vivekjoshy.com/provenance): Content-addressed record of the work on this site — SHA-256 artifact hashes, commit-SHA commitments to private research repositories, and an OpenTimestamps-anchorable manifest root.
 
+- [OpenSkill MCP](https://vivekjoshy.com/mcp): The Weng-Lin rating models as agent-callable MCP tools over Streamable HTTP at https://vivekjoshy.com/api/mcp — rate_match, predict_win, compare_models, ordinal. No install required.
+
 ## OpenSkill
 
 - [Documentation](https://openskill.me): Library docs and API reference.
