@@ -135,6 +135,20 @@ import data from '~/data/provenance.json'
 
 definePageMeta({ layout: 'default' })
 
+useStructuredData([
+  {
+    '@type': 'WebPage',
+    name: 'Provenance',
+    description:
+      'Content-addressed record of the work on this site, with a manifest root anchored in the Bitcoin blockchain via OpenTimestamps.',
+    url: `${SITE}/provenance`,
+    isPartOf: { '@id': SITE_ID },
+    about: { '@id': PERSON_ID }
+  },
+  breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Provenance', path: '/provenance' }])
+])
+
+
 usePageSeo({
   title: 'Provenance',
   description: 'Content-addressed provenance for the work on this site: SHA-256 artifact hashes, private-repository commit commitments, and an OpenTimestamps-anchorable manifest root.'

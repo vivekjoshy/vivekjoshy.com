@@ -80,6 +80,27 @@ import evidence from '~/data/evidence.json'
 
 definePageMeta({ layout: 'default' })
 
+useStructuredData([
+  personEntity(),
+  {
+    '@type': 'WebSite',
+    '@id': SITE_ID,
+    url: SITE,
+    name: NAME,
+    publisher: { '@id': PERSON_ID },
+    inLanguage: 'en'
+  },
+  {
+    '@type': 'WebPage',
+    url: SITE,
+    name: NAME,
+    isPartOf: { '@id': SITE_ID },
+    about: { '@id': PERSON_ID },
+    primaryImageOfPage: `${SITE}/og-image.png`
+  }
+])
+
+
 const fmt = (n?: number | null) => (typeof n === 'number' ? n.toLocaleString('en-US') : '—')
 
 const stats = [

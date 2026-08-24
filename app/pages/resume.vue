@@ -263,6 +263,20 @@ definePageMeta({
   layout: "default"
 });
 
+useStructuredData([
+  personEntity(),
+  {
+    '@type': 'ProfilePage',
+    url: `${SITE}/resume`,
+    name: `${NAME} — Resume`,
+    isPartOf: { '@id': SITE_ID },
+    mainEntity: { '@id': PERSON_ID },
+    inLanguage: 'en'
+  },
+  breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Resume', path: '/resume' }])
+])
+
+
 usePageSeo({
   title: 'Resume',
   description: 'Resume of Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Maintainer of OpenSkill.'

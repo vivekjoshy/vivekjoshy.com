@@ -332,6 +332,21 @@ import {
 
 definePageMeta({ layout: 'default' })
 
+useStructuredData([
+  {
+    '@type': 'TechArticle',
+    headline: 'Dense Ordinal Replica Loss',
+    description:
+      'Two losses for ARC colour prediction compared: a circular colour topology, and the dense ordinal replica loss that replaced it.',
+    url: `${SITE}/ordinal-replica`,
+    author: { '@id': PERSON_ID },
+    isPartOf: { '@id': SITE_ID },
+    inLanguage: 'en'
+  },
+  breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Dense Ordinal Replica Loss', path: '/ordinal-replica' }])
+])
+
+
 // LaTeX lives here, not in template attributes: inside an HTML attribute a
 // backslash is literal, so "\\min" reaches KaTeX as a line break plus "min".
 const TEX = {

@@ -1,7 +1,7 @@
 {
   "$schema": "https://vivekjoshy.com/provenance.schema.json",
   "generated": "2026-08-24",
-  "root": "230d510f4c2aeb9936f9ae40e378d8e3188b70294d1ce0cd663b6a19cbb714e8",
+  "root": "30afcb382400ff96effee054ea267327ad14c5283bfc2f355b793edda95e86ab",
   "algorithm": "sha256",
   "rootPreimage": "sha256 over newline-joined, lexicographically sorted \"path:sha256\" and \"repo@commit\" entries",
   "artifacts": [
@@ -56,16 +56,16 @@
     {
       "label": "Dense Ordinal Replica Loss — page",
       "path": "app/pages/ordinal-replica.vue",
-      "sha256": "4b71a76b3e04b2462895cd8f35f076470c1d2dfa593073f6bfea14a2adfe873f",
-      "bytes": 19410,
+      "sha256": "542adf9324a784be5289d8fb6a1abff4c43cb11bcaf0454242e4fcfd020fc4a2",
+      "bytes": 19906,
       "commit": "9d52923fea00b47549b2686b507708f5d511837e",
       "committed": "2026-08-24T21:11:19+05:30"
     },
     {
       "label": "ARC-AGI — page",
       "path": "app/pages/arc.vue",
-      "sha256": "770550352627dc31601dea35c6261b43548c3762999d439bbd9a536c77a87d2b",
-      "bytes": 3661,
+      "sha256": "d632986c2aaee386062a9457fc466a29251fdca64dcb901d8da2db754eacbe76",
+      "bytes": 4122,
       "commit": "df14adb5d68e3eb2b822f04a9abd7154a3aac491",
       "committed": "2026-08-24T21:02:42+05:30"
     }
@@ -118,7 +118,7 @@
     {
       "file": "stamps/2026-08-24-230d510f4c2a.txt",
       "covers": "230d510f4c2aeb9936f9ae40e378d8e3188b70294d1ce0cd663b6a19cbb714e8",
-      "coversCurrentRoot": true,
+      "coversCurrentRoot": false,
       "stamped": true,
       "anchored": true,
       "status": "anchored in the Bitcoin blockchain"

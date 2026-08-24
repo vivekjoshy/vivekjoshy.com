@@ -190,6 +190,42 @@ const fmt = (n?: number | null) => (typeof n === 'number' ? n.toLocaleString('en
 
 definePageMeta({ layout: 'default' })
 
+useStructuredData([
+  {
+    '@type': 'SoftwareSourceCode',
+    name: 'OpenSkill',
+    description:
+      'Bayesian rating library for asymmetric multi-team, multiplayer matches, implementing the Weng-Lin models.',
+    codeRepository: 'https://github.com/vivekjoshy/openskill.py',
+    programmingLanguage: 'Python',
+    license: 'https://opensource.org/licenses/MIT',
+    author: { '@id': PERSON_ID },
+    url: 'https://openskill.me'
+  },
+  {
+    '@type': 'ScholarlyArticle',
+    '@id': 'https://doi.org/10.21105/joss.05901',
+    headline: 'OpenSkill: A faster asymmetric multi-team, multiplayer rating system',
+    author: { '@id': PERSON_ID },
+    datePublished: '2024-01-09',
+    isPartOf: { '@type': 'Periodical', name: 'Journal of Open Source Software' },
+    identifier: '10.21105/joss.05901',
+    sameAs: 'https://arxiv.org/abs/2401.05451'
+  },
+  {
+    '@type': 'WebApplication',
+    name: 'OpenSkill playground',
+    url: `${SITE}/openskill`,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Any',
+    browserRequirements: 'Requires JavaScript',
+    author: { '@id': PERSON_ID },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+  },
+  breadcrumbs([{ name: 'Home', path: '/' }, { name: 'OpenSkill playground', path: '/openskill' }])
+])
+
+
 const MODELS: { id: ModelName; label: string; blurb: string }[] = [
   {
     id: 'plackett_luce',

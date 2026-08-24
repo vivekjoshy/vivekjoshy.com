@@ -64,6 +64,21 @@ import { definePageMeta, useHead } from '#imports'
 
 definePageMeta({ layout: 'default' })
 
+useStructuredData([
+  {
+    '@type': 'WebAPI',
+    name: 'OpenSkill MCP server',
+    description:
+      'The Weng-Lin rating models as agent-callable Model Context Protocol tools over HTTP.',
+    url: `${SITE}/mcp`,
+    documentation: `${SITE}/mcp`,
+    provider: { '@id': PERSON_ID },
+    termsOfService: `${SITE}/mcp`
+  },
+  breadcrumbs([{ name: 'Home', path: '/' }, { name: 'OpenSkill MCP', path: '/mcp' }])
+])
+
+
 const PROTOCOL = '2025-06-18'
 
 const TOOLS = [

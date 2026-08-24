@@ -88,6 +88,21 @@ import data from '~/data/arc-architectures.json'
 
 definePageMeta({ layout: 'default' })
 
+useStructuredData([
+  {
+    '@type': 'TechArticle',
+    headline: 'ARC-AGI: eighteen solver architectures',
+    description:
+      'Solver architectures tried against ARC-AGI over two years, what each one fought, and the negative result they converged on.',
+    url: `${SITE}/arc`,
+    author: { '@id': PERSON_ID },
+    isPartOf: { '@id': SITE_ID },
+    inLanguage: 'en'
+  },
+  breadcrumbs([{ name: 'Home', path: '/' }, { name: 'ARC-AGI', path: '/arc' }])
+])
+
+
 // First-appearance order, not alphabetical, so each family reads roughly
 // chronologically.
 const families = computed(() => [...new Set(data.architectures.map((a) => a.family))])

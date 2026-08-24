@@ -16,33 +16,6 @@ export default defineNuxtPlugin(() => {
     return clean ? `${siteUrl}${clean}` : siteUrl
   };
 
-  // Base structured data
-  const baseStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Vivek Joshy",
-    "jobTitle": "Lead Scientist, Data & ML",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Vairified Corp"
-    },
-    "url": siteUrl,
-    "image": ogImage,
-    "sameAs": [
-      "https://github.com/vivekjoshy",
-      "https://openskill.me",
-      "https://arxiv.org/abs/2401.05451",
-      "https://doi.org/10.21105/joss.05901"
-    ],
-    "knowsAbout": [
-      "Formal Methods",
-      "Grammar Induction",
-      "Neuro-Symbolic Computation",
-      "Interpretable AI",
-      "Bayesian Inference",
-      "Rating Systems"
-    ]
-  };
 
   useHead({
     titleTemplate: (titleChunk) => {
@@ -71,12 +44,6 @@ export default defineNuxtPlugin(() => {
     link: [
       { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
       { rel: 'canonical', href: () => canonicalFor(route.path) }
-    ],
-    script: [
-      {
-        type: 'application/ld+json',
-        innerHTML: JSON.stringify(baseStructuredData)
-      }
     ]
   });
 });

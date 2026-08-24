@@ -186,6 +186,21 @@ import {
 
 definePageMeta({ layout: 'default' })
 
+useStructuredData([
+  {
+    '@type': 'TechArticle',
+    headline: 'ATHENA-TIR: prompt ensembling with tool-integrated reasoning',
+    description:
+      'Eight mathematical prompt styles, executed Python, and a Bayesian posterior over answers weighted by token-level confidence.',
+    url: `${SITE}/ensemble`,
+    author: { '@id': PERSON_ID },
+    isPartOf: { '@id': SITE_ID },
+    inLanguage: 'en'
+  },
+  breadcrumbs([{ name: 'Home', path: '/' }, { name: 'ATHENA-TIR', path: '/ensemble' }])
+])
+
+
 const TEX = {
   surprise: String.raw`-\log P(t)`,
   evidence: String.raw`E \;=\; \bigl(0.25\,\bar{c} \;+\; 0.35\,c_{\text{geo}} \;+\; 0.40\,c_{\text{crit}}\bigr)\,\bigl(1 - \mathrm{clip}(\sigma^2_{s}/10,\,0,\,0.3)\bigr)`,
