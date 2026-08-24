@@ -36,7 +36,7 @@
         <ul class="flex gap-5 list-none m-0 p-0">
           <li>
             <a href="mailto:contact@vivekjoshy.com" class="text-accent hover:opacity-75">
-              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+              <Icon name="envelope" />
               <span class="sr-only-text">Email Vivek Joshy</span>
             </a>
           </li>
@@ -47,7 +47,7 @@
               rel="noopener noreferrer"
               class="text-accent hover:opacity-75"
             >
-              <i class="fa-brands fa-github" aria-hidden="true"></i>
+              <Icon name="github" />
               <span class="sr-only-text">Vivek Joshy on GitHub (opens in a new tab)</span>
             </a>
           </li>
@@ -58,7 +58,7 @@
               rel="noopener noreferrer"
               class="text-accent hover:opacity-75"
             >
-              <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+              <Icon name="file" />
               <span class="sr-only-text">OpenSkill paper on arXiv (opens in a new tab)</span>
             </a>
           </li>

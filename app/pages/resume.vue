@@ -6,11 +6,11 @@
       </h1>
       <div class="flex flex-wrap justify-center gap-4 text-subheading text-lg">
         <a href="mailto:contact@vivekjoshy.com" class="flex items-center text-accent link-underline">
-          <i class="fa-regular fa-envelope mr-2" aria-hidden="true"></i> contact@vivekjoshy.com
+          <Icon name="envelope" class="mr-2" /> contact@vivekjoshy.com
         </a>
         <span class="hidden md:inline">&bull;</span>
         <a href="https://github.com/vivekjoshy" target="_blank" rel="noopener noreferrer" class="flex items-center text-accent link-underline">
-          <i class="fa-brands fa-github mr-2" aria-hidden="true"></i> github.com/vivekjoshy
+          <Icon name="github" class="mr-2" /> github.com/vivekjoshy
         </a>
       </div>
     </div>

@@ -42,6 +42,45 @@ export default defineNuxtConfig({
   // Nitro bundles the whole app into one function, so a vercel.json
   // `functions` pattern like "api/mcp" matches nothing and fails the build.
   // Duration is set through the preset instead.
+  routeRules: {
+    '/**': {
+      headers: {
+        // Clickjacking, MIME sniffing, referrer leakage.
+        'X-Frame-Options': 'DENY',
+        'X-Content-Type-Options': 'nosniff',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        // Two years, preload-eligible.
+        'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+        // Nothing here needs a camera, a microphone or a location.
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+        'Cross-Origin-Opener-Policy': 'same-origin',
+        // Self-hosted fonts and no third-party scripts, so this can be tight.
+        // 'unsafe-inline' remains for style-src because Vue emits inline styles
+        // for bound values, and for script-src because Nuxt inlines its
+        // hydration payload.
+        'Content-Security-Policy': [
+          "default-src 'self'",
+          "script-src 'self' 'unsafe-inline'",
+          "style-src 'self' 'unsafe-inline'",
+          "img-src 'self' data:",
+          "font-src 'self'",
+          "connect-src 'self'",
+          "frame-ancestors 'none'",
+          "base-uri 'self'",
+          "form-action 'self'",
+          "object-src 'none'"
+        ].join('; ')
+      }
+    },
+    // The MCP endpoint is meant to be called cross-origin by agents.
+    '/api/mcp': {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'X-Frame-Options': 'DENY'
+      }
+    }
+  },
+
   nitro: {
     vercel: {
       functions: {

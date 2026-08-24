@@ -7,7 +7,7 @@
       :aria-expanded="open"
       @click="show"
     >
-      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <Icon name="search" />
       <span class="hidden lg:inline">Search</span>
       <kbd class="hidden lg:inline palette-kbd">{{ hintKey }}K</kbd>
       <span class="sr-only-text">Open command palette</span>

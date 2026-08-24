@@ -6,7 +6,7 @@
     :title="`Switch to ${next} theme`"
     @click="cycle"
   >
-    <i class="fa-solid" :class="icon" aria-hidden="true"></i>
+    <Icon :name="icon" />
   </button>
 </template>
 
@@ -21,7 +21,7 @@ const ORDER: Mode[] = ['system', 'light', 'dark']
 const label = computed(() => mode.value)
 const next = computed(() => ORDER[(ORDER.indexOf(mode.value) + 1) % ORDER.length] as Mode)
 const icon = computed(() =>
-  mode.value === 'light' ? 'fa-sun' : mode.value === 'dark' ? 'fa-moon' : 'fa-circle-half-stroke'
+  mode.value === 'light' ? 'sun' : mode.value === 'dark' ? 'moon' : 'system'
 )
 
 function apply(m: Mode) {
