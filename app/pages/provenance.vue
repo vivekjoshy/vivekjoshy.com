@@ -46,7 +46,8 @@
         A stamp is submitted to calendar servers first and folded into a Bitcoin block
         shortly after; only once <code class="provenance">ots upgrade</code> has attached
         that block does verification stop depending on the calendars and rest on the
-        blockchain alone.
+        blockchain alone. The status below is read from each proof: it says anchored only
+        when the file actually carries a Bitcoin block attestation.
       </p>
       <pre class="code-block"><code>node scripts/build-provenance.mjs
 node scripts/stamp-provenance.mjs
@@ -67,7 +68,7 @@ ots verify  public/stamps/&lt;date&gt;-&lt;root&gt;.txt.ots</code></pre>
             covers <code class="provenance">{{ (st.covers || 'unknown').slice(0, 16) }}</code>
             <span v-if="st.coversCurrentRoot" class="text-accent"> &mdash; the current root</span>
             <span v-else> &mdash; a superseded root</span>
-            &middot; {{ st.status }}
+            &middot; <span :class="st.anchored ? 'text-accent' : ''">{{ st.status }}</span>
           </p>
         </div>
         <p v-if="!data.stamps.length" class="text-subheading text-sm">No stamps yet.</p>

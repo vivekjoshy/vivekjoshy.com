@@ -119,15 +119,17 @@
       "file": "stamps/2026-08-24-230d510f4c2a.txt",
       "covers": "230d510f4c2aeb9936f9ae40e378d8e3188b70294d1ce0cd663b6a19cbb714e8",
       "coversCurrentRoot": true,
+      "stamped": true,
       "anchored": true,
-      "status": "stamped; verify with ots, and upgrade once its Bitcoin block is mined"
+      "status": "anchored in the Bitcoin blockchain"
     },
     {
       "file": "stamps/2026-08-24-manifest-132723ca7777.json",
       "covers": "132723ca7777b8b24cd1de2c193d2ed5ff7d9c9a8123872d81b3ac54d224e318",
       "coversCurrentRoot": false,
-      "anchored": true,
-      "status": "stamped; verify with ots, and upgrade once its Bitcoin block is mined"
+      "stamped": true,
+      "anchored": false,
+      "status": "submitted to calendar servers, awaiting its Bitcoin block"
     }
   ],
   "verify": {

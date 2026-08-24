@@ -112,15 +112,26 @@ const stamps = existsSync('public/stamps')
                 return null
               }
             })()
-        const anchored = existsSync(`public/stamps/${file}.ots`)
+        // A .ots existing only means it was submitted to the calendars. Look
+        // for an actual BitcoinBlockHeaderAttestation before claiming an
+        // anchor — the earlier version of this page claimed one it did not
+        // have.
+        const otsPath = `public/stamps/${file}.ots`
+        const stamped = existsSync(otsPath)
+        const BITCOIN_ATTESTATION = '0588960d73d71901'
+        const anchored =
+          stamped && readFileSync(otsPath).toString('hex').includes(BITCOIN_ATTESTATION)
         return {
           file: `stamps/${file}`,
           covers: covered,
           coversCurrentRoot: covered === root,
+          stamped,
           anchored,
           status: anchored
-            ? 'stamped; verify with ots, and upgrade once its Bitcoin block is mined'
-            : 'snapshot only, not yet stamped'
+            ? 'anchored in the Bitcoin blockchain'
+            : stamped
+              ? 'submitted to calendar servers, awaiting its Bitcoin block'
+              : 'snapshot only, not yet stamped'
         }
       })
   : []
