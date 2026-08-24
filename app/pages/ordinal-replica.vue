@@ -426,14 +426,8 @@ const barH = (v: number, series: 'soft' | 'hard') => {
   return `${18 + 82 * ((v - lo) / (hi - lo))}%`
 }
 
-useHead({
+usePageSeo({
   title: 'Dense Ordinal Replica Loss',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Interactive walkthrough of the Dense Ordinal Replica Loss: circular colour topology, replica classes and inverse-distance spillover. Recorded effect on ARC grid accuracy: 1.36% to 64.66%.'
-    }
-  ]
+  description: 'Interactive walkthrough of the Dense Ordinal Replica Loss: circular colour topology, replica classes and inverse-distance spillover. Recorded effect on ARC grid accuracy: 1.36% to 64.66%.'
 })
 </script>

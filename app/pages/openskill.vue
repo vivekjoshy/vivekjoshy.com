@@ -43,7 +43,7 @@
       <p class="text-subheading text-sm">
         Ported independently to {{ evidence.ports.length }} languages:
         <template v-for="(p, i) in evidence.ports" :key="p.name"><a :href="p.url" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">{{ p.lang }}</a><span v-if="i < evidence.ports.length - 1">, </span></template>.
-        Figures fetched at build time, {{ evidence.fetchedAt }}.
+        Figures fetched when the site was last built.
       </p>
     </section>
 
@@ -288,13 +288,8 @@ function reset() {
   lastDelta.value = {}
 }
 
-useHead({
+usePageSeo({
   title: 'OpenSkill Playground',
-  meta: [
-    {
-      name: 'description',
-      content: `Interactive Weng-Lin rating playground: Plackett-Luce, Thurstone-Mosteller and Bradley-Terry, running the same maths as openskill.py. Default mu ${DEFAULTS.mu}, sigma 25/3.`
-    }
-  ]
+  description: `Interactive Weng-Lin rating playground: Plackett-Luce, Thurstone-Mosteller and Bradley-Terry, running the same maths as openskill.py. Default mu ${DEFAULTS.mu}, sigma 25/3.`
 })
 </script>

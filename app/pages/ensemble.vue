@@ -108,7 +108,7 @@
         <input v-model.number="beta" type="range" min="0.05" max="1" step="0.01"
                class="range range-accent range-sm w-full" />
         <p class="text-subheading text-xs mt-1 h-4 leading-4">
-          {{ beta <= 0.16 ? 'the notebook default — very sharp' : 'flatter: evidence differences matter less' }}
+          {{ Math.abs(beta - DEFAULTS.beta) < 0.005 ? 'the notebook default — very sharp' : beta < DEFAULTS.beta ? 'sharper than the default' : 'flatter: evidence differences matter less' }}
         </p>
       </label>
 
@@ -281,14 +281,8 @@ const rows = computed(() => {
     })
 })
 
-useHead({
+usePageSeo({
   title: 'ATHENA-TIR',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'ATHENA-TIR: prompt ensembling with tool-integrated reasoning for AIMO-3. Eight mathematical prompt styles, executed Python, token-level confidence, and a Bayesian posterior over answers.'
-    }
-  ]
+  description: 'ATHENA-TIR: prompt ensembling with tool-integrated reasoning for AIMO-3. Eight mathematical prompt styles, executed Python, token-level confidence, and a Bayesian posterior over answers.'
 })
 </script>

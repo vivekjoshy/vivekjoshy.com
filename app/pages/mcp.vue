@@ -27,7 +27,7 @@
   }
 }</code></pre>
       <p class="text-subheading text-sm">
-        Streamable HTTP, protocol {{ PROTOCOL }}. No authentication, no state, no rate
+        JSON-RPC over HTTP POST, MCP protocol {{ PROTOCOL }}. No authentication, no state, no rate
         limit &mdash; every call is a pure function of its arguments.
       </p>
     </section>
@@ -100,14 +100,8 @@ const TOOLS = [
   }
 ]
 
-useHead({
+usePageSeo({
   title: 'OpenSkill MCP',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'OpenSkill as an MCP server: rate matches, predict outcomes and compare the Weng-Lin models from any agent, over Streamable HTTP, with no install.'
-    }
-  ]
+  description: 'OpenSkill as an MCP server: rate matches, predict outcomes and compare the Weng-Lin models from any agent, over Streamable HTTP, with no install.'
 })
 </script>

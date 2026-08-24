@@ -98,8 +98,8 @@ const artifacts = [
     wide: true,
     body:
       'Bayesian rating library for asymmetric multi-team, multiplayer matches, implementing the Weng–Lin models. ' +
-      'Pinned as a dependency in Ray/RLlib and the rating layer in Neural MMO; in production at OpenAI, MultiVersus, ' +
-      'Hunt: Showdown, and BeyondAllReason.',
+      'Pinned as a dependency in Ray/RLlib and the rating layer in Neural MMO — both checkable in those ' +
+      'projects\' manifests. Reported in production at OpenAI, MultiVersus, Hunt: Showdown, and BeyondAllReason.',
     links: [
       { label: 'Interactive playground', to: '/openskill', primary: true },
       { label: 'Docs', href: 'https://openskill.me' },
@@ -121,20 +121,13 @@ const artifacts = [
       'Grammar induction, monograph in progress. The line of work runs back to OpenGrammar in 2022. Open quantities: ' +
       'k*, the interaction order, and the renormalizability conjectures.',
     links: [
-      { label: 'OpenGrammar', href: 'https://github.com/vivekjoshy/OpenGrammar' },
-      { label: 'Research notes', to: '/resume#research' }
+      { label: 'OpenGrammar', href: 'https://github.com/vivekjoshy/OpenGrammar' }
     ]
   }
 ]
 
-useHead({
+usePageSeo({
   title: 'Home',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Maintainer of OpenSkill.'
-    }
-  ]
+  description: 'Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Maintainer of OpenSkill.'
 })
 </script>

@@ -11,6 +11,7 @@
 const BASE = process.env.BASE_URL ?? 'http://localhost:3000'
 const ROUTES = ['/', '/openskill', '/arc', '/ordinal-replica', '/ensemble', '/mcp', '/resume', '/provenance']
 const SKIP_EXTERNAL = process.argv.includes('--internal-only')
+const PRODUCTION_ORIGIN = 'https://vivekjoshy.com'
 
 const internal = new Map()
 const external = new Map()
@@ -23,6 +24,10 @@ for (const r of ROUTES) {
   }
   const html = await res.text()
   for (const [, h] of html.matchAll(/href="([^"]+)"/g)) {
+    // Canonical and og:url point at the production origin. Checking them
+    // against the live site reports 404 for anything not yet deployed, which
+    // is noise rather than a broken link.
+    if (h.startsWith(PRODUCTION_ORIGIN)) continue
     if (h.startsWith('http')) {
       if (!external.has(h)) external.set(h, new Set())
       external.get(h).add(r)

@@ -42,18 +42,33 @@
         <a href="/provenance-root.txt" class="text-accent link-underline">/provenance-root.txt</a>.
       </p>
       <p class="mb-2">
-        Anchor it with <a href="https://opentimestamps.org" target="_blank" rel="noopener noreferrer" class="text-accent link-underline">OpenTimestamps</a>,
-        which writes the hash into the Bitcoin blockchain. Verification needs no trust in
-        this site, its host, or GitHub &mdash; only the blockchain.
+        Anchored with <a href="https://opentimestamps.org" target="_blank" rel="noopener noreferrer" class="text-accent link-underline">OpenTimestamps</a>.
+        A stamp is submitted to calendar servers first and folded into a Bitcoin block
+        shortly after; only once <code class="provenance">ots upgrade</code> has attached
+        that block does verification stop depending on the calendars and rest on the
+        blockchain alone.
       </p>
       <pre class="code-block"><code>node scripts/build-provenance.mjs
 node scripts/stamp-provenance.mjs
-ots stamp public/stamps/&lt;date&gt;-&lt;root&gt;.txt</code></pre>
+ots stamp   public/stamps/&lt;date&gt;-&lt;root&gt;.txt
+ots upgrade public/stamps/&lt;date&gt;-&lt;root&gt;.txt.ots   # once mined
+ots verify  public/stamps/&lt;date&gt;-&lt;root&gt;.txt.ots</code></pre>
       <p class="text-subheading text-sm mt-3">
         Stamps accumulate rather than replace. A later change does not invalidate an
         earlier stamp &mdash; it covers an earlier state, which is the whole point of a
         timestamp.
       </p>
+
+      <div class="mt-5">
+        <h3 class="section-heading text-sm mb-3">Stamps</h3>
+        <div v-for="st in STAMPS" :key="st.file" class="mb-3">
+          <p class="hash-block mb-1">{{ st.file }}</p>
+          <p class="text-subheading text-sm m-0">
+            covers root <code class="provenance">{{ st.root }}</code> &mdash;
+            <span :class="st.anchored ? 'text-accent' : ''">{{ st.status }}</span>
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Public artifacts -->
@@ -113,16 +128,21 @@ ots stamp public/stamps/&lt;date&gt;-&lt;root&gt;.txt</code></pre>
 import { definePageMeta, useHead } from '#imports'
 import data from '~/data/provenance.json'
 
+// Stated per stamp rather than as a blanket claim: a proof only stops relying
+// on the calendar servers once it has been upgraded with its Bitcoin block.
+const STAMPS = [
+  {
+    file: 'stamps/2026-08-24-manifest-132723ca7777.json.ots',
+    root: '132723ca7777',
+    anchored: false,
+    status: 'submitted to calendars, awaiting its Bitcoin block'
+  }
+]
+
 definePageMeta({ layout: 'default' })
 
-useHead({
+usePageSeo({
   title: 'Provenance',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Content-addressed provenance for the work on this site: SHA-256 artifact hashes, private-repository commit commitments, and an OpenTimestamps-anchorable manifest root.'
-    }
-  ]
+  description: 'Content-addressed provenance for the work on this site: SHA-256 artifact hashes, private-repository commit commitments, and an OpenTimestamps-anchorable manifest root.'
 })
 </script>

@@ -94,10 +94,8 @@ const families = computed(() => [...new Set(data.architectures.map((a) => a.fami
 const byFamily = (f: string) => data.architectures.filter((a) => a.family === f)
 const totalCommits = computed(() => data.architectures.reduce((sum, a) => sum + (a.uniqueCommits ?? 0), 0))
 
-useHead({
+usePageSeo({
   title: 'ARC-AGI',
-  meta: [
-    { name: 'description', content: `ARC-AGI solver architectures and where each one broke. ${data.finding}` }
-  ]
+  description: `ARC-AGI solver architectures and where each one broke. ${data.finding}`
 })
 </script>

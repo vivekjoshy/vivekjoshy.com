@@ -37,9 +37,9 @@
         </p>
         <p class="text-lg mb-2">
           Pinned as a dependency in Ray/RLlib and used as the rating layer in Neural MMO;
-          both are checkable in those projects' dependency manifests. Also in production
-          use at OpenAI, MultiVersus, Hunt: Showdown, and BeyondAllReason, and the rating
-          engine behind the Vairified platform.
+          both are checkable in those projects' dependency manifests. Reported in
+          production use at OpenAI, MultiVersus, Hunt: Showdown, and BeyondAllReason,
+          and the rating engine behind the Vairified platform.
         </p>
         <p class="text-lg">
           <a href="https://openskill.me" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">openskill.me</a>
@@ -60,7 +60,7 @@
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">Vairified Corp</h3>
-          <span>January 2025 -- Present</span>
+          <span>January 2025 &ndash; Present</span>
         </div>
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-3">
           <h4 class="subsubsection-heading text-lg">Lead Scientist, Data &amp; ML</h4>
@@ -78,7 +78,7 @@
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">Pickleball Players Network</h3>
-          <span>October 2023 -- December 2024</span>
+          <span>October 2023 &ndash; December 2024</span>
         </div>
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-3">
           <h4 class="subsubsection-heading text-lg">Data Scientist</h4>
@@ -93,10 +93,11 @@
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">Open Source Development</h3>
-          <span>2016 -- Present</span>
+          <span>2016 &ndash; Present</span>
         </div>
         <ul class="list-disc pl-5 space-y-2 text-lg">
-          <li>Maintain OpenSkill, a peer-reviewed rating library with production deployments across games and sports.</li>
+          <li>Maintain OpenSkill, a peer-reviewed Bayesian rating library with production deployments across games and sports.</li>
+          <li>Contributed role icon support to <a href="https://github.com/hikari-py/hikari/pull/838" target="_blank" rel="noopener noreferrer" class="text-accent link-underline">hikari</a>, a Python Discord API library (merged, 2021).</li>
         </ul>
       </div>
     </section>
@@ -251,7 +252,7 @@ import evidence from '~/data/evidence.json';
 const portLanguages = [...new Set(evidence.ports.map((p) => p.lang))];
 const portList = computed(() => {
   const l = portLanguages;
-  return l.slice(0, -1).join(', ') + ' and ' + l[l.length - 1];
+  return l.slice(0, -1).join(', ') + ', and ' + l[l.length - 1];
 });
 const citations = computed(() => evidence.paper?.citations ?? '\u2014');
 const downloads = computed(() =>
@@ -262,10 +263,8 @@ definePageMeta({
   layout: "default"
 });
 
-useHead({
+usePageSeo({
   title: 'Resume',
-  meta: [
-    { name: 'description', content: 'Resume of Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Maintainer of OpenSkill.' }
-  ]
+  description: 'Resume of Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Maintainer of OpenSkill.'
 });
 </script>

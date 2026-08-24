@@ -28,7 +28,7 @@ import { execSync } from 'node:child_process'
 const sha256 = (buf) => createHash('sha256').update(buf).digest('hex')
 
 const PUBLIC_ARTIFACTS = [
-  ['Dense Ordinal Replica Loss — browser implementation', 'app/utils/replica-loss.ts'],
+  ['Replica losses (circular and dense ordinal) — browser implementation', 'app/utils/replica-loss.ts'],
   ['Weng-Lin models — browser implementation', 'app/utils/openskill.ts'],
   ['ARC solver architecture survey', 'app/data/arc-architectures.json'],
   ['Replica loss reference vectors', 'scripts/replica-reference.json'],
@@ -89,7 +89,7 @@ const manifest = {
   verify: {
     artifact: 'shasum -a 256 <path>  # compare with the sha256 field',
     root: 'node scripts/build-provenance.mjs  # recomputes; root must match',
-    timestamp: 'ots verify app/data/provenance.json.ots  # anchors the root in Bitcoin',
+    timestamp: 'ots verify public/stamps/<date>-<root>.txt.ots  # a Bitcoin anchor once upgraded',
     privateCommit: 'git cat-file -t <ref> inside the repository once it is public'
   }
 }

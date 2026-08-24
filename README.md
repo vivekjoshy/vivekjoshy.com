@@ -1,6 +1,6 @@
 # VivekJoshy.com
 
-Personal website for Vivek Joshy built with Nuxt 3, Tailwind CSS, and DaisyUI.
+Personal website for Vivek Joshy built with Nuxt 4, Tailwind CSS 4, and DaisyUI 5.
 
 ## Features
 
@@ -18,13 +18,23 @@ Personal website for Vivek Joshy built with Nuxt 3, Tailwind CSS, and DaisyUI.
 
 ## Build gates
 
-`prebuild` runs three checks; any failure stops the build.
+`prebuild` runs these in order; any failure stops the build.
 
 | Script | Checks |
 | --- | --- |
-| `scripts/verify-openskill.mjs` | The browser port of the Weng-Lin models matches `openskill.py` to 1e-6 across 78 assertions. Regenerate the fixture with `scripts/gen-openskill-reference.py`. |
+| `scripts/verify-openskill.mjs` | The browser port of the Weng-Lin models matches `openskill.py` to 1e-6 across 78 assertions. Fixture from `scripts/gen-openskill-reference.py`, which imports the real package. |
+| `scripts/verify-replica-loss.mjs` | The replica-loss port matches a Python transcription of `Opinion@nca opinion/loss.py` across 5,047 assertions. |
+| `scripts/verify-athena.mjs` | The ATHENA-TIR port matches a Python transcription of `athena.ipynb` across 44 assertions. |
 | `scripts/check-contrast.mjs` | Every palette pair in both themes meets WCAG 2.2 AA. |
+| `scripts/build-provenance.mjs` | Regenerates `app/data/provenance.json` and `public/provenance-root.txt`. |
 | `scripts/fetch-evidence.mjs` | Refreshes `app/data/evidence.json` from PyPI, npm, GitHub and Semantic Scholar, falling back to the committed copy if a source is down. |
+
+Run separately, because they need a live server or the network:
+
+| Script | Checks |
+| --- | --- |
+| `scripts/check-links.mjs` | Crawls every route and resolves every internal and external link. |
+| `scripts/stamp-provenance.mjs` | Snapshots the current root for OpenTimestamps anchoring. |
 
 ## Resume
 

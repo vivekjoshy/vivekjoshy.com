@@ -1,25 +1,30 @@
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
+  <div class="min-h-screen flex flex-col items-center justify-center p-6 text-center"
+       style="background-color: var(--color-page)">
     <div class="max-w-md">
-      <h1 class="text-9xl font-bold text-primary">404</h1>
-      <h2 class="text-3xl font-semibold mb-4">Page Not Found</h2>
-      <p class="mb-8 text-base-content/70">Sorry, the page you are looking for doesn't exist or has been moved.</p>
-      <NuxtLink to="/" class="btn btn-primary">
-        Return Home
-      </NuxtLink>
+      <p class="text-7xl sm:text-8xl font-black text-accent tick mb-2">{{ status }}</p>
+      <h1 class="text-2xl font-semibold mb-4">{{ heading }}</h1>
+      <p class="mb-8 text-subheading">{{ detail }}</p>
+      <NuxtLink to="/" class="btn btn-accent text-white" @click="clear">Return home</NuxtLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed } from 'vue'
+// @ts-ignore - Nuxt auto-imports
+import { clearError } from '#imports'
 
-defineProps({
-  error: Object
-})
+const props = defineProps<{ error?: { statusCode?: number; statusMessage?: string } }>()
 
-// Handle error is automatically called when component is created
-onMounted(() => {
-  // You could add any error tracking here
-})
-</script> 
+// The scaffold hardcoded 404, so a 500 announced itself as "Page Not Found".
+const status = computed(() => props.error?.statusCode ?? 404)
+const heading = computed(() => (status.value === 404 ? 'Page not found' : 'Something went wrong'))
+const detail = computed(() =>
+  status.value === 404
+    ? "That page doesn't exist, or it moved."
+    : props.error?.statusMessage || 'An unexpected error occurred.'
+)
+
+const clear = () => clearError({ redirect: '/' })
+</script>

@@ -1,7 +1,7 @@
 {
   "finding": "The binding constraint is object-level relational structure that is not recoverable from pixel context \u2014 not compute.",
   "span": "Two years, 18 solver architectures across 9 families.",
-  "note": "Each entry is a real branch in the Opinion, OpinionAI or TyleDSL repositories. Those repositories are private, so branch names are given as provenance rather than links. 'What it fought' is summarised from the commits unique to that branch \u2014 it is what the history shows each approach wrestling with, not a stated conclusion. Where it finally broke, and the benchmark numbers, are still to be written up: no branch records a solve rate.",
+  "note": "Each entry is a real branch in the Opinion, OpinionAI or TyleDSL repositories. Most of these repositories are private, so branch names are given as provenance rather than links. 'What it fought' is summarised from the commits unique to that branch \u2014 it is what the history shows each approach wrestling with, not a stated conclusion. Where it finally broke, and the benchmark numbers, are still to be written up: no branch records a solve rate.",
   "architectures": [
     {
       "name": "Latent-process CNN",
