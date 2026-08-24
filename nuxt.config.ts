@@ -3,6 +3,13 @@ import tailwindcss from "@tailwindcss/vite";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   css: ["katex/dist/katex.min.css", "~/assets/app.css"],
+  // Section comments in templates are for whoever edits the file, not for
+  // every visitor to download on every page.
+  vue: {
+    compilerOptions: {
+      comments: false
+    }
+  },
   vite: {
     plugins: [tailwindcss()],
   },

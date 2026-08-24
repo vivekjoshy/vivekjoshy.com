@@ -9,7 +9,7 @@
           <i class="fa-regular fa-envelope mr-2"></i> contact@vivekjoshy.com
         </a>
         <span class="hidden md:inline">&bull;</span>
-        <a href="https://www.github.com/vivekjoshy" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-accent">
+        <a href="https://github.com/vivekjoshy" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-accent">
           <i class="fa-brands fa-github mr-2"></i> github.com/vivekjoshy
         </a>
       </div>

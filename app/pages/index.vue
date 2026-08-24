@@ -46,16 +46,26 @@
           </div>
           <p class="mb-4 flex-1">{{ a.body }}</p>
           <div class="flex flex-wrap gap-x-4 gap-y-1">
-            <component
-              :is="l.to ? 'NuxtLink' : 'a'"
-              v-for="l in a.links"
-              :key="l.label"
-              v-bind="l.to ? { to: l.to } : { href: l.href, target: '_blank', rel: 'noopener noreferrer' }"
-              class="text-accent link-underline"
-              :class="l.primary ? 'font-semibold' : ''"
-            >
-              {{ l.label }}
-            </component>
+            <template v-for="l in a.links" :key="l.label">
+              <NuxtLink
+                v-if="l.to"
+                :to="l.to"
+                class="text-accent link-underline"
+                :class="l.primary ? 'font-semibold' : ''"
+              >
+                {{ l.label }}
+              </NuxtLink>
+              <a
+                v-else
+                :href="l.href"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-accent link-underline"
+                :class="l.primary ? 'font-semibold' : ''"
+              >
+                {{ l.label }}
+              </a>
+            </template>
           </div>
         </article>
       </div>
@@ -78,6 +88,10 @@ const stats = [
   { label: 'independent ports', value: String(evidence.ports.length) }
 ]
 
+// Links are branched explicitly rather than via <component :is="'NuxtLink'">.
+// A string component name does not resolve in <script setup> without
+// resolveComponent, so that form emitted a literal <NuxtLink> element into the
+// HTML — an unknown tag the browser will not navigate.
 const artifacts = [
   {
     title: 'OpenSkill',
