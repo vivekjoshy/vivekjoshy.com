@@ -1,7 +1,7 @@
 export default defineNuxtPlugin(() => {
   const siteUrl = 'https://vivekjoshy.com';
   const siteName = 'Vivek Joshy';
-  const siteDescription = 'Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Maintainer of OpenSkill.';
+  const siteDescription = 'Maintainer of OpenSkill, a Bayesian multiplayer rating library published in JOSS. Lead Scientist, Data & ML at Vairified Corp, working on formal methods, grammar induction, neuro-symbolic computation and interpretable AI.';
   // Raster, not SVG: X, LinkedIn, Facebook, Slack and Discord all reject SVG for og:image.
   const ogImage = `${siteUrl}/og-image.png`;
 
@@ -20,7 +20,8 @@ export default defineNuxtPlugin(() => {
     "sameAs": [
       "https://github.com/vivekjoshy",
       "https://openskill.me",
-      "https://arxiv.org/abs/2401.05451"
+      "https://arxiv.org/abs/2401.05451",
+      "https://doi.org/10.21105/joss.05901"
     ],
     "knowsAbout": [
       "Formal Methods",

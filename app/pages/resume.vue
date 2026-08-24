@@ -1,5 +1,5 @@
 <template>
-  <div class="py-8 max-w-4xl mx-auto bg-white">
+  <div class="py-8 max-w-4xl mx-auto">
     <div class="text-center mb-12">
       <h1 class="text-5xl font-bold mb-4">
         <span class="font-thin">VIVEK</span><span class="font-black">JOSHY</span>
@@ -30,15 +30,16 @@
           the Journal of Open Source Software; preprint on arXiv since January 2024.
         </p>
         <p class="text-lg mb-2">
-          Roughly 112,000 downloads a month. Independently ported to eight languages,
-          including TypeScript, Go, Kotlin, Elixir, Java and C#. Cited 11 times,
-          including in IEEE Transactions on Games, COLING, and the Journal of the
-          Royal Statistical Society.
+          Independently ported to {{ portLanguages.length }} languages by other people &mdash;
+          {{ portList }}. Cited {{ citations }} times, including in IEEE Transactions on
+          Games, COLING, and the Journal of the Royal Statistical Society.
+          {{ downloads }} PyPI downloads a month.
         </p>
         <p class="text-lg mb-2">
-          Pinned as a dependency in Ray/RLlib and used as the rating layer in
-          Neural MMO. In production use at OpenAI, MultiVersus, Hunt: Showdown, and
-          BeyondAllReason &mdash; and the rating engine behind the Vairified platform.
+          Pinned as a dependency in Ray/RLlib and used as the rating layer in Neural MMO;
+          both are checkable in those projects' dependency manifests. Also in production
+          use at OpenAI, MultiVersus, Hunt: Showdown, and BeyondAllReason, and the rating
+          engine behind the Vairified platform.
         </p>
         <p class="text-lg">
           <a href="https://openskill.me" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">openskill.me</a>
@@ -66,11 +67,11 @@
           <span class="italic">Naples, Florida</span>
         </div>
         <ul class="list-disc pl-5 space-y-2 text-lg">
-          <li>Sole data scientist; one of three in technical leadership.</li>
-          <li>Own the backend ML platform &mdash; a 140k+ LOC NestJS API, with the Partner API shipped to production behind OAuth and scoped API keys, plus official Python and TypeScript SDKs.</li>
-          <li>Built VAIR, the production rating engine: Thurstone&ndash;Mosteller via OpenSkill, score-margin weighting, adaptive uncertainty, and full test coverage.</li>
-          <li>Rebuilt Sentinel, which AST-extracts roughly 3,000 business rules across three repositories and presents them in plain English for stakeholder review.</li>
-          <li>Led the legacy PHP migration: 184 files and 39 screens mapped across a 119-action cutover.</li>
+          <li>Sole data scientist.</li>
+          <li>Own the backend ML platform: shipped the Partner API to production behind OAuth and scoped API keys, with maintained Python and TypeScript SDKs.</li>
+          <li>Built VAIR, the production rating engine: Thurstone&ndash;Mosteller via OpenSkill, with score-margin weighting and adaptive uncertainty.</li>
+          <li>Built Sentinel: extracts implicit business logic from three codebases by AST analysis and renders it in natural language for non-engineer review &mdash; the interpretability problem in miniature, on a real system.</li>
+          <li>Led the legacy PHP migration off a 184-file codebase.</li>
           <li>Delivered multisport sport-filtering end to end, from schema through cross-sport search to per-sport rating buckets.</li>
         </ul>
       </div>
@@ -97,7 +98,6 @@
         </div>
         <ul class="list-disc pl-5 space-y-2 text-lg">
           <li>Maintain OpenSkill, a peer-reviewed rating library with production deployments across games and sports.</li>
-          <li>Build and operate supporting infrastructure: CI/CD pipelines, packaging, and documentation sites.</li>
         </ul>
       </div>
     </section>
@@ -198,10 +198,18 @@
 
       <div class="mb-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+          <h3 class="subsection-heading text-lg">Theoretical Neuroscience Community</h3>
+          <span>Present</span>
+        </div>
+        <p class="text-lg">Owner and administrator of the largest theoretical neuroscience server on Discord.</p>
+      </div>
+
+      <div class="mb-8">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
           <h3 class="subsection-heading text-lg">Machine Learning Street Talk</h3>
           <span>Present</span>
         </div>
-        <p class="text-lg">Expert contributor on the MLST community server.</p>
+        <p class="text-lg">Expert role on the MLST community server.</p>
       </div>
 
       <div class="mb-8">
@@ -238,6 +246,18 @@
 <script setup lang="ts">
 // @ts-ignore - Nuxt auto-imports
 import { definePageMeta, useHead } from '#imports';
+import { computed } from 'vue';
+import evidence from '~/data/evidence.json';
+
+const portLanguages = [...new Set(evidence.ports.map((p) => p.lang))];
+const portList = computed(() => {
+  const l = portLanguages;
+  return l.slice(0, -1).join(', ') + ' and ' + l[l.length - 1];
+});
+const citations = computed(() => evidence.paper?.citations ?? '\u2014');
+const downloads = computed(() =>
+  evidence.pypi?.lastMonth ? `~${Math.round(evidence.pypi.lastMonth / 1000)}k` : '\u2014'
+);
 
 definePageMeta({
   layout: "default"

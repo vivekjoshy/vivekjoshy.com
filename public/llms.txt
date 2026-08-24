@@ -1,0 +1,25 @@
+# Vivek Joshy
+
+> Lead Scientist, Data & ML at Vairified Corp. Work centres on formal methods,
+> grammar induction, neuro-symbolic computation, and interpretable AI.
+> Maintainer of OpenSkill, a Bayesian multiplayer rating library implementing
+> the Weng-Lin models, published in the Journal of Open Source Software.
+
+## Pages
+
+- [Home](https://vivekjoshy.com/): Positioning, live adoption figures, and links to each artifact.
+- [OpenSkill playground](https://vivekjoshy.com/openskill): Interactive implementation of the Weng-Lin rating models (Plackett-Luce, Thurstone-Mosteller, Bradley-Terry), running the same maths as openskill.py and verified against it on every build.
+- [ARC-AGI](https://vivekjoshy.com/arc): Solver architectures tried over two years and where each one broke. The finding: the binding constraint is object-level relational structure not recoverable from pixel context, not compute.
+- [Resume](https://vivekjoshy.com/resume): Full professional and research history.
+
+## OpenSkill
+
+- [Documentation](https://openskill.me): Library docs and API reference.
+- [Source](https://github.com/vivekjoshy/openskill.py): Python implementation, MIT licensed.
+- [Paper (JOSS)](https://doi.org/10.21105/joss.05901): OpenSkill: A faster asymmetric multi-team, multiplayer rating system. Journal of Open Source Software, 9(93), 5901, 2024.
+- [Preprint (arXiv)](https://arxiv.org/abs/2401.05451): arXiv:2401.05451, January 2024.
+
+## Optional
+
+- [Resume PDF](https://vivekjoshy.com/assets/resume.pdf): Two-page PDF, generated from LaTeX.
+- [GitHub](https://github.com/vivekjoshy): Public repositories. Formerly the username daegontaven.

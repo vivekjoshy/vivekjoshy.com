@@ -1,25 +1,27 @@
 {
-  "finding": "The binding constraint is object-level relational structure that is not recoverable from pixel context — not compute.",
+  "finding": "The binding constraint is object-level relational structure that is not recoverable from pixel context \u2014 not compute.",
   "span": "Two years, roughly twelve solver architectures.",
-  "note": "Seeded from the repositories that still carry a description. The failure column is the substance of this page and is filled in per architecture as each is written up.",
+  "note": "Seeded from the repositories that carry a description. Entries marked private are not publicly viewable. The failure column is the substance of this page and is filled in per architecture as each is written up.",
   "architectures": [
     {
       "name": "OpinionAI",
       "year": "2024",
       "family": "End-to-end neural",
-      "repo": "https://github.com/vivekjoshy/OpinionAI",
+      "repo": null,
       "sourced": "repo",
       "approach": "19M-parameter encoder over pixel-level embeddings with zero information loss, selecting from 64 primitive operations, flash cross-attention between demonstrations and test input, and coupled shape/content heads trained on a dense ordinal plus geometric-coupling loss.",
-      "failure": null
+      "failure": null,
+      "visibility": "private"
     },
     {
       "name": "Opinion",
       "year": "2025",
       "family": "End-to-end neural",
-      "repo": "https://github.com/vivekjoshy/Opinion",
+      "repo": null,
       "sourced": "repo",
       "approach": "ARC Prize 2025 entry. Successor to OpinionAI, retaining the pixel-embedding and primitive-selection pipeline under PyTorch Lightning.",
-      "failure": null
+      "failure": null,
+      "visibility": "private"
     },
     {
       "name": "TyleDSL",
@@ -28,7 +30,8 @@
       "repo": "https://github.com/vivekjoshy/TyleDSL",
       "sourced": "repo",
       "approach": "A typed reformulation of Michael Hodel's ARC-DSL, using the type system to prune the search space of candidate programs.",
-      "failure": null
+      "failure": null,
+      "visibility": "public"
     }
   ]
 }

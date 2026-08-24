@@ -1,5 +1,5 @@
 <template>
-  <div class="py-8 max-w-4xl mx-auto bg-white">
+  <div class="py-8 max-w-4xl mx-auto">
     <div class="mb-10">
       <h1 class="text-4xl font-bold mb-3">
         <span class="font-thin">ARC-</span><span class="font-black">AGI</span>
@@ -19,12 +19,13 @@
       <div
         v-for="a in data.architectures"
         :key="a.name"
-        class="mb-8 pb-8 border-b border-gray-100 last:border-0"
+        class="mb-8 pb-8 border-b hairline last:border-0"
       >
         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1">
           <h3 class="subsection-heading text-lg">
-            <a v-if="a.repo" :href="a.repo" target="_blank" rel="noopener noreferrer" class="hover:text-accent">{{ a.name }}</a>
+            <a v-if="a.repo" :href="a.repo" target="_blank" rel="noopener noreferrer" class="link-underline hover:text-accent">{{ a.name }}</a>
             <span v-else>{{ a.name }}</span>
+            <span v-if="a.visibility === 'private'" class="text-subheading text-sm font-normal ml-2">private</span>
           </h3>
           <span class="text-subheading">{{ a.family }} &middot; {{ a.year }}</span>
         </div>

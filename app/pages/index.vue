@@ -1,80 +1,126 @@
 <template>
-  <div class="py-12 bg-white">
-    <div class="hero min-h-[70vh] bg-white">
-      <div class="hero-content text-center">
-        <div class="max-w-2xl">
-          <h1 class="text-5xl font-bold mb-8">
-            <span class="font-thin">VIVEK</span><span class="font-black">JOSHY</span>
-          </h1>
-          <p class="text-xl mb-8">Lead Scientist, Data &amp; ML at Vairified Corp</p>
-          <p class="mb-8 text-lg">
-            I work on formal methods, grammar induction, and neuro-symbolic
-            computation &mdash; systems that show their reasoning instead of
-            asserting it. I wrote OpenSkill, the Bayesian rating library, and it
-            runs in production under the platform I build at Vairified.
-          </p>
-          <div class="flex justify-center">
-            <NuxtLink to="/resume" class="btn btn-accent text-white">View Resume</NuxtLink>
-          </div>
-        </div>
+  <div>
+    <!-- Hero: asymmetric, left-anchored, oversized -->
+    <section class="py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+      <div class="md:col-span-8">
+        <h1 class="display font-bold mb-6 rise">
+          <span class="font-thin">VIVEK</span><br class="hidden sm:block" /><span class="font-black">JOSHY</span>
+        </h1>
+        <p class="lede mb-4 rise rise-1">
+          Formal methods, grammar induction, and neuro-symbolic computation
+          &mdash; systems that show their reasoning instead of asserting it.
+        </p>
+        <p class="text-subheading rise rise-2">
+          Lead Scientist, Data &amp; ML at Vairified Corp. I maintain
+          <NuxtLink to="/openskill" class="text-accent link-underline">OpenSkill</NuxtLink>,
+          and it runs in production under the platform I build.
+        </p>
       </div>
-    </div>
 
-    <div class="container mx-auto mt-16">
-      <h2 class="section-heading mb-8 text-center">Things I've Built</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-
-        <div class="card bg-white border border-gray-100 shadow-md">
-          <div class="card-body">
-            <h3 class="card-title subsection-heading">OpenSkill</h3>
-            <p>
-              Bayesian rating library for asymmetric multi-team, multiplayer
-              matches, implementing the Weng&ndash;Lin models. Roughly 112,000
-              downloads a month, independently ported to eight languages, and
-              cited in IEEE Transactions on Games and COLING. Pinned as a
-              dependency in Ray/RLlib and the rating layer in Neural MMO; in
-              production at OpenAI, MultiVersus, Hunt: Showdown, and BeyondAllReason.
-            </p>
-            <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-              <NuxtLink to="/openskill" class="text-accent hover:underline font-semibold">Playground</NuxtLink>
-              <a href="https://openskill.me" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Docs</a>
-              <a href="https://github.com/vivekjoshy/openskill.py" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Source</a>
-              <a href="https://doi.org/10.21105/joss.05901" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Paper</a>
-              <a href="https://arxiv.org/abs/2401.05451" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">arXiv</a>
-            </div>
+      <div class="md:col-span-4 rise rise-3">
+        <dl class="grid grid-cols-2 md:grid-cols-1 gap-x-6 gap-y-5 m-0">
+          <div v-for="stat in stats" :key="stat.label">
+            <dt class="text-subheading text-sm order-2">{{ stat.label }}</dt>
+            <dd class="text-3xl md:text-4xl font-black text-accent tick m-0">{{ stat.value }}</dd>
           </div>
-        </div>
-
-        <div class="card bg-white border border-gray-100 shadow-md">
-          <div class="card-body">
-            <h3 class="card-title subsection-heading">ARC-AGI</h3>
-            <p>
-              Two years across roughly twelve solver architectures, converging on
-              a single negative result about where the difficulty actually lives.
-            </p>
-            <div class="mt-3">
-              <NuxtLink to="/arc" class="text-accent hover:underline font-semibold">The finding</NuxtLink>
-            </div>
-          </div>
-        </div>
-
+        </dl>
       </div>
-    </div>
+    </section>
+
+    <!-- Artifacts -->
+    <section class="py-10">
+      <h2 class="rule-heading section-heading mb-8 text-base">
+        <span>Things I've built</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article
+          v-for="(a, i) in artifacts"
+          :key="a.title"
+          class="surface-card lift rounded p-6 flex flex-col"
+          :class="a.wide ? 'md:col-span-2' : ''"
+        >
+          <div class="flex items-baseline justify-between mb-2">
+            <h3 class="subsection-heading text-xl">{{ a.title }}</h3>
+            <span class="text-subheading text-sm tick">{{ String(i + 1).padStart(2, '0') }}</span>
+          </div>
+          <p class="mb-4 flex-1">{{ a.body }}</p>
+          <div class="flex flex-wrap gap-x-4 gap-y-1">
+            <component
+              :is="l.to ? 'NuxtLink' : 'a'"
+              v-for="l in a.links"
+              :key="l.label"
+              v-bind="l.to ? { to: l.to } : { href: l.href, target: '_blank', rel: 'noopener noreferrer' }"
+              class="text-accent link-underline"
+              :class="l.primary ? 'font-semibold' : ''"
+            >
+              {{ l.label }}
+            </component>
+          </div>
+        </article>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
 // @ts-ignore - Nuxt auto-imports
-import { definePageMeta, useHead } from '#imports';
+import { definePageMeta, useHead } from '#imports'
+import evidence from '~/data/evidence.json'
 
-definePageMeta({
-  layout: "default"
-});
+definePageMeta({ layout: 'default' })
+
+const fmt = (n?: number | null) => (typeof n === 'number' ? n.toLocaleString('en-US') : '—')
+
+const stats = [
+  { label: 'PyPI downloads / month', value: fmt(evidence.pypi?.lastMonth) },
+  { label: 'academic citations', value: fmt(evidence.paper?.citations) },
+  { label: 'independent ports', value: String(evidence.ports.length) }
+]
+
+const artifacts = [
+  {
+    title: 'OpenSkill',
+    wide: true,
+    body:
+      'Bayesian rating library for asymmetric multi-team, multiplayer matches, implementing the Weng–Lin models. ' +
+      'Pinned as a dependency in Ray/RLlib and the rating layer in Neural MMO; in production at OpenAI, MultiVersus, ' +
+      'Hunt: Showdown, and BeyondAllReason.',
+    links: [
+      { label: 'Interactive playground', to: '/openskill', primary: true },
+      { label: 'Docs', href: 'https://openskill.me' },
+      { label: 'Source', href: 'https://github.com/vivekjoshy/openskill.py' },
+      { label: 'Paper', href: 'https://doi.org/10.21105/joss.05901' },
+      { label: 'arXiv', href: 'https://arxiv.org/abs/2401.05451' }
+    ]
+  },
+  {
+    title: 'ARC-AGI',
+    body:
+      'Two years across roughly twelve solver architectures, converging on one negative result about where the ' +
+      'difficulty in ARC actually lives.',
+    links: [{ label: 'The finding', to: '/arc', primary: true }]
+  },
+  {
+    title: 'Boundary kernel theory',
+    body:
+      'Grammar induction, monograph in progress. The line of work runs back to OpenGrammar in 2022. Open quantities: ' +
+      'k*, the interaction order, and the renormalizability conjectures.',
+    links: [
+      { label: 'OpenGrammar', href: 'https://github.com/vivekjoshy/OpenGrammar' },
+      { label: 'Research notes', to: '/resume#research' }
+    ]
+  }
+]
 
 useHead({
   title: 'Home',
   meta: [
-    { name: 'description', content: 'Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Maintainer of OpenSkill.' }
+    {
+      name: 'description',
+      content:
+        'Vivek Joshy - Lead Scientist, Data & ML at Vairified Corp. Formal methods, grammar induction, neuro-symbolic computation, and interpretable AI. Maintainer of OpenSkill.'
+    }
   ]
-});
+})
 </script>

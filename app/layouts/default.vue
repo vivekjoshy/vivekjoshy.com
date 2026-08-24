@@ -1,42 +1,75 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-white">
-    <header class="navbar bg-white border-b border-gray-100 shadow-sm">
-      <div class="container mx-auto">
-        <div class="flex-1">
-          <NuxtLink to="/" class="text-2xl font-extrabold">
-            <span class="font-thin">VIVEK</span><span class="font-extrabold">JOSHY</span>
-          </NuxtLink>
-        </div>
-        <div class="flex-none">
-          <ul class="menu menu-horizontal px-1">
-            <li><NuxtLink to="/" class="hover:text-accent">Home</NuxtLink></li>
-            <li><NuxtLink to="/openskill" class="hover:text-accent">Playground</NuxtLink></li>
-            <li><NuxtLink to="/resume" class="hover:text-accent">Resume</NuxtLink></li>
+  <div class="min-h-screen flex flex-col" style="background-color: var(--color-page)">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container mx-auto px-4 flex items-center gap-6 h-16">
+        <!-- Monogram, not the full wordmark: the pages carry their own titles. -->
+        <NuxtLink to="/" class="monogram" aria-label="Vivek Joshy, home">
+          <span class="font-thin">V</span><span class="font-black">J</span>
+        </NuxtLink>
+
+        <nav class="flex-1" aria-label="Main">
+          <ul class="flex items-center gap-1 md:gap-2 list-none m-0 p-0 text-sm md:text-base">
+            <li v-for="item in NAV" :key="item.to">
+              <NuxtLink :to="item.to" class="nav-link">{{ item.label }}</NuxtLink>
+            </li>
           </ul>
-        </div>
+        </nav>
+
+        <ThemeToggle />
       </div>
     </header>
-    
-    <main class="flex-grow container mx-auto p-4 bg-white">
+
+    <main id="main" class="flex-grow container mx-auto px-4 py-4">
       <slot />
     </main>
-    
-    <footer class="bg-gray-50 py-6 border-t border-gray-100">
-      <div class="container mx-auto text-center">
-        <p>© {{ new Date().getFullYear() }} Vivek Joshy. All rights reserved.</p>
-        <div class="mt-2 flex justify-center gap-4">
-          <a href="mailto:contact@vivekjoshy.com" class="text-accent hover:opacity-75">
-            <i class="fa-regular fa-envelope"></i>
-          </a>
-          <a href="https://github.com/vivekjoshy" target="_blank" rel="noopener noreferrer" class="text-accent hover:opacity-75">
-            <i class="fa-brands fa-github"></i>
-          </a>
-        </div>
+
+    <footer class="mt-16 border-t hairline" style="background-color: var(--color-surface)">
+      <div class="container mx-auto px-4 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <p class="text-subheading text-sm m-0">
+          &copy; {{ new Date().getFullYear() }} Vivek Joshy
+        </p>
+        <ul class="flex gap-5 list-none m-0 p-0">
+          <li>
+            <a href="mailto:contact@vivekjoshy.com" class="text-accent hover:opacity-75">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+              <span class="sr-only-text">Email Vivek Joshy</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/vivekjoshy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-accent hover:opacity-75"
+            >
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+              <span class="sr-only-text">Vivek Joshy on GitHub (opens in a new tab)</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://arxiv.org/abs/2401.05451"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-accent hover:opacity-75"
+            >
+              <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+              <span class="sr-only-text">OpenSkill paper on arXiv (opens in a new tab)</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
   </div>
 </template>
 
 <script setup lang="ts">
-// Default layout
-</script> 
+const NAV = [
+  { to: '/', label: 'Home' },
+  { to: '/openskill', label: 'Playground' },
+  { to: '/arc', label: 'ARC' },
+  { to: '/resume', label: 'Resume' }
+]
+</script>

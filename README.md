@@ -4,17 +4,36 @@ Personal website for Vivek Joshy built with Nuxt 3, Tailwind CSS, and DaisyUI.
 
 ## Features
 
-- Responsive design with dark/light mode support
-- Built with Nuxt 3, Vue 3, and TypeScript
-- Styled with Tailwind CSS and DaisyUI components
-- SEO optimized with proper meta tags
+- System / light / dark theming, applied before first paint so there is no flash
+- WCAG 2.2 AA: contrast-gated palette, skip link, `:focus-visible` rings, reduced-motion support
+- Interactive OpenSkill playground running the Weng-Lin models in the browser
+- Adoption figures fetched at build time rather than hardcoded
 
 ## Tech Stack
 
-- [Nuxt 3](https://nuxt.com/) - Vue Framework
-- [Tailwind CSS](https://tailwindcss.com/) - CSS Framework
-- [DaisyUI](https://daisyui.com/) - Tailwind CSS Component Library
+- [Nuxt 4](https://nuxt.com/) - Vue Framework
+- [Tailwind CSS 4](https://tailwindcss.com/) - CSS-first configuration
+- [DaisyUI 5](https://daisyui.com/) - Component library
 - [TypeScript](https://www.typescriptlang.org/) - Static Type Checking
+
+## Build gates
+
+`prebuild` runs three checks; any failure stops the build.
+
+| Script | Checks |
+| --- | --- |
+| `scripts/verify-openskill.mjs` | The browser port of the Weng-Lin models matches `openskill.py` to 1e-6 across 78 assertions. Regenerate the fixture with `scripts/gen-openskill-reference.py`. |
+| `scripts/check-contrast.mjs` | Every palette pair in both themes meets WCAG 2.2 AA. |
+| `scripts/fetch-evidence.mjs` | Refreshes `app/data/evidence.json` from PyPI, npm, GitHub and Semantic Scholar, falling back to the committed copy if a source is down. |
+
+## Resume
+
+`public/assets/resume.pdf` is generated from `resume-src/fancy-rover.tex`:
+
+```bash
+cd resume-src && pdflatex -interaction=nonstopmode fancy-rover.tex
+cp fancy-rover.pdf ../public/assets/resume.pdf
+```
 
 ## Setup
 
