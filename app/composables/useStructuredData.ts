@@ -46,16 +46,19 @@ export function personEntity() {
       value: '0000-0003-2443-8827',
       url: 'https://orcid.org/0000-0003-2443-8827'
     },
+    // Both links are the Kerala university specifically. The bare
+    // /wiki/Mahatma_Gandhi_University title is a disambiguation page listing
+    // five unrelated universities, so it identified nothing. No postal address:
+    // MGU is headquartered in Kottayam, not Aluva — Aluva is where the
+    // affiliated college is — and the Wikidata URI identifies the institution
+    // far more precisely than a street address would anyway.
     alumniOf: {
       '@type': 'CollegeOrUniversity',
       name: 'Mahatma Gandhi University',
-      sameAs: 'https://en.wikipedia.org/wiki/Mahatma_Gandhi_University',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Aluva',
-        addressRegion: 'Kerala',
-        addressCountry: 'IN'
-      }
+      sameAs: [
+        'https://en.wikipedia.org/wiki/Mahatma_Gandhi_University,_Kerala',
+        'https://www.wikidata.org/entity/Q6733535'
+      ]
     },
     url: SITE,
     // A portrait, not the wordmark card. Google's profile treatment expects a
