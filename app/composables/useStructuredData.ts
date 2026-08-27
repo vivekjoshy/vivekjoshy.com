@@ -81,6 +81,7 @@ export function personEntity() {
       'https://arxiv.org/abs/2401.05451',
       'https://doi.org/10.21105/joss.05901',
       'https://www.researchgate.net/profile/Vivek-Joshy-2',
+      'https://x.com/viveks_vantage',
       'https://www.kaggle.com/daegontaven',
       'https://stackoverflow.com/users/5586359/vivek-joshy'
     ],
