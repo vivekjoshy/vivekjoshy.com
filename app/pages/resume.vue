@@ -12,6 +12,10 @@
         <a href="https://github.com/vivekjoshy" target="_blank" rel="noopener noreferrer" class="flex items-center text-accent link-underline">
           <Icon name="github" class="mr-2" /> github.com/vivekjoshy
         </a>
+        <span class="hidden md:inline">&bull;</span>
+        <a href="https://orcid.org/0000-0003-2443-8827" target="_blank" rel="noopener noreferrer" class="flex items-center text-accent link-underline">
+          <Icon name="file" class="mr-2" /> ORCID 0000-0003-2443-8827
+        </a>
       </div>
     </div>
 

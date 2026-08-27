@@ -1,6 +1,6 @@
 {
   "$schema": "https://vivekjoshy.com/provenance.schema.json",
-  "generated": "2026-08-24",
+  "generated": "2026-08-27",
   "root": "4f0c5cbb7875873db3e9827bbc65f402bc2226845e707404bc772839c67cd53f",
   "algorithm": "sha256",
   "rootPreimage": "sha256 over newline-joined, lexicographically sorted \"path:sha256\" and \"repo@commit\" entries",
