@@ -72,9 +72,12 @@ export function personEntity() {
       caption: NAME
     },
     // sameAs is how Google reconciles scattered profiles into one entity.
-    // ORCID first: it is the only one of these that is an identifier rather
-    // than just a page, and it independently corroborates the paper.
+    // Wikidata and ORCID lead because they are identifiers rather than pages,
+    // and both corroborate the paper independently of this site: Q141191559 is
+    // linked as author (P50) of the paper's own item, and the ORCID iD is on
+    // the paper's Crossref record.
     sameAs: [
+      'https://www.wikidata.org/entity/Q141191559',
       'https://orcid.org/0000-0003-2443-8827',
       'https://github.com/vivekjoshy',
       'https://openskill.me',
