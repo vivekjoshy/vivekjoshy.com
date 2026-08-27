@@ -79,6 +79,7 @@ export function personEntity() {
     sameAs: [
       'https://www.wikidata.org/entity/Q141191559',
       'https://orcid.org/0000-0003-2443-8827',
+      'https://scholar.google.com/citations?user=AYf0iWoAAAAJ',
       'https://github.com/vivekjoshy',
       'https://openskill.me',
       'https://arxiv.org/abs/2401.05451',
